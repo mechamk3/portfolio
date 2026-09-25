@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
 import SectionHeader from "@/components/SectionHeader";
-import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/Icons";
+import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons";
 
 // Target URLs aren't translatable content — they live in code.
 // Displayed labels/handles live in the dictionaries.

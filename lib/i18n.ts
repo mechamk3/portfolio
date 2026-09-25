@@ -3,7 +3,7 @@ import fa from "@/dictionaries/fa";
 
 export const locales = ["en", "fa"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "en";
+export const defaultLocale: Locale = "fa";
 
 const dictionaries = { en, fa } as const;
 

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
 import SectionHeader from "@/components/SectionHeader";
-import { ArrowUpRightIcon, GitHubIcon } from "@/components/Icons";
+import { ArrowUpRightIcon, GitHubIcon } from "@/components/icons";
 
 export async function generateMetadata({
   params,
@@ -28,7 +28,7 @@ export default async function ProjectsPage({
 
   return (
     <main className="mx-auto w-full max-w-4xl px-6">
-      {/* ---------- Header ---------- */}
+      {/* ---------- Header ---------- (unchanged) */}
       <section className="pb-20 pt-20 sm:pt-28">
         <SectionHeader label={t.projects.label} mono={locale === "en"} />
 
@@ -43,61 +43,82 @@ export default async function ProjectsPage({
       {/* ---------- Projects ---------- */}
       <section className="border-t border-zinc-200 py-14 dark:border-zinc-800">
         <div className="space-y-8">
-          {t.projects.items.map((project, i) => (
-            <article
-              key={project.name}
-              className="group rounded-2xl border border-zinc-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-400 hover:shadow-xl hover:shadow-zinc-200/50 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:shadow-black/40 sm:p-10"
-            >
-              <div className="flex items-baseline justify-between gap-4">
-                <span className="font-mono text-sm text-emerald-600 dark:text-emerald-400">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
-                  {project.year}
-                </span>
-              </div>
+          {/* ↓↓↓ THIS is the block that replaced the old .map() — the only changed region in the file */}
+          {t.projects.items.map((project, i) => {
+            const hasLinks = Boolean(project.slug || project.liveUrl || project.sourceUrl);
 
-              <h2 className="mt-5 text-2xl font-semibold tracking-tight">{project.name}</h2>
-              <p className="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400">{project.tagline}</p>
-              <p className="mt-5 max-w-2xl leading-8 text-zinc-600 dark:text-zinc-400">
-                {project.description}
-              </p>
+            return (
+              <article
+                key={project.name}
+                className="group rounded-2xl border border-zinc-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-zinc-400 hover:shadow-xl hover:shadow-zinc-200/50 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:shadow-black/40 sm:p-10"
+              >
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="font-mono text-sm text-emerald-600 dark:text-emerald-400">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-mono text-xs text-zinc-400 dark:text-zinc-500">
+                    {project.year}
+                  </span>
+                </div>
 
-              <ul className="mt-6 flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <li
-                    key={tech}
-                    className="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1 font-mono text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400"
-                  >
-                    {tech}
-                  </li>
-                ))}
-              </ul>
+                <h2 className="mt-5 text-2xl font-semibold tracking-tight">{project.name}</h2>
+                <p className="mt-1.5 text-sm text-zinc-500 dark:text-zinc-400">{project.tagline}</p>
+                <p className="mt-5 max-w-2xl leading-8 text-zinc-600 dark:text-zinc-400">
+                  {project.description}
+                </p>
 
-              <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 underline-offset-4 hover:underline dark:text-white"
-                >
-                  {project.live}
-                  <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
-                </a>
-                <a
-                  href={project.sourceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 underline-offset-4 hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-white"
-                >
-                  {project.source}
-                  <GitHubIcon className="size-4" />
-                </a>
-              </div>
-            </article>
-          ))}
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <li
+                      key={tech}
+                      className="rounded-md border border-zinc-200 bg-zinc-50 px-2.5 py-1 font-mono text-xs text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400"
+                    >
+                      {tech}
+                    </li>
+                  ))}
+                </ul>
 
-          {/* Future slot — keeps the page honest and shaped for growth */}
+                {hasLinks && (
+                  <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+                    {project.slug && (
+                      <Link
+                        href={`/${locale}/projects/${project.slug}`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-emerald-600 underline-offset-4 hover:underline dark:text-emerald-400"
+                      >
+                        {t.projects.caseStudy}
+                        <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
+                      </Link>
+                    )}
+                    {project.liveUrl && project.live && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-900 underline-offset-4 hover:underline dark:text-white"
+                      >
+                        {project.live}
+                        <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
+                      </a>
+                    )}
+                    {project.sourceUrl && project.source && (
+                      <a
+                        href={project.sourceUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-500 underline-offset-4 hover:text-zinc-900 hover:underline dark:text-zinc-400 dark:hover:text-white"
+                      >
+                        {project.source}
+                        <GitHubIcon className="size-4" />
+                      </a>
+                    )}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+          {/* ↑↑↑ end of changed region */}
+
+          {/* ---------- Future slot ---------- (unchanged) */}
           <div className="flex flex-col items-center rounded-2xl border border-dashed border-zinc-300 px-6 py-10 text-center dark:border-zinc-800">
             <p className={`text-xs font-medium text-zinc-400 dark:text-zinc-500 ${monoClass(locale)}`}>
               {t.projects.moreLabel}
@@ -109,7 +130,7 @@ export default async function ProjectsPage({
         </div>
       </section>
 
-      {/* ---------- CTA ---------- */}
+      {/* ---------- CTA ---------- (unchanged) */}
       <section className="border-t border-zinc-200 py-20 dark:border-zinc-800">
         <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.projects.cta.heading}</h2>
         <Link

@@ -1,4 +1,3 @@
-// dictionaries/en.ts
 const en = {
   meta: {
     title: "Your Name — Software Engineer",
@@ -28,20 +27,18 @@ const en = {
     heading: "Things I've built.",
     intro:
       "Every project here started with a real problem I had — that's the filter I apply before writing the first line of code.",
+    caseStudy: "Read the case study",
     items: [
       {
-        name: "Project Name",
+        name: "HRIS — Human Resources Information System",
+        slug: "hris",
         year: "2025",
-        tagline: "One sentence that sells the project.",
+        tagline: "Internal HR system in production for 100–150 employees.",
         description:
-          "2–3 sentences: the problem it solves, what you specifically built, and one detail that shows craft.",
+          "Replaced scattered personnel records (paper, Excel, Access) with a single source of data: employees enter their own information, HR approves every record, and managers build custom reports from a visual report builder — no more manual reconciliation.",
         stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
-        live: "Live demo",
-        source: "Source code",
-        liveUrl: "https://your-project.live",
-        sourceUrl: "https://github.com/you/project",
       },
-    ],
+    ] as ProjectItem[],
     moreLabel: "Coming soon",
     moreText: "The next project is in development and will land here soon.",
     cta: {

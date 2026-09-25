@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
 import SectionHeader from "@/components/SectionHeader";
-import { ArrowUpRightIcon } from "@/components/Icons";
+import { ArrowUpRightIcon } from "@/components/icons";
 
 export default async function Home({
   params,
