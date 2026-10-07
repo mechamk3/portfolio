@@ -1,10 +1,9 @@
-
 export function SocialLink({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
   const external = href.startsWith("http");
   return (
     <a href={href} aria-label={label}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="rounded-lg p-2.5 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white">
+      className="rounded-lg p-2.5 text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink">
       {children}
     </a>
   );
@@ -49,6 +48,28 @@ export function ArrowLeftIcon(props: React.SVGProps<SVGSVGElement>) {
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
       <path d="m12 19-7-7 7-7" />
       <path d="M19 12H5" />
+    </svg>
+  );
+}
+
+export function FileTextIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+      <path d="M10 9H8" />
+    </svg>
+  );
+}
+
+export function DownloadIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M12 15V3" />
     </svg>
   );
 }

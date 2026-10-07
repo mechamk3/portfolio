@@ -4,18 +4,18 @@ const en = {
     description:
       "Software engineer building fast, reliable web applications with TypeScript, React and Next.js.",
   },
-  nav: { home: "Home", about: "About", projects: "Projects", contact: "Contact" },
+  nav: { home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
   footer: { rights: "© 2026 MohammadJavad Tolou - All rights reserved.", ver: "v. 1.0.0" },
   home: {
     status: "Open to new opportunities",
-    name: "Your Name",
+    name: "MohammadJavad Tolou",
     role: "Software Engineer",
     tagline:
-      "I design and build web applications that are fast, accessible and easy to maintain — from database schema to the last pixel.",
+      "I turn ideas into software, from designing the systems behind it to building the interface and shaping the experience of using it.",
     viewWork: "View my work",
     contactMe: "Get in touch",
-    stackLabel: "Tech I work with",
-    stack: ["TypeScript", "React", "Next.js", "Node.js", "PostgreSQL", "Tailwind CSS"],
+    stackLabel: "What I work with",
+    stack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "MongoDB"],
     work: { label: "Selected work" },
   },
   projects: {
@@ -23,7 +23,8 @@ const en = {
       title: "Projects — Your Name",
       description: "Selected work — applications and tools I've designed and built.",
     },
-    label: "Selected work",
+    label: "Projects",
+    featured: "Featured project",
     heading: "Things I've built.",
     intro:
       "Every project here started with a real problem I had — that's the filter I apply before writing the first line of code.",
@@ -32,6 +33,7 @@ const en = {
       {
         name: "HRIS — Human Resources Information System",
         slug: "hris",
+        badge: "In production — 100–150 employees",
         year: "2025",
         tagline: "Internal HR system in production for 100–150 employees.",
         description:
@@ -47,49 +49,64 @@ const en = {
     },
     viewAll: "View all projects",
   },
+  experience: {
+    label: "Experience",
+    heading: "Where I've worked.",
+    previouslyLabel: "Previously",
+    selectedWorkLabel: "Selected work",
+    items: [
+      {
+        company: "Padisar Informatics",
+        location: "Tehran, Iran",
+        current: true,
+        roles: [
+          { role: "Software Development Specialist", period: "Feb 2025 – Present", current: true },
+          { role: "Software Development Intern", period: "Dec 2024 – Feb 2025", current: false },
+        ],
+        summary: [
+          "Started my professional software career here with no prior industry experience and gradually moved from small development and maintenance tasks to independently building, deploying, and maintaining internal systems.",
+          "Today, I work across the full software development lifecycle — from requirements analysis and system design to implementation, testing, deployment, documentation, and iteration. I have taken ownership of multiple internal tools while also contributing to the development of Padisar's first software product.",
+        ],
+        projects: [
+          {
+            name: "HR Information System",
+            status: "In production",
+            tone: "ok",
+            description: [
+              "Built an internal HR information system from scratch, replacing paper- and spreadsheet-based workflows. The system is actively used by the HR team and has gone through multiple iterations as real requirements and feedback evolved.",
+            ],
+          },
+          {
+            name: "SMS Gateway",
+            status: "In production",
+            tone: "ok",
+            description: [
+              "Built and deployed an internal SMS platform with a management interface, contact management, contact grouping, and bulk messaging capabilities used by the marketing team.",
+            ],
+          },
+          {
+            name: "CRM Platform",
+            status: "Pilot production · 2 tenants",
+            tone: "pilot",
+            description: [
+              "Currently driving the technical development of a multi-tenant CRM focused on customer support, ticketing, and service workflows.",
+              "Designed and implemented its multi-tenant architecture, tenant-level authentication and authorization, dynamic roles and permissions, and hierarchical employee and customer structures. Built the core ticketing system and a service-request workflow for an infrastructure-provider tenant, including ticket routing, customer problem categories, multi-step validations, decisions, and reporting. Contributed across the frontend, backend, database design, deployment, and overall system architecture.",
+            ],
+          },
+        ],
+        footnote:
+          "Across these systems, I have also handled Linux-based deployments and maintained technical documentation for the systems I build.",
+      },
+    ] as ExperienceItem[],
+  },
   about: {
-    meta: {
-      title: "About — Your Name",
-      description:
-        "Who I am, how I work, and what I care about as a software engineer.",
-    },
     label: "About",
-    heading: "Building products, not just pages.",
+    heading: "I've always liked building things.",
     intro: [
-      "I'm a software engineer who cares about the whole product: the database behind it, the API that serves it, and the interface people actually touch. Most of my work lives in the TypeScript ecosystem — React and Next.js on the front, Node.js on the back.",
-      "I like problems where correctness and speed matter: tools people rely on every day, dashboards that stay fast with real data, and features that ship without breaking the ones already in production.",
+      "Long before software engineering, I enjoyed sketching, designing, assembling things, and exploring how things were made. Software eventually became a medium where all of those instincts could come together: understanding a problem, designing a system, shaping an experience, and bringing an idea into existence.",
+      "Over time, working on real products taught me that building software is rarely a straight line. The first version can be rough, decisions can be wrong, and requirements can change. What matters is being willing to step back, learn, fix what isn't working, and keep improving.",
+      "I'm still early in my engineering journey, with a lot left to learn. I'm working toward becoming the kind of engineer people can trust with difficult systems — someone who can build things that scale, last, and stand up to real-world use.",
     ],
-    snapshot: {
-      label: "Snapshot",
-      role: "Role",
-      roleValue: "Software Engineer",
-      focus: "Focus",
-      focusValue: "Web apps — from database to UI",
-      location: "Based in",
-      locationValue: "Your City",
-      availability: "Status",
-      availabilityValue: "Open to opportunities",
-    },
-    principlesLabel: "How I work",
-    principles: [
-      {
-        title: "Ship, then refine",
-        text: "A working feature in users' hands beats a perfect one on a branch. I build in small, reviewable increments and iterate on real feedback.",
-      },
-      {
-        title: "Boring where it counts",
-        text: "Proven tools, typed code, clear boundaries. The innovation budget is best spent on the product, not the plumbing.",
-      },
-      {
-        title: "Details are the product",
-        text: "Loading states, empty states, keyboard focus, the 200ms that makes a page feel instant — polish isn't a phase, it's the work.",
-      },
-    ],
-    cta: {
-      text: "The best way to judge an engineer is their work.",
-      link: "See my project",
-    },
-    moreLink: "More about me",
   },
   contact: {
     meta: {
@@ -97,7 +114,7 @@ const en = {
       description: "Get in touch — I'm open to opportunities and interesting projects.",
     },
     label: "Contact",
-    heading: "Let's build something.",
+    heading: "Feel free to reach out.",
     text: "I'm currently open to new opportunities and interesting projects. If my work resonates with you, my inbox is the best starting point.",
     cta: "Say hello",
     channelsLabel: "Direct lines",
@@ -112,6 +129,10 @@ const en = {
       location: { label: "Based in", value: "Your City" },
       response: { label: "Response time", value: "Usually within a day" },
       timezone: { label: "Time zone", value: "UTC+3:30" },
+    },
+    // en.ts
+    resume: {
+      label: "Resume",
     },
   },
 };

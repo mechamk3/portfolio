@@ -26,16 +26,16 @@ export default function Toc({
 
   return (
     <nav aria-label={label} className="sticky top-24 hidden lg:block">
-      <p className="text-xs text-zinc-400 dark:text-zinc-500">{label}</p>
-      <ul className="mt-3 border-s border-zinc-200 dark:border-zinc-800">
+      <p className="text-xs text-ink-3">{label}</p>
+      <ul className="mt-3 border-s border-line">
         {items.map(({ id, label: itemLabel }) => (
           <li key={id}>
             <a
               href={`#${id}`}
               className={`-ms-px block border-s-2 py-1.5 ps-4 text-sm leading-6 transition-colors ${
                 active === id
-                  ? "border-emerald-500 font-medium text-emerald-600 dark:text-emerald-400"
-                  : "border-transparent text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+                  ? "border-accent font-medium text-accent"
+                  : "border-transparent text-ink-2 hover:text-ink"
               }`}
             >
               {itemLabel}

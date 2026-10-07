@@ -48,13 +48,13 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={isFa ? "rtl" : "ltr"}
-      suppressHydrationWarning // required for next-themes
+      suppressHydrationWarning // required: theme script mutates <html> class before hydration
       className={`${inter.variable} ${vazirmatn.variable} ${isFa ? "font-fa" : "font-sans"}`}
     >
-      <body className="bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="flex min-h-dvh flex-col bg-canvas text-ink antialiased">
         <ThemeProvider>
           <Navbar locale={locale} />
-          {children}
+          <div className="flex-1">{children}</div>
           <Footer locale={locale} />
         </ThemeProvider>
       </body>

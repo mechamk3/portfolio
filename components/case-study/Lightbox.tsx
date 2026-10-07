@@ -119,34 +119,34 @@ export default function LightboxRoot({
           if (e.target === dialogRef.current) dialogRef.current.close();
         }}
         aria-label={shot?.title}
-        className="fixed inset-0 h-full max-h-full w-full max-w-full select-none bg-transparent p-0 backdrop:bg-zinc-950/85 backdrop:backdrop-blur-md backdrop:animate-[lb-fade_.2s_ease-out]"
+        className="fixed inset-0 h-full max-h-full w-full max-w-full select-none bg-transparent p-0 backdrop:bg-[#0d1321]/85 backdrop:backdrop-blur-md backdrop:animate-[lb-fade_.2s_ease-out]"
       >
         <div className="flex h-full flex-col">
           {/* ---------- header ---------- */}
-          <header className="relative flex h-14 shrink-0 items-center justify-between border-b border-white/10 ps-4 pe-1 sm:ps-6 sm:pe-2">
+          <header className="relative flex h-14 shrink-0 items-center justify-between border-b border-[#f0ebd8]/10 ps-4 pe-1 sm:ps-6 sm:pe-2">
             {/* title — absolute, so it stays dead-center and is NOT a flex item */}
             <span className="pointer-events-none absolute inset-x-0 flex justify-center overflow-hidden px-24">
-              <span className="truncate font-mono text-xs text-zinc-300">{shot?.title}</span>
+              <span className="truncate font-mono text-xs text-[#f0ebd8]/85">{shot?.title}</span>
             </span>
 
             {/* far edge 1 */}
-            <span className="font-mono text-sm tabular-nums text-zinc-400">{counter}</span>
+            <span className="font-mono text-sm tabular-nums text-[#f0ebd8]/55">{counter}</span>
 
             {/* far edge 2 */}
             <button
               type="button"
               onClick={() => dialogRef.current?.close()}
               aria-label={l.close}
-              className="flex size-10 items-center justify-center rounded-full text-zinc-400 transition-colors hover:bg-white/10 hover:text-white"
+              className="flex size-10 items-center justify-center rounded-full text-[#f0ebd8]/70 transition-colors hover:bg-[#f0ebd8]/10 hover:text-[#f0ebd8]"
             >
               <CloseIcon className="size-5" />
             </button>
           </header>
 
           {/* position line — grows from inline-start, so it mirrors in RTL for free */}
-          <div className="h-px shrink-0 bg-white/10">
+          <div className="h-px shrink-0 bg-[#f0ebd8]/10">
             <div
-              className="h-full bg-emerald-500 transition-[width] duration-300"
+              className="h-full bg-accent transition-[width] duration-300"
               style={{ width: `${pct}%` }}
             />
           </div>
@@ -175,7 +175,7 @@ export default function LightboxRoot({
                 priority
                 sizes="92vw"
                 draggable={false}
-                className="max-h-full w-auto max-w-full rounded-xl bg-white object-contain shadow-2xl ring-1 ring-white/10 motion-safe:animate-[lb-pop_.28s_cubic-bezier(0.16,1,0.3,1)]"
+                className="max-h-full w-auto max-w-full rounded-xl bg-surface object-contain shadow-2xl ring-1 ring-[#f0ebd8]/10 motion-safe:animate-[lb-pop_.28s_cubic-bezier(0.16,1,0.3,1)]"
               />
             )}
 
@@ -183,7 +183,7 @@ export default function LightboxRoot({
               type="button"
               onClick={() => step(-1)}
               aria-label={l.prev}
-              className="absolute start-3 top-1/2 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:flex"
+              className="absolute start-3 top-1/2 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#f0ebd8]/15 bg-[#f0ebd8]/10 text-[#f0ebd8] backdrop-blur-sm transition-colors hover:bg-[#f0ebd8]/20 sm:flex"
             >
               <ChevronLeftIcon className="size-5 rtl:-scale-x-100" />
             </button>
@@ -191,17 +191,17 @@ export default function LightboxRoot({
               type="button"
               onClick={() => step(1)}
               aria-label={l.next}
-              className="absolute end-3 top-1/2 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white backdrop-blur-sm transition-colors hover:bg-white/20 sm:flex"
+              className="absolute end-3 top-1/2 hidden size-11 -translate-y-1/2 items-center justify-center rounded-full border border-[#f0ebd8]/15 bg-[#f0ebd8]/10 text-[#f0ebd8] backdrop-blur-sm transition-colors hover:bg-[#f0ebd8]/20 sm:flex"
             >
               <ChevronRightIcon className="size-5 rtl:-scale-x-100" />
             </button>
           </div>
 
           {/* ---------- footer ---------- */}
-          <footer className="shrink-0 border-t border-white/10 px-4 py-3 sm:px-6">
+          <footer className="shrink-0 border-t border-[#f0ebd8]/10 px-4 py-3 sm:px-6">
             <div className="mx-auto flex max-w-4xl items-center justify-between gap-6">
-              <p className="line-clamp-2 text-sm leading-6 text-zinc-400">{shot?.caption}</p>
-              <p className="hidden shrink-0 font-mono text-[11px] text-zinc-500 sm:block">{l.hint}</p>
+              <p className="line-clamp-2 text-sm leading-6 text-[#f0ebd8]/60">{shot?.caption}</p>
+              <p className="hidden shrink-0 font-mono text-[11px] text-[#f0ebd8]/40 sm:block">{l.hint}</p>
             </div>
           </footer>
         </div>

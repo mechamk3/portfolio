@@ -3,33 +3,38 @@ import Link from "next/link";
 import { getDictionary, type Locale } from "@/lib/i18n";
 import ThemeToggle from "@/components/ThemeToggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import NavLink from "@/components/NavLink";
+import FloatingControls from "@/components/FloatingControls";
 
 export default function Navbar({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/80 backdrop-blur dark:border-zinc-800/80 dark:bg-zinc-950/80">
-      <nav className="mx-auto flex h-16 w-full max-w-4xl items-center justify-between px-6">
-        <Link
-          href={`/${locale}`}
-          className="font-semibold tracking-tight text-zinc-900 dark:text-white"
-        >
-          {t.home.name}
-        </Link>
+    <>
+      {/* transparent header — scrolls away with the page */}
+      <header className="relative z-30">
+        <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6">
+          <Link href={`/${locale}`} aria-label={t.home.name} className="shrink-0">
+            {/* ---- logo placeholder — swap this span for your Image pair ---- */}
+            <span className="flex size-11 items-center justify-center rounded-xl border border-dashed border-line-strong text-[10px] font-semibold text-ink-3">
+              LOGO
+            </span>
+            {/* <Image src="/logo-light.png" alt="" width={44} height={44} priority className="block dark:hidden" />
+                <Image src="/logo-dark.png" alt="" width={44} height={44} priority className="hidden dark:block" /> */}
+          </Link>
 
-        <div className="flex items-center gap-1 sm:gap-2">
-          <NavLink href={`/${locale}`}>{t.nav.home}</NavLink>
-          <NavLink href={`/${locale}/projects`}>{t.nav.projects}</NavLink>
-          <NavLink href={`/${locale}/about`}>{t.nav.about}</NavLink>
-          <NavLink href={`/${locale}/contact`}>{t.nav.contact}</NavLink>
-
-          <span className="mx-1 h-5 w-px bg-zinc-200 dark:bg-zinc-800" aria-hidden />
-
-          <LanguageSwitcher />
-          <ThemeToggle />
+          {/* two separate glass circles — pinned to the top so the language
+              capsule can grow DOWNWARD without being re-centered by the row */}
+          <div className="flex items-start gap-2 self-start pt-[10px]">
+            <div className="glass flex size-11 items-center justify-center rounded-full">
+              <ThemeToggle variant="swap" />
+            </div>
+            <LanguageSwitcher variant="navbar" />
+          </div>
         </div>
-      </nav>
-    </header>
+      </header>
+
+      {/* controls return on scroll in floating form */}
+      <FloatingControls />
+    </>
   );
 }
