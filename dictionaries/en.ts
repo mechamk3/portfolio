@@ -104,7 +104,7 @@ const en = {
     heading: "I've always liked building things.",
     intro: [
       "Long before software engineering, I enjoyed sketching, designing, assembling things, and exploring how things were made. Software eventually became a medium where all of those instincts could come together: understanding a problem, designing a system, shaping an experience, and bringing an idea into existence.",
-      "Over time, working on real products taught me that building software is rarely a straight line. The first version can be rough, decisions can be wrong, and requirements can change. What matters is being willing to step back, learn, fix what isn't working, and keep improving.",
+      "Over time, working on real products taught me that building software is rarely a straight line. The first version can be rough, decisions can be wrong, and requirements can change. What matters is being willing to step back, acknowledge mistakes, learn from them, fix what isn't working, and keep improving.",
       "I'm still early in my engineering journey, with a lot left to learn. I'm working toward becoming the kind of engineer people can trust with difficult systems — someone who can build things that scale, last, and stand up to real-world use.",
     ],
   },
