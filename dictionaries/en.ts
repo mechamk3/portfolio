@@ -38,7 +38,7 @@ const en = {
         tagline: "Internal HR system in production for 100–150 employees.",
         description:
           "Replaced scattered personnel records (paper, Excel, Access) with a single source of data: employees enter their own information, HR approves every record, and managers build custom reports from a visual report builder — no more manual reconciliation.",
-        stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+        stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
       },
     ] as ProjectItem[],
     moreLabel: "Coming soon",

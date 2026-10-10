@@ -36,11 +36,11 @@ const fa: Dictionary = {
         name: "سامانه سرمایه انسانی (HRIS)",
         slug: "hris",
         badge: "در حال استفاده‌ی عملیاتی — ۱۰۰ تا ۱۵۰ کارمند",
-        year: "۲۰۲۵",
+        year: "۱۴۰۴",
         tagline: "سیستم داخلی منابع انسانی در حال استفاده‌ی عملیاتی برای ۱۰۰ تا ۱۵۰ کارمند.",
         description:
           "جایگزین پرونده‌های پراکنده‌ی پرسنلی (کاغذ، اکسل، Access) با یک منبع واحد داده: کارمندان اطلاعات خودشان را وارد می‌کنند، منابع انسانی هر رکورد را تایید می‌کند و مدیران با گزارش‌ساز، گزارش دلخواه می‌سازند — بدون تطبیق دستی فایل‌ها.",
-        stack: ["Next.js", "TypeScript", "Tailwind CSS", "PostgreSQL"],
+        stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
       },
     ] as ProjectItem[],
     moreLabel: "به‌زودی",

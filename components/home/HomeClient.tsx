@@ -13,7 +13,7 @@ import TechIcon from "@/components/TechIcon";
 import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, MailIcon, FileTextIcon, DownloadIcon } from "@/components/icons";
 
 const TAB_IDS: TabId[] = ["work", "experience", "about", "contact"];
-const GITHUB_URL = "https://github.com/you";
+const GITHUB_URL = "https://github.com/mechamk3";
 const LINKEDIN_URL = "https://linkedin.com/in/you";
 
 type PanelProps = { t: Dictionary; locale: string; mono: string };
@@ -95,7 +95,7 @@ export default function HomeClient({ t, locale, mono }: PanelProps) {
                     className="group flex items-center gap-2.5 rounded-lg border border-line bg-surface/60 px-2.5 py-1.5 transition-colors duration-200 hover:border-line-strong"
                   >
                     <TechIcon name={item} className="size-4 shrink-0 text-ink-3" />
-                    <span className="text-[13px] text-ink-2 transition-colors duration-200 group-hover:text-ink">
+                    <span className="font-sans text-[13px] text-ink-2 transition-colors duration-200 group-hover:text-ink">
                       {item}
                     </span>
                   </li>
@@ -150,66 +150,57 @@ function WorkPanel({ t, locale, mono }: PanelProps) {
     <div>
       <SectionHeader label={t.projects.label} mono={locale === "en"} />
 
-      <SpotlightCard className="group relative mt-7 overflow-hidden rounded-3xl border border-line bg-surface shadow-[0_1px_2px_rgba(13,19,33,0.06),0_20px_48px_-20px_rgba(13,19,33,0.18)] transition-shadow duration-300 hover:shadow-[0_1px_2px_rgba(13,19,33,0.06),0_28px_64px_-20px_rgba(13,19,33,0.25)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_20px_48px_-20px_rgba(0,0,0,0.6)]">
-        {featured.slug && (
-          <Link
-            href={`/${locale}/projects/${featured.slug}`}
-            aria-label={featured.name}
-            className="after:absolute after:inset-0 after:z-10 focus-visible:after:ring-2 focus-visible:after:ring-accent"
-          />
-        )}
+      {/* two square cards side by side: featured + coming-soon slot */}
+      <div className="mt-7 grid gap-5 sm:grid-cols-2">
+        {/* featured card */}
+        <article className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]">
+          {featured.slug && (
+            <Link
+              href={`/${locale}/projects/${featured.slug}`}
+              aria-label={featured.name}
+              className="after:absolute after:inset-0 after:z-10 focus-visible:after:ring-2 focus-visible:after:ring-accent"
+            />
+          )}
 
-        {featured.cover && (
-          <div className="border-b border-line">
-            <div className="flex h-11 items-center justify-center border-b border-line bg-linear-to-b from-surface-2/70 to-surface-2/40 px-4">
-              <span className="inline-flex max-w-[80%] items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1 shadow-sm">
-                <i className="size-2 shrink-0 rounded-[3px] bg-accent" aria-hidden />
-                <span className={`truncate font-mono text-[11px] text-ink-2 ${mono}`}>
-                  {featured.name}
-                </span>
-              </span>
-            </div>
-            <div className="overflow-hidden">
-              <Image
-                src={featured.cover}
-                alt={featured.name}
-                width={1600}
-                height={1000}
-                priority
-                sizes="(min-width: 1100px) 820px, 100vw"
-                className="h-auto w-full transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              />
-            </div>
-          </div>
-        )}
-
-        <div className="p-6 sm:p-8">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">{featured.name}</h2>
-              <p className="mt-1.5 text-sm text-ink-2">{featured.tagline}</p>
-            </div>
-            <ArrowUpRightIcon className="mt-1 size-5 shrink-0 text-ink-3 transition-all duration-200 group-hover:translate-x-1 group-hover:text-ink rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="font-mono text-sm text-accent">01</span>
+            <span className="font-mono text-xs text-ink-3">{featured.year}</span>
           </div>
 
-          <ul className="mt-5 flex flex-wrap gap-2">
+          <h2 className="mt-3 text-lg font-semibold leading-snug tracking-tight">{featured.name}</h2>
+          <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-ink-2">{featured.tagline}</p>
+
+          {/* tech icons */}
+          <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
             {featured.stack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-line bg-surface-2 px-2.5 py-1 font-mono text-[11px] text-ink-2"
+                title={tech}
+                className="flex size-8 items-center justify-center rounded-lg border border-line bg-surface-2"
               >
-                {tech}
+                <TechIcon
+                  name={tech}
+                  className="size-5 text-ink-2 transition-colors duration-200 group-hover:text-ink"
+                />
               </li>
             ))}
           </ul>
-        </div>
-      </SpotlightCard>
 
-      <div className="mt-6 flex items-center gap-5 rounded-2xl border border-dashed border-line-strong px-6 py-6 sm:px-8">
-        <span className="font-mono text-sm text-accent/70">02</span>
-        <div>
-          <p className={`text-xs font-medium text-ink-3 ${mono}`}>{t.projects.moreLabel}</p>
-          <p className="mt-1 max-w-md text-sm leading-6 text-ink-2">{t.projects.moreText}</p>
+          <div className="relative z-20 mt-auto flex flex-wrap gap-x-4 gap-y-1.5 border-line pt-4 [&>*]:mt-4">
+            {featured.slug && (
+              <Link href={`/${locale}/projects/${featured.slug}`} className="relative z-20 inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-accent shadow-[0_0_0_0_rgba(0,0,0,0)] transition-all duration-300 hover:text-accent-strong">
+                {t.projects.caseStudy}
+                <ArrowUpRightIcon className="size-4 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+              </Link>
+            )}
+          </div>
+        </article>
+
+        {/* coming-soon slot — same square shape, dashed */}
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-line-strong px-5 py-6 text-center">
+          <span className="font-mono text-sm text-accent/70">02</span>
+          <p className={`mt-2 text-xs font-medium text-ink-3 ${mono}`}>{t.projects.moreLabel}</p>
+          <p className="mt-1 text-sm leading-6 text-ink-2">{t.projects.moreText}</p>
         </div>
       </div>
 
