@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRightIcon } from "@/components/icons";
+import { ArrowUpRightIcon } from "@/components/icons/misc";
 
 export type TabId = "work" | "experience" | "about" | "contact";
 export type TabItem = { id: TabId; index: string; label: string };

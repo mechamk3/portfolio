@@ -1,15 +1,19 @@
 import type { ComponentType, SVGProps } from "react";
+
 import {
-  SiTypescript,
-  SiJavascript,
-  SiReact,
-  SiNextdotjs,
-  SiPython,
-  SiFastapi,
-  SiPostgresql,
-  SiMongodb,
-  SiTailwindcss,
-} from "react-icons/si";
+  TypeScriptIcon,
+  JavaScriptIcon,
+  TailwindIcon,
+  ViteIcon,
+  AntDesignIcon,
+  MantineIcon,
+  PostgreSQLIcon,
+  MongoDBIcon,
+  PythonIcon,
+  FastAPIIcon,
+  NextJsIcon,
+  ReactIcon,
+} from "@/components/icons/tech";
 
 type Entry = {
   Icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -17,21 +21,23 @@ type Entry = {
 };
 
 // ⚠️ hover classes must be complete literal strings — Tailwind's scanner
-// can't see dynamically built class names like `group-hover:text-[${color}]`.
-// Hexes are the official Simple Icons brand colors.
+// can't see dynamically built class names. Hexes are official brand colors.
+// All icons are self-hosted inline SVGs — no runtime requests, no icon library.
 const TECH_ICONS: Record<string, Entry> = {
-  TypeScript: { Icon: SiTypescript, hover: "group-hover:text-[#3178C6]" },
-  JavaScript: { Icon: SiJavascript, hover: "group-hover:text-[#F7DF1E]" },
-  React: { Icon: SiReact, hover: "group-hover:text-[#61DAFB]" },
+  TypeScript: { Icon: TypeScriptIcon, hover: "group-hover:text-[#3178C6]" },
+  JavaScript: { Icon: JavaScriptIcon, hover: "group-hover:text-[#F7DF1E]" },
+  "Tailwind CSS": { Icon: TailwindIcon, hover: "group-hover:text-[#06B6D4]" },
   // Next.js brand is black — invisible on the dark canvas. `text-ink` solves it
-  // with tokens: ink is near-black in light mode, cream in dark mode — accurate
-  // in light, legible in dark, on-palette in both.
-  "Next.js": { Icon: SiNextdotjs, hover: "group-hover:text-ink" },
-  Python: { Icon: SiPython, hover: "group-hover:text-[#3776AB]" },
-  FastAPI: { Icon: SiFastapi, hover: "group-hover:text-[#009688]" },
-  PostgreSQL: { Icon: SiPostgresql, hover: "group-hover:text-[#4169E1]" },
-  MongoDB: { Icon: SiMongodb, hover: "group-hover:text-[#47A248]" },
-  "Tailwind CSS": { Icon: SiTailwindcss, hover: "group-hover:text-[#06B6D4]" },
+  // with tokens: near-black in light mode, cream in dark mode.
+  "Next.js": { Icon: NextJsIcon, hover: "group-hover:text-ink" },
+  Vite: { Icon: ViteIcon, hover: "group-hover:text-[#646CFF]" },
+  "Ant Design": { Icon: AntDesignIcon, hover: "group-hover:text-[#0170FE]" },
+  Mantine: { Icon: MantineIcon, hover: "group-hover:text-[#339AF0]" },
+  Python: { Icon: PythonIcon, hover: "group-hover:text-[#3776AB]" },
+  FastAPI: { Icon: FastAPIIcon, hover: "group-hover:text-[#009688]" },
+  PostgreSQL: { Icon: PostgreSQLIcon, hover: "group-hover:text-[#4169E1]" },
+  MongoDB: { Icon: MongoDBIcon, hover: "group-hover:text-[#47A248]" },
+  React: { Icon: ReactIcon, hover: "group-hover:text-[#61DAFB]" },
 };
 
 export default function TechIcon({
@@ -45,11 +51,5 @@ export default function TechIcon({
   if (!entry) return null; // graceful fallback: unmapped techs render without an icon
 
   const { Icon, hover } = entry;
-
-  return (
-    <Icon
-      aria-hidden
-      className={`transition-colors duration-200 ${hover} ${className}`}
-    />
-  );
+  return <Icon aria-hidden className={`transition-colors duration-200 ${hover} ${className}`} />;
 }

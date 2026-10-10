@@ -10,7 +10,8 @@ import SpotlightCard from "@/components/SpotlightCard";
 import SectionHeader from "@/components/SectionHeader";
 import SectionTabs, { type TabId } from "@/components/home/SectionTabs";
 import TechIcon from "@/components/TechIcon";
-import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, MailIcon, FileTextIcon, DownloadIcon } from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons/socials";
+import { ArrowUpRightIcon, FileTextIcon, DownloadIcon } from "@/components/icons/misc";
 
 const TAB_IDS: TabId[] = ["work", "experience", "about", "contact"];
 const GITHUB_URL = "https://github.com/mechamk3";
@@ -142,75 +143,90 @@ export default function HomeClient({ t, locale, mono }: PanelProps) {
 
 /* ================= 01 · Work ================= */
 
-function WorkPanel({ t, locale, mono }: PanelProps) {
-  const featured = t.projects.items[0];
-  if (!featured) return null;
+function WorkPanel({ t, locale }: PanelProps) {
+  // show at most 3 projects — the 4th slot is always the "see more" card
+  const items = t.projects.items.slice(0, 3);
 
   return (
     <div>
       <SectionHeader label={t.projects.label} mono={locale === "en"} />
 
-      {/* two square cards side by side: featured + coming-soon slot */}
-      <div className="mt-7 grid gap-5 sm:grid-cols-2">
-        {/* featured card */}
-        <article className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]">
-          {featured.slug && (
-            <Link
-              href={`/${locale}/projects/${featured.slug}`}
-              aria-label={featured.name}
-              className="after:absolute after:inset-0 after:z-10 focus-visible:after:ring-2 focus-visible:after:ring-accent"
-            />
-          )}
-
-          <div className="flex items-baseline justify-between gap-3">
-            <span className="font-mono text-sm text-accent">01</span>
-            <span className="font-mono text-xs text-ink-3">{featured.year}</span>
-          </div>
-
-          <h2 className="mt-3 text-lg font-semibold leading-snug tracking-tight">{featured.name}</h2>
-          <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-ink-2">{featured.tagline}</p>
-
-          {/* tech icons */}
-          <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
-            {featured.stack.map((tech) => (
-              <li
-                key={tech}
-                title={tech}
-                className="flex size-8 items-center justify-center rounded-lg border border-line bg-surface-2"
-              >
-                <TechIcon
-                  name={tech}
-                  className="size-5 text-ink-2 transition-colors duration-200 group-hover:text-ink"
-                />
-              </li>
-            ))}
-          </ul>
-
-          <div className="relative z-20 mt-auto flex flex-wrap gap-x-4 gap-y-1.5 border-line pt-4 [&>*]:mt-4">
-            {featured.slug && (
-              <Link href={`/${locale}/projects/${featured.slug}`} className="relative z-20 inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-accent shadow-[0_0_0_0_rgba(0,0,0,0)] transition-all duration-300 hover:text-accent-strong">
-                {t.projects.caseStudy}
-                <ArrowUpRightIcon className="size-4 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
-              </Link>
+      <div className="mt-7 grid grid-rows-2 gap-5 sm:grid-cols-2">
+        {items.map((project, i) => (
+          <article
+            key={project.name}
+            className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]"
+          >
+            {project.slug && (
+              <Link
+                href={`/${locale}/projects/${project.slug}`}
+                aria-label={project.name}
+                className="after:absolute after:inset-0 after:z-10 focus-visible:after:ring-2 focus-visible:after:ring-accent"
+              />
             )}
-          </div>
-        </article>
 
-        {/* coming-soon slot — same square shape, dashed */}
-        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-line-strong px-5 py-6 text-center">
-          <span className="font-mono text-sm text-accent/70">02</span>
-          <p className={`mt-2 text-xs font-medium text-ink-3 ${mono}`}>{t.projects.moreLabel}</p>
-          <p className="mt-1 text-sm leading-6 text-ink-2">{t.projects.moreText}</p>
-        </div>
+            <div className="flex items-baseline justify-between gap-3">
+              <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <span className="font-mono text-xs text-ink-3">{project.year}</span>
+            </div>
+
+            <h2 className="mt-3 text-lg font-semibold leading-snug tracking-tight">{project.name}</h2>
+            <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-ink-2">{project.tagline}</p>
+
+            {/* tech icons */}
+            <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
+              {project.stack.map((tech) => (
+                <li
+                  key={tech}
+                  title={tech}
+                  className="flex size-8 items-center justify-center rounded-lg border border-line bg-surface-2"
+                >
+                  <TechIcon
+                    name={tech}
+                    className="size-5 text-ink-2 transition-colors duration-200 group-hover:text-ink"
+                  />
+                </li>
+              ))}
+            </ul>
+
+            {/* footer — only on cards that have somewhere to go */}
+            {project.slug && (
+              <div className="relative z-20 mt-auto flex flex-wrap gap-x-4 gap-y-1.5 border-line pt-4 *:mt-4">
+                <Link
+                  href={`/${locale}/projects/${project.slug}`}
+                  className="relative z-20 inline-flex items-center gap-1.5 rounded-md text-sm font-medium text-accent shadow-[0_0_0_0_rgba(0,0,0,0)] transition-all duration-300 hover:text-accent-strong"
+                >
+                  {t.projects.caseStudy}
+                  <ArrowUpRightIcon className="size-4 rtl:-scale-x-100 rtl:group-hover:-translate-x-1" />
+                </Link>
+              </div>
+            )}
+          </article>
+        ))}
+
+        {/* 04 · See-more card — coming-soon shell (dashed), real destination */}
+        <Link
+          href={`/${locale}/projects`}
+          className="group/link flex flex-col items-center justify-center gap-2.5 rounded-2xl border border-dashed border-line-strong px-5 py-6 text-center transition-colors duration-200 hover:border-accent"
+        >
+          <span className="font-mono text-sm text-accent/70">
+            {String(t.projects.items.length + 1).padStart(2, "0")}
+          </span>
+
+          <span className="text-sm font-semibold leading-snug tracking-tight text-ink">
+            {t.projects.heading}
+          </span>
+
+          <span className="text-xs leading-6 text-ink-3 line-clamp-2">
+            {t.projects.intro}
+          </span>
+
+          <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
+            {t.projects.viewAll}
+            <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
+          </span>
+        </Link>
       </div>
-
-      <Link
-        href={`/${locale}/projects`}
-        className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-ink-2 underline-offset-4 transition-colors hover:text-ink hover:underline"
-      >
-        {t.projects.viewAll}
-        <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
-      </Link>
     </div>
   );
 }

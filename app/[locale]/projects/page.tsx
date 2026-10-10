@@ -5,7 +5,8 @@ import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
 import SectionHeader from "@/components/SectionHeader";
-import { ArrowUpRightIcon, GitHubIcon } from "@/components/icons";
+import { GitHubIcon } from "@/components/icons/socials";
+import { ArrowUpRightIcon } from "@/components/icons/misc";
 
 export async function generateMetadata({
   params,

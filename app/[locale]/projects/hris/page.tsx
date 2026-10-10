@@ -10,7 +10,7 @@ import Screenshot from "@/components/case-study/Screenshot";
 import { getHrisContent } from "@/content/projects/hris";
 import LightboxRoot from "@/components/case-study/Lightbox";
 
-import { ArrowLeftIcon, ArrowUpRightIcon } from "@/components/icons";
+import { ArrowLeftIcon, ArrowUpRightIcon } from "@/components/icons/misc";
 
 export async function generateMetadata({
   params,

@@ -42,6 +42,20 @@ const fa: Dictionary = {
           "جایگزین پرونده‌های پراکنده‌ی پرسنلی (کاغذ، اکسل، Access) با یک منبع واحد داده: کارمندان اطلاعات خودشان را وارد می‌کنند، منابع انسانی هر رکورد را تایید می‌کند و مدیران با گزارش‌ساز، گزارش دلخواه می‌سازند — بدون تطبیق دستی فایل‌ها.",
         stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
       },
+      {
+        name: "درگاه پیامک",
+        slug: "smsGateway",
+        year: "۱۴۰۵",
+        tagline: "سکوی داخلی پیامک با مدیریت مخاطبین، گروه‌بندی و ارسال گروهی — در استفاده‌ی روزانه توسط تیم مارکتینگ.",
+        stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
+      },
+      {
+        name: "Spoola",
+        slug: "spoola",
+        year: "۱۴۰۵",
+        tagline: "TODO — یک جمله که Spoola را معرفی می‌کند.",
+        stack: ["Python", "TypeScript", "React"],
+      },
     ] as ProjectItem[],
     moreLabel: "به‌زودی",
     moreText: "پروژه‌ی بعدی در حال توسعه است و به‌زودی همین‌جا منتشر می‌شود.",
@@ -135,6 +149,16 @@ const fa: Dictionary = {
     // fa.ts
     resume: {
       label: "رزومه",
+    },
+  },
+  // fa.ts
+  notFound: {
+    code: "404",
+    heading: "صفحه پیدا نشد.",
+    text: "صفحه‌ای که دنبالش بودید وجود ندارد یا شاید جابه‌جا شده است.",
+    actions: {
+      home: "بازگشت به خانه",
+      projects: "مشاهده‌ی نمونه‌کارها",
     },
   },
 };

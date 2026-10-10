@@ -40,6 +40,20 @@ const en = {
           "Replaced scattered personnel records (paper, Excel, Access) with a single source of data: employees enter their own information, HR approves every record, and managers build custom reports from a visual report builder — no more manual reconciliation.",
         stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
       },
+      {
+        name: "SMS Gateway",
+        slug: "smsGateway",
+        year: "2026",
+        tagline: "Internal SMS platform with contact management, grouping and bulk messaging — in daily use by the marketing team.",
+        stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
+      },
+      {
+        name: "Spoola",
+        slug: "spoola",
+        year: "2026",                    // ⚠️ TODO: real year
+        tagline: "TODO — one sentence that sells what Spoola is.",
+        stack: ["Python", "TypeScript", "React"],                       // ⚠️ TODO: its real stack
+      },
     ] as ProjectItem[],
     moreLabel: "Coming soon",
     moreText: "The next project is in development and will land here soon.",
@@ -133,6 +147,16 @@ const en = {
     // en.ts
     resume: {
       label: "Resume",
+    },
+  },
+  // en.ts
+  notFound: {
+    code: "404",
+    heading: "Page not found.",
+    text: "The page you're looking for doesn't exist or may have been moved.",
+    actions: {
+      home: "Back to home",
+      projects: "See my projects",
     },
   },
 };
