@@ -53,7 +53,7 @@ const en = {
     label: "Experience",
     heading: "Where I've worked.",
     previouslyLabel: "Previously",
-    selectedWorkLabel: "Selected work",
+    selectedWorkLabel: "Featured Projects",
     items: [
       {
         company: "Padisar Informatics",
@@ -64,8 +64,8 @@ const en = {
           { role: "Software Development Intern", period: "Dec 2024 – Feb 2025", current: false },
         ],
         summary: [
-          "Started my professional software career here with no prior industry experience and gradually moved from small development and maintenance tasks to independently building, deploying, and maintaining internal systems.",
-          "Today, I work across the full software development lifecycle — from requirements analysis and system design to implementation, testing, deployment, documentation, and iteration. I have taken ownership of multiple internal tools while also contributing to the development of Padisar's first software product.",
+          "Started my professional career in software development here, progressing from small development and maintenance tasks to independently building, deploying, and maintaining internal systems.",
+          "I've gained experience across all stages of the software development lifecycle, from requirements analysis and system design to implementation, testing, deployment, support, and documentation. I've independently developed two internal tools from scratch that are now in use across the company. I also contribute to the design and development of the company's ITSM platform.",
         ],
         projects: [
           {
@@ -73,7 +73,7 @@ const en = {
             status: "In production",
             tone: "ok",
             description: [
-              "Built an internal HR information system from scratch, replacing paper- and spreadsheet-based workflows. The system is actively used by the HR team and has gone through multiple iterations as real requirements and feedback evolved.",
+              "Independently designed and developed the company's HR information system from scratch, replacing paper-based processes and scattered Excel files. The system is actively used by the HR team and has undergone multiple iterations based on real business needs and user feedback.",
             ],
           },
           {
@@ -81,16 +81,16 @@ const en = {
             status: "In production",
             tone: "ok",
             description: [
-              "Built and deployed an internal SMS platform with a management interface, contact management, contact grouping, and bulk messaging capabilities used by the marketing team.",
+              "Independently designed and developed an SMS messaging and management platform for production use, consisting of an SMS gateway service and a management panel. Integrated the platform with multiple internal systems for one-time login codes (OTPs), contract-expiration notifications, employee messaging, and Zabbix monitoring alerts. The platform also maintains message history and delivery-status records.",
             ],
           },
           {
-            name: "CRM Platform",
+            name: "ITSM SaaS Platform",
             status: "Pilot production · 2 tenants",
             tone: "pilot",
             description: [
-              "Currently driving the technical development of a multi-tenant CRM focused on customer support, ticketing, and service workflows.",
-              "Designed and implemented its multi-tenant architecture, tenant-level authentication and authorization, dynamic roles and permissions, and hierarchical employee and customer structures. Built the core ticketing system and a service-request workflow for an infrastructure-provider tenant, including ticket routing, customer problem categories, multi-step validations, decisions, and reporting. Contributed across the frontend, backend, database design, deployment, and overall system architecture.",
+              "Contribute to the design and development of a multi-tenant ITSM platform focused on customer support, ticketing, and service-delivery workflows.",
+              "Designed and implemented the multi-tenant architecture, tenant-level authentication and access control with dynamic roles and permissions, and hierarchical structures for employees and customers. Also developed the core ticketing system and a service-request workflow for an infrastructure-services tenant, supporting ticket categorization and routing, multi-step review and approval, and process reporting. My work also spans frontend and backend development, database design, overall system architecture, and deployment.",
             ],
           },
         ],
