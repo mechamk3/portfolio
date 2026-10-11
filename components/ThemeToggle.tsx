@@ -28,12 +28,12 @@ function SwitchToggle({ isDark, onToggle }: { isDark: boolean; onToggle: () => v
       onClick={onToggle}
       className="relative h-7 w-12 rounded-full border border-line-strong bg-surface-2 shadow-inner transition-colors duration-300"
     >
-      <SunIcon className="absolute start-1.5 top-1/2 size-3.5 -translate-y-1/2 text-ink-2 transition-opacity duration-300 dark:opacity-40" />
-      <MoonIcon className="absolute end-1.5 top-1/2 size-3.5 -translate-y-1/2 text-ink-2 opacity-40 transition-opacity duration-300 dark:opacity-100" />
+      <SunIcon className="absolute inset-s-1.5 top-1/2 size-3.5 -translate-y-1/2 text-ink-2 transition-opacity duration-300 dark:opacity-40" />
+      <MoonIcon className="absolute inset-e-1.5 top-1/2 size-3.5 -translate-y-1/2 text-ink-2 opacity-40 transition-opacity duration-300 dark:opacity-100" />
       {/* knob — inverted like the primary buttons: navy in light, cream in dark */}
       <span
         aria-hidden
-        className="absolute start-0.5 top-1/2 size-5 -translate-y-1/2 rounded-full bg-ink shadow-md transition-transform duration-300 dark:translate-x-5 dark:bg-canvas dark:rtl:-translate-x-5"
+        className="absolute inset-s-0.5 top-1/2 size-5 -translate-y-1/2 rounded-full bg-ink shadow-md transition-transform duration-300 dark:translate-x-5 dark:bg-canvas dark:rtl:-translate-x-5"
       />
     </button>
   );

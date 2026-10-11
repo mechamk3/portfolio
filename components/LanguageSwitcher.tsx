@@ -152,7 +152,7 @@ function NavbarVariant({
       aria-label="Language"
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
-      className={`glass flex w-11 shrink-0 flex-col items-center overflow-hidden rounded-full p-[3px] transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "h-[138px]" : "h-11"
+      className={`glass flex w-11 shrink-0 flex-col items-center overflow-hidden rounded-full p-0.75 transition-[height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "h-34.5" : "h-11"
         }`}
     >
       {/* the globe — first child = top edge; its position never changes */}
@@ -168,7 +168,7 @@ function NavbarVariant({
 
       {/* options track — unfolds downward: 12 | EN 32 | 6 | FA 32 | 12 = 94px */}
       <div
-        className={`flex w-9 shrink-0 flex-col items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "h-[94px] py-[12px] opacity-100" : "h-0 opacity-0"
+        className={`flex w-9 shrink-0 flex-col items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "h-23.5 py-3 opacity-100" : "h-0 opacity-0"
           }`}
       >
         {locales.map((locale, i) => (
@@ -181,7 +181,7 @@ function NavbarVariant({
             }}
             aria-current={locale === current ? "true" : undefined}
             tabIndex={current === locale ? -1 : 0}
-            className={`flex h-8 w-9 shrink-0 items-center justify-center font-sans text-[11px] font-bold transition-colors duration-200 ${i === 1 ? "mt-[6px]" : ""} ${locale === current ? "text-ink" : "text-ink-3 hover:text-ink"
+            className={`flex h-8 w-9 shrink-0 items-center justify-center font-sans text-[11px] font-bold transition-colors duration-200 ${i === 1 ? "mt-1.5" : ""} ${locale === current ? "text-ink" : "text-ink-3 hover:text-ink"
               }`}
           >
             {codes[locale]}
@@ -219,12 +219,12 @@ function FloatingVariant({
       aria-label="Language"
       onPointerEnter={onPointerEnter}
       onPointerLeave={onPointerLeave}
-      className={`glass flex h-11 shrink-0 items-center overflow-hidden rounded-full p-[3px] transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "w-[138px]" : "w-11"
+      className={`glass flex h-11 shrink-0 items-center overflow-hidden rounded-full p-0.75 transition-[width] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "w-34.5" : "w-11"
         }`}
     >
       {/* options track — grows toward the page (inline-start) */}
       <div
-        className={`flex shrink-0 items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "w-[94px] px-[12px] opacity-100" : "w-0 opacity-0"
+        className={`flex shrink-0 items-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? "w-23.5 px-3 opacity-100" : "w-0 opacity-0"
           }`}
       >
         {locales.map((locale, i) => (
@@ -237,7 +237,7 @@ function FloatingVariant({
             }}
             aria-current={locale === current ? "true" : undefined}
             tabIndex={current === locale ? -1 : 0}
-            className={`flex h-9 w-8 shrink-0 items-center justify-center font-sans text-[11px] font-bold transition-colors duration-200 ${i === 1 ? "ms-[6px]" : ""} ${locale === current ? "text-ink" : "text-ink-3 hover:text-ink"
+            className={`flex h-9 w-8 shrink-0 items-center justify-center font-sans text-[11px] font-bold transition-colors duration-200 ${i === 1 ? "ms-1.5" : ""} ${locale === current ? "text-ink" : "text-ink-3 hover:text-ink"
               }`}
           >
             {codes[locale]}

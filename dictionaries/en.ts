@@ -28,7 +28,7 @@ const en = {
     heading: "Things I've built.",
     intro:
       "Every project here started with a real problem I had — that's the filter I apply before writing the first line of code.",
-    caseStudy: "Read the case study",
+    caseStudy: "Read more",
     items: [
       {
         name: "HRIS — Human Resources Information System",
@@ -40,7 +40,7 @@ const en = {
         tagline: "An employee information system built to centralize employee records and replace paper-based and spreadsheet workflows.",
         description:
           "Replaced scattered personnel records (paper, Excel, Access) with a single source of data: employees enter their own information, HR approves every record, and managers build custom reports from a visual report builder — no more manual reconciliation.",
-        stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
+        stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Create React App", "Tailwind CSS"],
       },
       {
         name: "SMS Gateway",
@@ -48,7 +48,7 @@ const en = {
         status: "In production",
         tone: "ok",
         year: "2026",
-        tagline: "A shared SMS service for internal applications, with a web interface for managing contacts and contact groups, sending messages, and viewing message history.",
+        tagline: "A shared Messaging service for our internal applications, with a web interface for managing contacts and contact groups, sending messages, and viewing message history.",
         stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
       },
       {
@@ -58,7 +58,7 @@ const en = {
         tone: "pilot",
         year: "2026",
         tagline: "A self-hosted music radio that turns your local music library into a continuous, automatically shuffled listening experience, accessible through a web interface.",
-        stack: ["Python", "TypeScript", "React"],
+        stack: ["SQLite", "Python", "TypeScript", "React"],
       },
     ] as ProjectItem[],
     AllLabel: "All Projects",
@@ -101,7 +101,7 @@ const en = {
             status: "In production",
             tone: "ok",
             description: [
-              "Independently designed and developed an SMS messaging and management platform for production use, consisting of an SMS gateway service and a management panel. Integrated the platform with multiple internal systems for one-time login codes (OTPs), contract-expiration notifications, employee messaging, and Zabbix monitoring alerts. The platform also maintains message history and delivery-status records.",
+              "Independently designed and developed a shared messaging platform for production use, consisting of an SMS gateway and a management panel. Integrated the platform with multiple internal systems for one-time login codes (OTPs), contract-expiration notifications, employee messaging, and Zabbix monitoring alerts. The platform also maintains message history and delivery-status records.",
             ],
           },
           {
@@ -125,7 +125,7 @@ const en = {
     intro: [
       "Long before software engineering, I enjoyed sketching, designing, assembling things, and exploring how things were made. Software eventually became a medium where all of those instincts could come together: understanding a problem, designing a system, shaping an experience, and bringing an idea into existence.",
       "Over time, working on real products taught me that building software is rarely a straight line. The first version can be rough, decisions can be wrong, and requirements can change. What matters is being willing to step back, acknowledge mistakes, learn from them, fix what isn't working, and keep improving.",
-      "I'm still early in my engineering journey, with a lot left to learn. I'm working toward becoming the kind of engineer people can trust with difficult systems — someone who can build things that scale, last, and stand up to real-world use.",
+      "I'm still early in my engineering journey, with a lot left to learn. I'm working toward becoming the kind of engineer people can trust with difficult systems — someone who can build systems that scale, last, and stand up to real-world use.",
     ],
   },
   contact: {
@@ -139,9 +139,9 @@ const en = {
     cta: "Say hello",
     channelsLabel: "Direct lines",
     channels: {
-      email: { label: "Email", value: "you@example.com", note: "Fastest way to reach me" },
-      github: { label: "GitHub", value: "@yourname", note: "Code, experiments and this portfolio" },
-      linkedin: { label: "LinkedIn", value: "in/yourname", note: "The professional timeline" },
+      email: { label: "Email", value: "mohammadjavadtolou@gmail.com", note: "" },
+      github: { label: "GitHub", value: "@mechamk3", note: "" },
+      linkedin: { label: "LinkedIn", value: "in/yourname", note: "" },
     },
     detailsLabel: "Details",
     details: {
