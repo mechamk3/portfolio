@@ -34,8 +34,10 @@ const en = {
         name: "HRIS — Human Resources Information System",
         slug: "hris",
         badge: "In production — 100–150 employees",
+        status: "In production",
+        tone: "ok",
         year: "2025",
-        tagline: "Internal HR system in production for 100–150 employees.",
+        tagline: "An employee information system built to centralize employee records and replace paper-based and spreadsheet workflows.",
         description:
           "Replaced scattered personnel records (paper, Excel, Access) with a single source of data: employees enter their own information, HR approves every record, and managers build custom reports from a visual report builder — no more manual reconciliation.",
         stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Tailwind CSS"],
@@ -43,20 +45,24 @@ const en = {
       {
         name: "SMS Gateway",
         slug: "smsGateway",
+        status: "In production",
+        tone: "ok",
         year: "2026",
-        tagline: "Internal SMS platform with contact management, grouping and bulk messaging — in daily use by the marketing team.",
+        tagline: "A shared SMS service for internal applications, with a web interface for managing contacts and contact groups, sending messages, and viewing message history.",
         stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
       },
       {
-        name: "Spoola",
+        name: "Spoola — Self-Hosted Music Radio",
         slug: "spoola",
-        year: "2026",                    // ⚠️ TODO: real year
-        tagline: "TODO — one sentence that sells what Spoola is.",
-        stack: ["Python", "TypeScript", "React"],                       // ⚠️ TODO: its real stack
+        status: "In development",
+        tone: "pilot",
+        year: "2026",
+        tagline: "A self-hosted music radio that turns your local music library into a continuous, automatically shuffled listening experience, accessible through a web interface.",
+        stack: ["Python", "TypeScript", "React"],
       },
     ] as ProjectItem[],
-    moreLabel: "Coming soon",
-    moreText: "The next project is in development and will land here soon.",
+    AllLabel: "All Projects",
+    AllText: "Explore all my projects, from internal tools to personal experiments.",
     cta: {
       heading: "Have a project in mind?",
       button: "Get in touch",

@@ -9,6 +9,7 @@ import Reveal from "@/components/Reveal";
 import SpotlightCard from "@/components/SpotlightCard";
 import SectionHeader from "@/components/SectionHeader";
 import SectionTabs, { type TabId } from "@/components/home/SectionTabs";
+import SectionTabsBar from "@/components/home/SectionTabBar";
 import TechIcon from "@/components/TechIcon";
 import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons/socials";
 import { ArrowUpRightIcon, FileTextIcon, DownloadIcon } from "@/components/icons/misc";
@@ -95,7 +96,7 @@ export default function HomeClient({ t, locale, mono }: PanelProps) {
                     key={item}
                     className="group flex items-center gap-2.5 rounded-lg border border-line bg-surface/60 px-2.5 py-1.5 transition-colors duration-200 hover:border-line-strong"
                   >
-                    <TechIcon name={item} className="size-4 shrink-0 text-ink-3" />
+                    <TechIcon name={item} className="size-5 shrink-0 text-ink-3" />
                     <span className="font-sans text-[13px] text-ink-2 transition-colors duration-200 group-hover:text-ink">
                       {item}
                     </span>
@@ -105,20 +106,13 @@ export default function HomeClient({ t, locale, mono }: PanelProps) {
             </div>
           </section>
 
-          {/* ============ tab rail (col 2, spans rows; sticky on desktop) ============ */}
-          <aside className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
-            {/* mobile pill — between hero and content */}
-            <div className="pt-8 pb-6 lg:hidden">
-              <SectionTabs tabs={tabs} active={tab} onSelect={select} />
-            </div>
+          <SectionTabsBar tabs={tabs} active={tab} onSelect={select} />
 
-            {/* desktop rail — spacer aligns it with the hero, then it sticks */}
-            <div className="hidden lg:block">
-              <div aria-hidden className="h-36" />
-              <nav className="sticky top-24">
-                <SectionTabs tabs={tabs} active={tab} onSelect={select} />
-              </nav>
-            </div>
+          {/* ============ tab rail ============ */}
+          <aside className="lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <nav aria-label="Sections" className="hidden lg:sticky lg:top-24 lg:block">
+              <SectionTabs tabs={tabs} active={tab} onSelect={select} />
+            </nav>
           </aside>
 
           {/* ============ active panel (col 1, row 2) ============ */}
@@ -152,7 +146,7 @@ function WorkPanel({ t, locale }: PanelProps) {
       <SectionHeader label={t.projects.label} mono={locale === "en"} />
 
       <div className="mt-7 grid grid-rows-2 gap-5 sm:grid-cols-2">
-        {items.map((project, i) => (
+        {items.map((project) => (
           <article
             key={project.name}
             className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]"
@@ -165,8 +159,8 @@ function WorkPanel({ t, locale }: PanelProps) {
               />
             )}
 
-            <div className="flex items-baseline justify-between gap-3">
-              <span className="font-mono text-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+            <div className="flex items-center justify-between gap-3">
+              <StatusPill status={project.status} tone={project.tone} />
               <span className="font-mono text-xs text-ink-3">{project.year}</span>
             </div>
 
@@ -209,16 +203,12 @@ function WorkPanel({ t, locale }: PanelProps) {
           href={`/${locale}/projects`}
           className="group/link flex flex-col items-center justify-center gap-2.5 rounded-2xl border border-dashed border-line-strong px-5 py-6 text-center transition-colors duration-200 hover:border-accent"
         >
-          <span className="font-mono text-sm text-accent/70">
-            {String(t.projects.items.length + 1).padStart(2, "0")}
-          </span>
-
           <span className="text-sm font-semibold leading-snug tracking-tight text-ink">
-            {t.projects.heading}
+            {t.projects.AllLabel}
           </span>
 
           <span className="text-xs leading-6 text-ink-3 line-clamp-2">
-            {t.projects.intro}
+            {t.projects.AllText}
           </span>
 
           <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-accent">

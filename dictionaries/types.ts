@@ -11,6 +11,8 @@ type ProjectItem = {
   liveUrl?: string;
   source?: string;
   sourceUrl?: string;
+  status: string;
+  tone: "ok" | "pilot";
 };
 
 type ExperienceTone = "ok" | "pilot";
