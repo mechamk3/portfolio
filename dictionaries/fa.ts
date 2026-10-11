@@ -142,7 +142,7 @@ const fa: Dictionary = {
     channelsLabel: "راه‌های ارتباطی",
     channels: {
       email: { label: "ایمیل", value: "mohammadjavadtolou@gmail.com", note: "" },
-      github: { label: "گیت‌هاب", value: "@mechamk3", note: "" },
+      github: { label: "گیت‌هاب", value: "mechamk3@", note: "" },
       linkedin: { label: "لینکدین", value: "in/yourname", note: "" },
     },
     detailsLabel: "جزئیات",
