@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 import { getDictionary, type Locale } from "@/lib/i18n";
-import ThemeToggle from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import FloatingControls from "@/components/FloatingControls";
+import ThemeToggle from "@/components/layout/ThemeToggle";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
+import FloatingControls from "@/components/layout/FloatingControls";
 
 export default function Navbar({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
@@ -24,7 +24,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
 
           {/* two separate glass circles — pinned to the top so the language
               capsule can grow DOWNWARD without being re-centered by the row */}
-          <div className="flex items-start gap-2 self-start pt-[10px]">
+          <div className="flex items-start gap-2 self-start pt-2.5">
             <div className="glass flex size-11 items-center justify-center rounded-full">
               <ThemeToggle variant="swap" />
             </div>

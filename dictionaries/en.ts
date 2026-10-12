@@ -69,6 +69,7 @@ const en = {
         tagline: "A self-hosted music radio that turns your local music library into a continuous, automatically shuffled listening experience, accessible through a web interface.",
         stack: ["SQLite", "Python", "TypeScript", "React"],
       },
+
     ] as ProjectItem[],
     AllLabel: "All Projects",
     AllText: "Explore all my projects, from internal tools to personal experiments.",
@@ -77,6 +78,19 @@ const en = {
       button: "Get in touch",
     },
     viewAll: "View all projects",
+    underConstruction: {
+      sheet: "Case study — Sheet 01/01",
+      plotting: "Plotting case study…",
+      projectLabel: "Project",
+      statusLabel: "Status",
+      drawnByLabel: "Drawn by",
+      scaleLabel: "Scale",
+      materialsLabel: "Materials",
+      heading: "Case study in progress.",
+      text: "This project is real and in use — but this page hasn't been designed yet. The blueprint above is what it will become.",
+      go2p: "Projects",
+      go2h: "Homepage",
+    },
   },
   experience: {
     label: "Experience",
@@ -165,14 +179,13 @@ const en = {
     },
   },
   // en.ts
+  // dictionaries/en.ts
   notFound: {
     code: "404",
+    badge: "Yet to be designed",
     heading: "Page not found.",
-    text: "The page you're looking for doesn't exist or may have been moved.",
-    actions: {
-      home: "Back to home",
-      projects: "See my projects",
-    },
+    text: "The page you're looking for doesn't exist — it's probably still on the drawing board.",
+    home: "Back to home",
   },
 };
 

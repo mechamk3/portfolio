@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import ThemeToggle from "@/components/ThemeToggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import ThemeToggle from "@/components/layout/ThemeToggle";
+import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
 
 const THRESHOLD = 96;
 

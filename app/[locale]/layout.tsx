@@ -4,8 +4,6 @@ import { Inter, Vazirmatn } from "next/font/google";
 
 import { getDictionary, isLocale } from "@/lib/i18n";
 import ThemeProvider from "@/components/providers/ThemeProvider";
-import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -48,15 +46,11 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={isFa ? "rtl" : "ltr"}
-      suppressHydrationWarning // required: theme script mutates <html> class before hydration
+      suppressHydrationWarning
       className={`${inter.variable} ${vazirmatn.variable} ${isFa ? "font-fa" : "font-sans"}`}
     >
       <body className="flex min-h-dvh flex-col bg-canvas text-ink antialiased">
-        <ThemeProvider>
-          <Navbar locale={locale} />
-          <div className="flex-1">{children}</div>
-          <Footer locale={locale} />
-        </ThemeProvider>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

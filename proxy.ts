@@ -17,11 +17,17 @@ function detectLocale(request: NextRequest): string {
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Already has a locale prefix → nothing to do
   const hasLocale = locales.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`)
   );
-  if (hasLocale) return;
+
+  if (hasLocale) {
+    // Tag the request so not-found.tsx can read the locale
+    // (not-found.tsx doesn't receive params in the App Router)
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-locale", pathname.split("/")[1]);
+    return NextResponse.next({ request: { headers: requestHeaders } });
+  }
 
   const locale = detectLocale(request);
   return NextResponse.redirect(

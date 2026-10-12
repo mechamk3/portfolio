@@ -231,29 +231,6 @@ export default async function ProjectsPage({
           </div>
         </section>
       )}
-
-      {/* ---------- Next slot ---------- */}
-      <section className="border-t border-line py-14">
-        <div className="flex items-center gap-5 rounded-2xl border border-dashed border-line-strong px-6 py-8 sm:px-8">
-          <span className="font-mono text-sm text-accent/70">{nextSlot}</span>
-          <div>
-            <p className={`text-xs font-medium text-ink-3 ${mono}`}>{t.projects.moreLabel}</p>
-            <p className="mt-1 max-w-md text-sm leading-6 text-ink-2">{t.projects.moreText}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ---------- CTA ---------- */}
-      <section className="border-t border-line py-20">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">{t.projects.cta.heading}</h2>
-        <Link
-          href={`/${locale}#contact`}
-          className="mt-8 inline-flex items-center gap-1.5 rounded-lg bg-ink px-5 py-2.5 text-sm font-medium text-canvas transition-colors hover:bg-accent-strong"
-        >
-          {t.projects.cta.button}
-          <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
-        </Link>
-      </section>
     </main>
   );
 }
