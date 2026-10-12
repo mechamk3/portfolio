@@ -1,5 +1,5 @@
-// dictionaries/fa.ts — typed against en, so they can never drift apart
 import type { Dictionary } from "./en";
+import type { ExperienceItem, ProjectItem } from "./types";
 
 const fa: Dictionary = {
   meta: {
@@ -31,13 +31,18 @@ const fa: Dictionary = {
     heading: "چیزهایی که ساخته‌ام.",
     intro: "هر پروژه‌ای که اینجا می‌بینید از یک مسئله‌ی واقعی شروع شده — همین فیلتر من پیش از نوشتن اولین خط کد است.",
     caseStudy: "مطالعه‌ی موردی",
+    kindLabel: {
+      work: "کاری",
+      personal: "شخصی",
+    },
     items: [
       {
-        name: "سامانه سرمایه انسانی (HRIS)",
+        name: "سیستم اطلاعات منابع انسانی — HRIS",
         slug: "hris",
         badge: "در حال استفاده‌ی عملیاتی — ۱۰۰ تا ۱۵۰ کارمند",
-        status: "در حال استفاده‌ی عملیاتی — ۱۰۰ تا ۱۵۰ کاربر",
+        status: "در حال استفاده‌ی عملیاتی",
         tone: "ok",
+        kind: "work",
         year: "۱۴۰۴",
         tagline: "سیستم اطلاعات کارکنان که با هدف متمرکزسازی اطلاعات پرسنلی و جایگزینی پرونده‌های کاغذی و فایل‌های اکسل پراکنده توسعه داده شده است.",
         description:
@@ -45,10 +50,11 @@ const fa: Dictionary = {
         stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React", "Create React App", "Tailwind CSS"],
       },
       {
-        name: "درگاه پیامک",
+        name: "SMS Gateway",
         slug: "smsGateway",
         status: "در حال استفاده‌ی عملیاتی",
         tone: "ok",
+        kind: "work",
         year: "۱۴۰۵",
         tagline: "یک سرویس متمرکز ارسال پیامک برای سیستم‌های داخلی، همراه با یک پنل تحت وب برای مدیریت مخاطبان، گروه‌های مخاطبان، ارسال پیامک و مشاهده‌ی تاریخچه‌ و وضعیت پیام‌ها.",
         stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
@@ -58,6 +64,7 @@ const fa: Dictionary = {
         slug: "spoola",
         status: "در حال توسعه",
         tone: "pilot",
+        kind: "personal",
         year: "۱۴۰۵",
         tagline: "یک رادیوی موسیقی که روی سرور شخصی قابل اجراست؛ آرشیو موسیقی‌تان را به‌صورت پیوسته و با انتخاب تصادفی آهنگ‌ها پخش می‌کند و از طریق وب در دسترس است.",
         stack: ["SQLite", "Python", "TypeScript", "React"],

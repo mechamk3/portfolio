@@ -1,8 +1,11 @@
-type ProjectItem = {
+export type ProjectKind = "work" | "personal";
+export type ExperienceTone = "ok" | "pilot";
+
+export type ProjectItem = {
   name: string;
   year: string;
   tagline: string;
-  description: string;
+  description?: string;
   stack: string[];
   slug?: string;
   cover?: string;
@@ -12,20 +15,21 @@ type ProjectItem = {
   source?: string;
   sourceUrl?: string;
   status: string;
-  tone: "ok" | "pilot";
+  tone: ExperienceTone;
+  kind: ProjectKind;
 };
 
-type ExperienceTone = "ok" | "pilot";
-type ExperienceProject = {
+export type ExperienceProject = {
   name: string;
   status: string;
   tone: ExperienceTone;
   description: string[];
 };
-type ExperienceRole = { role: string; period: string; current: boolean };
-type ExperienceItem = {
+
+export type ExperienceRole = { role: string; period: string; current: boolean };
+export type ExperienceItem = {
   company: string;
-  location: String;
+  location: string;
   current: boolean;
   roles: ExperienceRole[];
   summary: string[];

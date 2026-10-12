@@ -1,3 +1,5 @@
+import type { ExperienceItem, ProjectItem } from "./types";
+
 const en = {
   meta: {
     title: "Your Name — Software Engineer",
@@ -29,6 +31,10 @@ const en = {
     intro:
       "Every project here started with a real problem I had — that's the filter I apply before writing the first line of code.",
     caseStudy: "Read more",
+    kindLabel: {
+      work: "Work",
+      personal: "Personal",
+    },
     items: [
       {
         name: "HRIS — Human Resources Information System",
@@ -36,6 +42,7 @@ const en = {
         badge: "In production — 100–150 employees",
         status: "In production",
         tone: "ok",
+        kind: "work",
         year: "2025",
         tagline: "An employee information system built to centralize employee records and replace paper-based and spreadsheet workflows.",
         description:
@@ -47,6 +54,7 @@ const en = {
         slug: "smsGateway",
         status: "In production",
         tone: "ok",
+        kind: "work",
         year: "2026",
         tagline: "A shared Messaging service for our internal applications, with a web interface for managing contacts and contact groups, sending messages, and viewing message history.",
         stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
@@ -56,6 +64,7 @@ const en = {
         slug: "spoola",
         status: "In development",
         tone: "pilot",
+        kind: "personal",
         year: "2026",
         tagline: "A self-hosted music radio that turns your local music library into a continuous, automatically shuffled listening experience, accessible through a web interface.",
         stack: ["SQLite", "Python", "TypeScript", "React"],

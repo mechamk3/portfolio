@@ -4,6 +4,7 @@ import SectionHeader from "@/components/SectionHeader";
 import TechIcon from "@/components/TechIcon";
 import { ArrowUpRightIcon } from "@/components/icons/misc";
 import { StatusPill } from "@/components/StatusPill";
+import { KindBadge } from "@/components/KindBadge";
 
 import type { PanelProps } from "./types";
 
@@ -30,8 +31,11 @@ export default function WorkPanel({ t, locale }: PanelProps) {
             )}
 
             <div className="flex items-center justify-between gap-3">
-              <StatusPill status={project.status} tone={project.tone} />
-              <span className="font-mono text-xs text-ink-3">{project.year}</span>
+              <div className="flex min-w-0 flex-wrap items-center gap-2">
+                <KindBadge kind={project.kind} label={t.projects.kindLabel[project.kind]} />
+                <StatusPill status={project.status} tone={project.tone} />
+              </div>
+              <span className="shrink-0 font-mono text-xs text-ink-3">{project.year}</span>
             </div>
 
             <h2 className="mt-3 text-lg font-semibold leading-snug tracking-tight">{project.name}</h2>
