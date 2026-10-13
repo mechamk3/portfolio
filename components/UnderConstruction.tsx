@@ -13,7 +13,7 @@ export default function UnderConstruction({
   const t = getDictionary(locale).projects.underConstruction;
 
   return (
-    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center">
+    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center select-none">
       {/* ambient backdrop — matches home */}
       <div
         aria-hidden
@@ -28,15 +28,12 @@ export default function UnderConstruction({
         <span
           className={`inline-flex items-center gap-2 rounded-full border border-dashed border-line-strong px-4 py-1.5 text-xs text-ink-3 ${monoClass(locale)}`}
         >
-          <span aria-hidden className="size-1.5 animate-pulse rounded-full bg-accent" />
-          {project.status}
+          {t.title}
         </span>
 
         <h1 className="mt-8 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {project.name}
         </h1>
-
-        <span aria-hidden className="mt-8 block h-px w-14 border-t border-dashed border-accent" />
 
         <p className="mt-8 max-w-md text-balance text-ink-2">{t.text}</p>
 
@@ -51,13 +48,13 @@ export default function UnderConstruction({
         <div className="animate-rise mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/${locale}`}
-            className="rounded-full border border-line-strong px-7 py-3 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+            className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-canvas transition-colors hover:bg-accent-strong"
           >
             {t.go2h}
           </Link>
           <Link
             href={`/${locale}/projects`}
-            className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-canvas transition-colors hover:bg-accent-strong"
+            className="rounded-full border border-line-strong px-7 py-3 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
           >
             {t.go2p}
           </Link>

@@ -9,14 +9,14 @@ import { KindBadge } from "@/components/KindBadge";
 import type { PanelProps } from "./types";
 
 export default function WorkPanel({ t, locale }: PanelProps) {
-  // show at most 3 projects — the 4th slot is always the "see more" card
+  // show at most 3 projects, stacked full-width
   const items = t.projects.items.slice(0, 3);
 
   return (
     <div>
       <SectionHeader label={t.projects.label} mono={locale === "en"} />
 
-      <div className="mt-7 grid grid-rows-2 gap-5 sm:grid-cols-2">
+      <div className="mt-7 flex flex-col gap-5">
         {items.map((project) => (
           <article
             key={project.name}
@@ -39,7 +39,7 @@ export default function WorkPanel({ t, locale }: PanelProps) {
             </div>
 
             <h2 className="mt-3 text-lg font-semibold leading-snug tracking-tight">{project.name}</h2>
-            <p className="mt-1.5 line-clamp-3 text-sm leading-6 text-ink-2">{project.tagline}</p>
+            <p className="mt-1.5 max-w-2xl line-clamp-3 text-sm leading-6 text-ink-2">{project.tagline}</p>
 
             {/* tech icons */}
             <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Technologies">
@@ -72,23 +72,13 @@ export default function WorkPanel({ t, locale }: PanelProps) {
           </article>
         ))}
 
-        {/* 04 · See-more card — coming-soon shell (dashed), real destination */}
+        {/* view all — full-width button below the stack */}
         <Link
           href={`/${locale}/projects`}
-          className="group/link flex flex-col items-center justify-center gap-2.5 rounded-2xl border border-dashed border-line-strong px-5 py-6 text-center transition-colors duration-200 hover:border-accent"
+          className="mt-2 inline-flex items-center justify-center gap-1.5 self-center rounded-full border border-line-strong px-7 py-3 text-sm font-medium text-ink transition-colors hover:border-accent hover:text-accent"
         >
-          <span className="text-sm font-semibold leading-snug tracking-tight text-ink">
-            {t.projects.AllLabel}
-          </span>
-
-          <span className="text-xs leading-6 text-ink-3 line-clamp-2">
-            {t.projects.AllText}
-          </span>
-
-          <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-accent">
-            {t.projects.viewAll}
-            <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
-          </span>
+          {t.projects.viewAll}
+          <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
         </Link>
       </div>
     </div>

@@ -11,7 +11,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
   return (
     <>
       {/* transparent header — scrolls away with the page */}
-      <header className="relative z-30">
+      <header className="relative z-30 select-none">
         <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6">
           <Link href={`/${locale}`} aria-label={t.home.name} className="shrink-0">
             {/* ---- logo placeholder — swap this span for your Image pair ---- */}

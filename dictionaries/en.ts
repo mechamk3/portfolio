@@ -1,3 +1,4 @@
+import { title } from "process";
 import type { ExperienceItem, ProjectItem } from "./types";
 
 const en = {
@@ -28,8 +29,7 @@ const en = {
     label: "Projects",
     featured: "Featured project",
     heading: "Things I've built.",
-    intro:
-      "Every project here started with a real problem I had — that's the filter I apply before writing the first line of code.",
+    intro: "A look at the projects I've worked on, the technologies I've used, and the ideas I've brought to life.",
     caseStudy: "Read more",
     kindLabel: {
       work: "Work",
@@ -60,7 +60,7 @@ const en = {
         stack: ["PostgreSQL", "Python", "FastAPI", "TypeScript", "React", "Vite", "Ant Design"],
       },
       {
-        name: "Spoola — Self-Hosted Music Radio",
+        name: "Spoola: a Self-Hosted Music Radio",
         slug: "spoola",
         status: "In development",
         tone: "pilot",
@@ -79,15 +79,8 @@ const en = {
     },
     viewAll: "View all projects",
     underConstruction: {
-      sheet: "Case study — Sheet 01/01",
-      plotting: "Plotting case study…",
-      projectLabel: "Project",
-      statusLabel: "Status",
-      drawnByLabel: "Drawn by",
-      scaleLabel: "Scale",
-      materialsLabel: "Materials",
-      heading: "Case study in progress.",
-      text: "This project is real and in use — but this page hasn't been designed yet. The blueprint above is what it will become.",
+      title: "Project Details",
+      text: "still working on this page. check back soon! ;)",
       go2p: "Projects",
       go2h: "Homepage",
     },
@@ -182,9 +175,7 @@ const en = {
   // dictionaries/en.ts
   notFound: {
     code: "404",
-    badge: "Yet to be designed",
-    heading: "Page not found.",
-    text: "The page you're looking for doesn't exist — it's probably still on the drawing board.",
+    text: "the page you're looking for doesn't exist :(",
     home: "Back to home",
   },
 };

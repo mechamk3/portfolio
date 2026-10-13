@@ -14,7 +14,7 @@ async function resolveLocale(): Promise<Locale> {
 
 export async function generateMetadata() {
   const t = getDictionary(await resolveLocale());
-  return { title: t.notFound.heading, robots: { index: false } };
+  return { title: t.notFound, robots: { index: false } };
 }
 
 export default async function NotFound() {
@@ -22,7 +22,7 @@ export default async function NotFound() {
   const t = getDictionary(locale);
 
   return (
-    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center">
+    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center select-none">
       {/* ambient backdrop — matches home */}
       <div
         aria-hidden
@@ -34,20 +34,12 @@ export default async function NotFound() {
       </div>
 
       <div className="animate-rise relative flex flex-col items-center">
-        <span
-          className={`rounded-full border border-dashed border-line-strong px-4 py-1.5 text-xs text-ink-3 ${monoClass(locale)}`}
-        >
-          {t.notFound.badge}
-        </span>
 
-        <p className="mt-8 text-8xl font-bold tracking-tighter text-ink sm:text-9xl">
+        <p className="text-8xl font-bold tracking-tighter text-ink sm:text-9xl">
           {t.notFound.code}
         </p>
 
-        <span aria-hidden className="mt-8 block h-px w-14 border-t border-dashed border-accent" />
-
-        <h1 className="mt-8 text-2xl font-semibold text-ink">{t.notFound.heading}</h1>
-        <p className="mt-3 max-w-sm text-balance text-ink-2">{t.notFound.text}</p>
+        <p className="mt-2 max-w-sm text-balance text-ink-2">{t.notFound.text}</p>
 
         <Link
           href={`/${locale}`}

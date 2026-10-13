@@ -54,7 +54,7 @@ export default function HomeClient({ t, locale, mono }: PanelProps) {
   ];
 
   return (
-    <main className="relative overflow-x-clip">
+    <main className="relative overflow-x-clip select-none">
       {/* ambient backdrop */}
       <div
         aria-hidden
