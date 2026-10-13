@@ -13,6 +13,7 @@ const TECH_ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   "Tailwind CSS": TailwindIcon,
   "Next.js": NextJsIcon,
   "Create React App": CreateReactAppIcon,
+  "React(CRA)": CreateReactAppIcon,
   Vite: ViteIcon,
   "Ant Design": AntDesignIcon,
   Mantine: MantineIcon,

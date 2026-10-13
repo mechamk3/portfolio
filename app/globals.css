@@ -16,6 +16,10 @@
   --color-ink-3: var(--ink-3);
   --color-accent: var(--accent);
   --color-accent-strong: var(--accent-strong);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
 }
 
 /* ---------- cream world ---------- */
@@ -33,6 +37,9 @@
   --accent-strong: #2c4359;
   --spot: rgb(62 92 118 / 0.08);
   --spot-border: rgb(62 92 118 / 0.5);
+  --success: #35704f;
+  --warning: #8a5f14;
+  --danger: #a63d3f;
 }
 
 /* ---------- navy world ---------- */
@@ -50,6 +57,10 @@
   --accent-strong: #8ba2bd;
   --spot: rgb(116 140 171 / 0.1);
   --spot-border: rgb(116 140 171 / 0.55);
+  
+  --success: #7cb892;
+  --warning: #d9a441;
+  --danger: #e08580;
 }
 
 html {

@@ -16,7 +16,7 @@ const en = {
   role: "Software Engineer",
   lead: "This application was built for organizations whose personnel data is scattered across physical files, Excel and Access — where every quarterly management report means collecting data from several sources by hand. The fix: one single source of data with a report builder on top, and data collected by employees themselves instead of manual HR entry — with final approval on every record.",
   stackLabel: "Stack",
-  stack: ["PostgreSQL", "Python", "FastAPI", "React", "JavaScript", "Tailwind CSS", "Nginx", "systemd"],
+  stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React(CRA)", "Tailwind CSS", "Nginx"],
   overviewLabel: "Project overview",
   overview: [
     { label: "Status", value: "In production — operational" },

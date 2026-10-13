@@ -37,14 +37,6 @@ export default function UnderConstruction({
 
         <p className="mt-8 max-w-md text-balance text-ink-2">{t.text}</p>
 
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          {project.stack.map((tech) => (
-            <span key={tech} className="rounded-full border border-line px-3 py-1 text-xs text-ink-3">
-              {tech}
-            </span>
-          ))}
-        </div>
-
         <div className="animate-rise mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             href={`/${locale}`}
