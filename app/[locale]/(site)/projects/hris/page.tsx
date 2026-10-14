@@ -46,8 +46,7 @@ export default async function HrisCaseStudy({
   ];
 
   return (
-    <main className="relative overflow-x-clip select-none">
-      {/* ambient backdrop — matches home */}
+    <main className="relative overflow-x-clip">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 -top-16 -z-10 h-241 mask-[linear-gradient(to_bottom,#000_55%,transparent_100%)]"
@@ -62,7 +61,7 @@ export default async function HrisCaseStudy({
       <div className="mx-auto w-full max-w-6xl px-6">
         {/* ---------- Hero ---------- */}
         <LightboxRoot shots={t.gallery.shots}>
-          <section className="pb-12 pt-1">
+          <section className="pb-10 pt-1">
 
             <nav aria-label="Breadcrumb" className={`mt-10 text-xs ${mono}`}>
               <ol className="flex items-center gap-2 text-ink-3">
@@ -118,19 +117,7 @@ export default async function HrisCaseStudy({
               ))}
             </ul>
 
-            <div className="mt-10 rounded-2xl border border-line p-6 sm:p-8">
-              <p className={`text-xs text-ink-3 ${mono}`}>{t.overviewLabel}</p>
-              <dl className="mt-5 grid gap-x-10 gap-y-5 sm:grid-cols-2">
-                {t.overview.map(({ label, value }) => (
-                  <div key={label}>
-                    <dt className={`text-xs text-ink-3 ${mono}`}>{label}</dt>
-                    <dd className="mt-1 font-medium text-ink">{value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-
-            <div className="mt-5 grid gap-5 lg:grid-cols-2">
+            <div className="mt-10 grid gap-5 grid-cols-1">
               {t.audience.map(({ title, text }) => (
                 <div key={title} className="rounded-2xl border border-line p-6">
                   <h2 className="font-semibold text-ink">{title}</h2>
@@ -148,7 +135,7 @@ export default async function HrisCaseStudy({
 
             <div className="min-w-0">
               {/* 01 · Problem 1 */}
-              <section id="problem-1" className="scroll-mt-24 border-t border-line py-14">
+              <section id="problem-1" className="scroll-mt-16 border-line pb-12 pt-3">
                 <SectionHeader index="01" label={t.problem1.tag} mono={locale === "en"} />
                 <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.problem1.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.problem1.lead}</p>

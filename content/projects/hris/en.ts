@@ -4,13 +4,13 @@ type Shot = { src: string; title: string; caption: string };
 
 const en = {
   meta: {
-    title: "HRIS — Human Resources Information System · Case Study",
+    title: "Human Resources Information System · Project Details",
     description:
       "An internal HR information system in production for 100–150 employees: a single source of data, employee self-service entry with HR approval, and a custom report builder. Built end-to-end by one engineer.",
   },
   backToProjects: "All projects",
   badge: "In production in the organization since late 2025 — 100–150 users",
-  name: "HRIS",
+  name: "Human Resources Information System",
   title: "Ending scattered personnel data and manual data collection",
   roleLabel: "My role",
   role: "Software Engineer",
@@ -20,18 +20,12 @@ const en = {
   overviewLabel: "Project overview",
   overview: [
     { label: "Status", value: "In production — operational" },
-    { label: "Users", value: "100–150 employees" },
-    { label: "Type", value: "Internal enterprise application" },
-    { label: "Source code", value: "Private — owned by the organization" },
+    { label: "Users", value: "100–120 Users (Organization employees)" },
   ],
   audience: [
     {
-      title: "Who it's for",
-      text: "Organizations with a few dozen to a few hundred staff whose information still lives in scattered sources — paper, Excel, Access — and whose management periodically asks for combined reports on that data.",
-    },
-    {
-      title: "Why they need it",
-      text: "Because it solves the two core problems of that situation: the absence of a single source to report from, and the heavy manual work of entering everyone's information.",
+      title: "When is it useful?",
+      text: "When employee records are scattered across different files, collecting and updating them requires constant follow-ups with employees, and the same information has to be entered repeatedly in different forms. This system brings employee records together in one place, making them easier to maintain and simplifying access to information and the preparation of reports.",
     },
   ],
   tocLabel: "Sections",
