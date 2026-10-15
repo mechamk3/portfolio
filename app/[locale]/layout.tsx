@@ -47,6 +47,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={isFa ? "rtl" : "ltr"}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${vazirmatn.variable} ${isFa ? "font-fa" : "font-sans"}`}
     >
       <body className="flex min-h-dvh flex-col bg-canvas text-ink antialiased">

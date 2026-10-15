@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import { StatusPill } from "@/components/StatusPill";
 
@@ -10,7 +9,7 @@ export default function ExperiencePanel({ t, mono }: PanelProps) {
       <SectionHeader label={t.experience.label} mono={mono !== ""} />
 
       <ol className="relative mt-7 border-s border-line ps-8">
-        {t.experience.items.map((job, i) => (
+        {t.experience.items.map((job) => (
           <li key={job.company} className="relative pb-10 last:pb-0">
             {/* dot centered on the spine: ps-8 (32px) + half dot (6px) → -start-[38px] */}
             <span aria-hidden className="absolute -inset-s-9.5 top-1 flex size-3">
@@ -23,7 +22,7 @@ export default function ExperiencePanel({ t, mono }: PanelProps) {
               />
             </span>
 
-            <Reveal delay={i * 80}>
+            <div>
               <div className="flex flex-wrap items-baseline gap-x-3">
                 <h3 className="text-lg font-semibold tracking-tight sm:text-xl">{job.company}</h3>
                 <span className="text-sm text-ink-3">{job.location}</span>
@@ -73,7 +72,7 @@ export default function ExperiencePanel({ t, mono }: PanelProps) {
                   {job.footnote}
                 </p>
               )}
-            </Reveal>
+            </div>
           </li>
         ))}
       </ol>
