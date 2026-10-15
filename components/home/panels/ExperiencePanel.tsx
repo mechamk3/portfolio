@@ -33,7 +33,7 @@ export default function ExperiencePanel({ t, mono }: PanelProps) {
                 {job.roles.map((r) => (
                   <p key={r.role} className="flex flex-wrap items-baseline gap-x-3 text-sm">
                     <span className={`font-medium ${r.current ? "text-ink" : "text-ink-2"}`}>
-                      {!r.current && <span className="italic">{t.experience.previouslyLabel}· </span>}
+                      {!r.current && <span>{t.experience.previouslyLabel}: </span>}
                       {r.role}
                     </span>
                     <span className={`font-mono text-xs ${r.current ? "text-accent" : "text-ink-3"}`}>

@@ -1,5 +1,5 @@
-import en from "@/dictionaries/en";
-import fa from "@/dictionaries/fa";
+import en from "@/content/en";
+import fa from "@/content/fa";
 
 export const locales = ["en", "fa"] as const;
 export type Locale = (typeof locales)[number];

@@ -20,7 +20,7 @@ export default function WorkPanel({ t, locale }: PanelProps) {
         {items.map((project) => (
           <article
             key={project.name}
-            className="group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]"
+            className="card-sheen group relative flex flex-col rounded-2xl border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:border-line-strong hover:shadow-[0_16px_40px_-16px_rgba(13,19,33,0.25)] dark:hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.55)]"
           >
             {project.slug && (
               <Link

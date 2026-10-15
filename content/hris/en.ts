@@ -15,7 +15,7 @@ const en = {
   roleLabel: "My role",
   role: "Software Engineer",
   lead: "This application was built for organizations whose personnel data is scattered across physical files, Excel and Access — where every quarterly management report means collecting data from several sources by hand. The fix: one single source of data with a report builder on top, and data collected by employees themselves instead of manual HR entry — with final approval on every record.",
-  stackLabel: "Stack",
+  stackLabel: "Stack:",
   stack: ["PostgreSQL", "Python", "FastAPI", "JavaScript", "React(CRA)", "Tailwind CSS", "Nginx"],
   overviewLabel: "Project overview",
   overview: [
@@ -40,12 +40,14 @@ const en = {
       { name: "Excel files", note: "Multiple copies, multiple owners" },
       { name: "Access", note: "A separate database" },
     ],
+    dbLabel: "One unified database",
+    dbNote: "Single source of data",
     consequenceLabel: "The result",
     consequence:
       "Each source holds one piece of the picture. A quarterly report combining several fields of active personnel — education, department, seniority and contract status in one table — has to be extracted from each source by hand and matched together. The more fields management asks for, the slower and more error-prone it gets.",
-    solutionTitle: "A single source of data: the application's database",
+    solutionTitle: "Solution: a single source of data",
     solutionText:
-      "All personnel information lives in one place, and managerial roles can build any report they need directly from it — choosing fields, filters and sorting — without manually reconciling multiple files.",
+      "All personnel information lives in one place, and HR can build any report they need directly from it — choosing fields, filters and sorting — without manually reconciling multiple files.",
     shots: [
       {
         src: "/projects/hris/report-builder.webp",
@@ -69,7 +71,7 @@ const en = {
       "Registering a person and creating their user account are two separate steps. First, a manager creates a base personnel record (personnel number, full name, general info). Then, separately, a user account is created and connected to that person's still-unlinked record.",
     steps: [
       {
-        who: "Manager",
+        who: "Admin",
         title: "Creates the base personnel record",
         text: "The manager creates a new personnel record with just a personnel number, first and last name, and a few general fields (one at a time, in batch, or from a CSV file).",
       },
@@ -79,17 +81,17 @@ const en = {
         text: "In the account creation form, a username, password and role are set, and the person's still-unlinked personnel record is picked from a searchable dropdown, connecting the account to it.",
       },
       {
-        who: "Employee",
+        who: "Regular user (employee)",
         title: "Signs in and completes their own information",
         text: "With the freshly created account, the employee signs into their personal dashboard, fills in the required fields, and uploads and submits their documents (ID card, insurance documents, education documents, and so on).",
       },
       {
-        who: "HR",
+        who: "Admin",
         title: "Reviews and approves",
         text: "The employee's request arrives in the manager's requests inbox. If HR finds the information correct, it is approved; otherwise it is rejected.",
       },
     ],
-    resultTitle: "The result: a complete, permanent record",
+    resultTitle: "what we achieve: a complete, permanent record",
     resultText: "Once approved, that person's information is fully registered in the application and remains available to authorized roles for good.",
     shots: [
       {
@@ -110,22 +112,21 @@ const en = {
     ],
   },
   myRole: {
-    nav: "My role & stack",
-    heading: "My role: from design to deployment and support",
-    text: "I built this entire project from scratch, from the first design to deployment on the server — and supporting the application has been mine as well: database design, building the backend and the frontend, implementing every feature, deploying to the server, and supporting it afterwards.",
+    nav: "Implementation & Stack",
+    heading: "from design to deployment and support",
+    text: "I built this project entirely from scratch, from the initial design to server deployment. My work covered database design, backend and frontend development, feature implementation, deployment, and ongoing application support.",
     stack: [
       { label: "Database", value: "PostgreSQL" },
       { label: "Backend", value: "Python, FastAPI" },
       { label: "Frontend", value: "React (CRA), JavaScript, Tailwind CSS" },
       { label: "Deployment", value: "Nginx, systemd" },
     ],
-    deployLabel: "Deployment",
     deploy: [
       { node: "User's browser", note: "" },
       { node: "Nginx", note: "reverse proxy on ports 80 & 443" },
       { node: "React frontend", note: "separate systemd service" },
       { node: "FastAPI backend", note: "separate systemd service" },
-      { node: "PostgreSQL", note: "" },
+      { node: "PostgreSQL", note: "database" },
     ],
   },
   roles: {
@@ -207,15 +208,15 @@ const en = {
     ],
   },
   modules: {
-    nav: "Additional modules",
-    heading: "Additional modules",
-    lead: "These parts aren't the reason the application exists, but they make day-to-day work easier for managers.",
+    nav: "Other Features",
+    heading: "Other Features",
+    lead: "Parts that make day-to-day work easier for all users.",
     groups: [
       {
-        name: "Management home",
-        text: "The entry point managers land on after the “personnel management” button: three status cards (active personnel, contracts near expiry, expired contracts), six shortcut cards to the main sections, two round buttons for notifications and requests, and organizational charts (education, department, age group, gender, hiring trend and seniority).",
+        name: "Management Home",
+        text: "The entry point high-roles land on after the “personnel management” button: three status cards (active personnel, contracts near expiry, expired contracts), six shortcut cards to the main sections, two round buttons for notifications and requests, and organizational charts (education, department, age group, gender, hiring trend and seniority).",
         shots: [
-          { src: "/projects/hris/admin-home.webp", title: "Management home", caption: "The managers' entry point: status cards, six shortcut cards and organizational charts." },
+          { src: "/projects/hris/admin-home.webp", title: "Management home", caption: "The high-roles' entry point: status cards, six shortcut cards and organizational charts." },
         ],
       },
       {
@@ -320,7 +321,7 @@ const en = {
       { label: "Source code", value: "Proprietary — not published" },
     ],
     privacy:
-      "This is an internal enterprise system built for a real organization. The production source code belongs to the organization and cannot be published; this case study describes the work at a high level, and no organizational data appears on this page.",
+      "This system was developed for use within a real organization. Due to confidentiality and security considerations, its source code is not publicly available. This case study provides a high-level overview of the project and does not disclose any confidential data.",
   },
 };
 

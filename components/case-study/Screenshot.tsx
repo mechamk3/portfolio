@@ -46,7 +46,7 @@ export default function Screenshot({
           />
           <span
             aria-hidden
-            className="absolute bottom-4 end-4 flex size-10 items-center justify-center rounded-full bg-ink/85 text-canvas opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover/btn:opacity-100"
+            className="absolute bottom-4 inset-e-4 flex size-10 items-center justify-center rounded-full bg-sc-magnifier text-canvas opacity-0 backdrop-blur-sm transition-opacity duration-200 group-hover/btn:opacity-100"
           >
             <MagnifierIcon className="size-4" />
           </span>
@@ -64,7 +64,7 @@ export default function Screenshot({
 
 function MagnifierIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
+    <svg viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" aria-hidden {...props}>
       <circle cx="11" cy="11" r="7" />
       <path d="m20 20-3.5-3.5" />
     </svg>

@@ -32,11 +32,10 @@ export default function Toc({
           <li key={id}>
             <a
               href={`#${id}`}
-              className={`-ms-px block border-s-2 py-1.5 ps-4 text-sm leading-6 transition-colors ${
-                active === id
-                  ? "border-accent font-medium text-accent"
-                  : "border-transparent text-ink-2 hover:text-ink"
-              }`}
+              className={`-ms-px block border-s-2 py-1.5 ps-4 text-sm leading-6 transition-colors ${active === id
+                ? "border-ink font-medium text-ink"
+                : "border-transparent text-ink-2 hover:text-ink"
+                }`}
             >
               {itemLabel}
             </a>

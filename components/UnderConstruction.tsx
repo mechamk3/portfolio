@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { getDictionary, monoClass, type Locale } from "@/lib/i18n";
-import type { ProjectItem } from "@/dictionaries/types";
+import type { ProjectItem } from "@/content/types";
 
 export default function UnderConstruction({
   locale,
