@@ -29,23 +29,27 @@ export function Navbar({ locale }: { locale: Locale }) {
   return (
     <header className="sticky top-0 z-40 border-b border-line-strong bg-canvas select-none">
       <nav
-        className={`mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 rounded-none px-6 transition-colors ${
+        className={`mx-auto flex h-18 max-w-6xl items-center px-6 transition-colors ${
           scrolled ? "bg-canvas" : "bg-transparent"
         }`}
       >
-        <Link
-          to="/$locale"
-          params={{ locale }}
-          aria-label={t.home.name}
-          className="group flex items-center gap-3 rounded-none ps-1 pe-3"
-        >
-          <span className="flex size-10 items-center justify-center rounded-none bg-signal font-mono text-sm font-bold text-signal-foreground">
-            MT
-          </span>
-          <span className="hidden text-sm font-semibold text-ink sm:block">{t.home.name}</span>
-        </Link>
+        {/* Left: logo */}
+        <div className="flex flex-1 items-center">
+          <Link
+            to="/$locale"
+            params={{ locale }}
+            aria-label={t.home.name}
+            className="group flex items-center gap-3 rounded-none ps-1 pe-3"
+          >
+            <span className="flex size-10 items-center justify-center rounded-none bg-signal font-mono text-sm font-bold text-signal-foreground">
+              MT
+            </span>
+            <span className="hidden text-sm font-semibold text-ink sm:block">{t.home.name}</span>
+          </Link>
+        </div>
 
-        <div className="flex items-center gap-1">
+        {/* Middle: nav options */}
+        <div className="flex items-center justify-center gap-1">
           <Link
             to="/$locale/projects"
             params={{ locale }}
@@ -66,6 +70,10 @@ export function Navbar({ locale }: { locale: Locale }) {
               {s.label}
             </Link>
           ))}
+        </div>
+
+        {/* Right: actions */}
+        <div className="flex flex-1 items-center justify-end gap-1">
           <Button
             variant="outline"
             size="icon"
@@ -81,7 +89,7 @@ export function Navbar({ locale }: { locale: Locale }) {
             lang={other}
             className="ms-1 flex h-10 min-w-10 items-center justify-center rounded-none border border-line-strong px-3 font-mono text-xs font-semibold text-ink transition-colors hover:border-signal hover:text-signal"
           >
-            {other === "en" ? "EN" : "فا"}
+            {other === "en" ? "EN" : "FA"}
           </a>
         </div>
       </nav>
@@ -95,7 +103,7 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="border-t border-line select-none">
       <div className="mx-auto flex max-w-6xl flex-col justify-between gap-2 px-6 py-8 text-sm text-ink-3 sm:flex-row sm:items-center">
         <p>{t.footer.rights}</p>
-        <p className="font-mono text-xs">{t.footer.ver}</p>
+        <p className="text-xs">{t.footer.ver}</p>
       </div>
     </footer>
   );
