@@ -25,7 +25,8 @@ function ProjectsPage() {
   const t = getDictionary(locale);
 
   return (
-    <main className="mx-auto max-w-6xl px-6 pt-14 pb-28">
+    <main className="band-projects">
+      <div className="mx-auto max-w-6xl px-6 pt-14 pb-28">
       <nav aria-label="Breadcrumb" className={`text-xs ${monoClass(locale)}`}>
         <ol className="flex items-center gap-2 text-ink-3">
           <li>
@@ -42,7 +43,7 @@ function ProjectsPage() {
         </ol>
       </nav>
 
-      <h1 className="animate-rise mt-10 text-5xl font-bold tracking-tighter text-gradient sm:text-7xl rtl:tracking-normal rtl:leading-tight">
+      <h1 className="animate-rise mt-10 text-5xl font-bold tracking-tighter text-ink sm:text-7xl rtl:tracking-normal rtl:leading-tight">
         {t.projects.heading}
       </h1>
       <p className="animate-rise mt-6 max-w-2xl text-lg leading-8 text-ink-2 [animation-delay:80ms]">
@@ -53,6 +54,7 @@ function ProjectsPage() {
         {t.projects.items.map((p, i) => (
           <ProjectCard key={p.slug} project={p} locale={locale} index={i} featured={i === 0} />
         ))}
+      </div>
       </div>
     </main>
   );

@@ -3,7 +3,8 @@ import type { ProjectItem } from "@/content/types";
 import type { Locale } from "@/lib/i18n";
 import { getDictionary } from "@/lib/i18n";
 import { ArrowUpRightIcon } from "@/components/icons/misc";
-import { KindBadge, StatusPill, TechIcon, trackSpotlight } from "./bits";
+import { KindBadge, StatusPill, TechIcon } from "./bits";
+import { ProjectVisual } from "./ProjectVisual";
 
 export function ProjectCard({
   project,
@@ -25,17 +26,18 @@ export function ProjectCard({
   return (
     <Link
       {...linkProps}
-      onMouseMove={trackSpotlight}
-      className={`spotlight group relative flex flex-col overflow-hidden rounded-3xl border border-line bg-surface/70 p-6 shadow-card backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:border-signal/40 sm:p-8 ${
-        featured ? "md:col-span-2 md:min-h-80" : "min-h-72"
+      className={`project-card group relative grid overflow-hidden rounded-none border border-line-strong bg-surface shadow-card transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-signal/60 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-signal ${
+        featured ? "md:col-span-2 md:grid-cols-2" : "grid-cols-1"
       }`}
     >
-      <div className="flex items-start justify-between gap-4">
+      <ProjectVisual slug={project.slug} featured={featured} />
+      <div className="flex min-w-0 flex-col p-6 sm:p-8">
+      <div className="flex items-center justify-between gap-4">
         <span className="font-mono text-xs text-ink-3">
-          {String(index + 1).padStart(2, "0")} <span className="text-ink-3/50">/</span> {project.year}
+          <span className="text-signal">{String(index + 1).padStart(2, "0")}</span> <span className="mx-2 text-ink-3/50">/</span> {project.year}
         </span>
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-line text-ink-2 transition-all duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-foreground">
-          <ArrowUpRightIcon className="size-4 transition-transform duration-300 group-hover:rotate-45 rtl:-scale-x-100" />
+        <span className="flex size-10 shrink-0 items-center justify-center rounded-none border border-line-strong text-ink-2 transition-colors duration-300 group-hover:border-signal group-hover:bg-signal group-hover:text-signal-foreground">
+          <ArrowUpRightIcon className="size-4 rtl:-scale-x-100" />
         </span>
       </div>
 
@@ -45,8 +47,8 @@ export function ProjectCard({
       </div>
 
       <h3
-        className={`mt-4 font-semibold leading-tight tracking-tight text-ink ${
-          featured ? "text-2xl sm:text-3xl" : "text-xl"
+        className={`mt-5 font-semibold leading-snug text-ink ${
+          featured ? "text-2xl sm:text-3xl" : "text-2xl"
         }`}
       >
         {project.name}
@@ -55,21 +57,22 @@ export function ProjectCard({
         {project.tagline}
       </p>
 
-      <div className="mt-auto flex items-end justify-between gap-4 pt-8">
+      <div className="mt-auto flex flex-wrap items-center justify-between gap-4 pt-7">
         <ul className="flex flex-wrap gap-1.5" aria-label="Technologies">
           {project.stack.map((tech) => (
             <li
               key={tech}
               title={tech}
-              className="group flex size-9 items-center justify-center rounded-xl border border-line bg-surface-2/70"
+              className="flex size-8 items-center justify-center rounded-none border border-line bg-surface-2/70"
             >
-              <TechIcon name={tech} className="size-5 text-ink-2" />
+                <TechIcon name={tech} className="size-4 text-ink-2" />
             </li>
           ))}
         </ul>
-        <span className="hidden shrink-0 text-sm font-medium text-signal opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:inline">
+        <span className="shrink-0 text-xs font-medium text-ink-2 transition-colors group-hover:text-signal">
           {t.projects.caseStudy}
         </span>
+      </div>
       </div>
     </Link>
   );

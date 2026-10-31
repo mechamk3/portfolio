@@ -65,7 +65,7 @@ export function LightboxRoot({ shots, children }: { shots: Shot[]; children: Rea
               type="button"
               onClick={() => dialogRef.current?.close()}
               aria-label="Close"
-              className="flex size-10 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink"
+              className="flex size-10 items-center justify-center rounded-none text-ink-2 transition-colors hover:bg-surface-2 hover:text-ink"
             >
               ✕
             </button>
@@ -82,7 +82,7 @@ export function LightboxRoot({ shots, children }: { shots: Shot[]; children: Rea
                 key={shot.src}
                 src={shot.src}
                 alt={shot.caption ?? shot.title}
-                className="max-h-full w-auto max-w-full rounded-xl object-contain shadow-card ring-1 ring-line motion-safe:animate-[lb-pop_.28s_cubic-bezier(0.16,1,0.3,1)]"
+                className="max-h-full w-auto max-w-full rounded-none object-contain shadow-card ring-1 ring-line motion-safe:animate-[lb-pop_.28s_cubic-bezier(0.16,1,0.3,1)]"
               />
             )}
             {(["prev", "next"] as const).map((dir) => (
@@ -91,7 +91,7 @@ export function LightboxRoot({ shots, children }: { shots: Shot[]; children: Rea
                 type="button"
                 onClick={() => step(dir === "next" ? 1 : -1)}
                 aria-label={dir === "next" ? "Next" : "Previous"}
-                className={`glass absolute top-1/2 hidden size-12 -translate-y-1/2 items-center justify-center rounded-full text-ink transition-colors hover:text-signal sm:flex ${
+                className={`glass absolute top-1/2 hidden size-12 -translate-y-1/2 items-center justify-center rounded-none text-ink transition-colors hover:text-signal sm:flex ${
                   dir === "next" ? "end-4" : "start-4"
                 }`}
               >
@@ -112,7 +112,7 @@ export function Screenshot({ src, title, caption }: Shot) {
   const lb = useLightbox();
   return (
     <figure>
-      <div className="group overflow-hidden rounded-2xl border border-line bg-surface shadow-card transition-colors hover:border-signal/40">
+      <div className="group overflow-hidden rounded-none border border-line bg-surface shadow-card transition-colors hover:border-signal/40">
         <div className="flex h-10 items-center gap-2 border-b border-line bg-surface-2/60 px-4">
           <span className="size-2.5 rounded-full bg-line-strong" />
           <span className="size-2.5 rounded-full bg-line-strong" />
@@ -133,7 +133,7 @@ export function Screenshot({ src, title, caption }: Shot) {
             loading="lazy"
             className="h-auto w-full transition-transform duration-700 group-hover:scale-[1.02]"
           />
-          <span className="absolute bottom-4 end-4 flex size-10 items-center justify-center rounded-full bg-signal text-signal-foreground opacity-0 transition-opacity group-hover:opacity-100">
+          <span className="absolute bottom-4 end-4 flex size-10 items-center justify-center rounded-none bg-signal text-signal-foreground opacity-0 transition-opacity group-hover:opacity-100">
             ⤢
           </span>
         </button>

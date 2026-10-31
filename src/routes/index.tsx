@@ -11,6 +11,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Portfolio of MohammadJavad Tolou, software engineer." },
       { property: "og:title", content: "MohammadJavad Tolou — Software Engineer" },
       { property: "og:description", content: "Portfolio of MohammadJavad Tolou, software engineer." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
 });

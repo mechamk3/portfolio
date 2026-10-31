@@ -77,7 +77,7 @@ function HrisCaseStudy() {
             </ol>
           </nav>
 
-          <p className="animate-rise mt-10 inline-flex items-center gap-2.5 rounded-full border border-success/30 bg-success/10 px-3.5 py-1.5 text-xs font-medium text-success">
+          <p className="animate-rise mt-10 inline-flex items-center gap-2.5 rounded-none border border-success/30 bg-success/10 px-3.5 py-1.5 text-xs font-medium text-success">
             <span className="relative flex size-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
               <span className="relative inline-flex size-2 rounded-full bg-success" />
@@ -96,7 +96,7 @@ function HrisCaseStudy() {
           <div className="animate-rise mt-8 flex flex-wrap items-center gap-2 [animation-delay:200ms]">
             <span className="me-2 text-xs text-ink-3">{t.stackLabel}</span>
             {t.stack.map((tech) => (
-              <span key={tech} className="group inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-2/70 px-3 py-1 text-xs text-ink-2">
+              <span key={tech} className="group inline-flex items-center gap-1.5 rounded-none border border-line bg-surface-2/70 px-3 py-1 text-xs text-ink-2">
                 <TechIcon name={tech} className="size-3.5 shrink-0" />
                 <span dir="ltr">{tech}</span>
               </span>
@@ -104,7 +104,7 @@ function HrisCaseStudy() {
           </div>
 
           {t.audience.map(({ title, text }) => (
-            <div key={title} className="mt-10 rounded-3xl border border-line bg-surface/60 p-6 shadow-card sm:p-8">
+            <div key={title} className="mt-10 rounded-none border border-line bg-surface/60 p-6 shadow-card sm:p-8">
               <h2 className="font-semibold text-ink">{title}</h2>
               <p className="mt-2 leading-8 text-ink-2">{text}</p>
             </div>
@@ -128,14 +128,14 @@ function HrisCaseStudy() {
               <div className="mx-auto mt-10 w-full max-w-xl">
                 <ul className="grid grid-cols-3 gap-3">
                   {t.problem1.sources.map(({ name, note }) => (
-                    <li key={name} className="rounded-2xl border border-dashed border-line-strong bg-surface-2/40 p-3 text-center sm:p-4">
+                    <li key={name} className="rounded-none border border-dashed border-line-strong bg-surface-2/40 p-3 text-center sm:p-4">
                       <span className="block text-xs font-medium text-ink">{name}</span>
                       <span className="mt-1 block text-[11px] leading-4 text-ink-3">{note}</span>
                     </li>
                   ))}
                 </ul>
                 <MergeArrows className="h-12 w-full text-signal/60" />
-                <div className="flex items-center justify-center gap-4 rounded-2xl border border-signal/40 bg-signal/10 p-5 shadow-signal">
+                <div className="flex items-center justify-center gap-4 rounded-none border border-signal/40 bg-signal/10 p-5 shadow-signal">
                   <DatabaseIcon className="size-9 shrink-0 text-signal" />
                   <span className="text-start">
                     <span className="block font-semibold text-ink">{t.problem1.dbLabel}</span>
@@ -163,13 +163,13 @@ function HrisCaseStudy() {
                   return (
                     <li key={step.title} className={`relative flex gap-5 ${last ? "" : "pb-8"}`}>
                       {!last && <span aria-hidden className="absolute start-4 top-9 bottom-0 border-s border-dashed border-line-strong" />}
-                      <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-signal font-mono text-sm font-bold text-signal-foreground">
+                      <span className="flex size-8 shrink-0 items-center justify-center rounded-none bg-signal font-mono text-sm font-bold text-signal-foreground">
                         {i + 1}
                       </span>
                       <div className="min-w-0 pt-1">
                         <p className="font-semibold text-ink">
                           {step.title}
-                          <span className="ms-3 rounded-full border border-line bg-surface-2 px-2.5 py-0.5 text-xs font-medium text-ink-2">{step.who}</span>
+                          <span className="ms-3 rounded-none border border-line bg-surface-2 px-2.5 py-0.5 text-xs font-medium text-ink-2">{step.who}</span>
                         </p>
                         <p className="mt-1.5 max-w-3xl text-sm leading-7 text-ink-2">{step.text}</p>
                       </div>
@@ -194,7 +194,7 @@ function HrisCaseStudy() {
               <div className="mt-10 grid items-center gap-10 md:grid-cols-2">
                 <dl className="grid gap-3">
                   {t.myRole.stack.map(({ label, value }) => (
-                    <div key={label} className="rounded-2xl border border-line bg-surface/60 p-4">
+                    <div key={label} className="rounded-none border border-line bg-surface/60 p-4">
                       <dt className="text-xs text-ink-3">{label}</dt>
                       <dd className="mt-1 font-medium text-ink" dir="ltr">{value}</dd>
                     </div>
@@ -238,7 +238,7 @@ function HrisCaseStudy() {
               <Lead>{t.employee.lead}</Lead>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {t.employee.pages.map(({ title, text }, i) => (
-                  <div key={title} className="rounded-2xl border border-line bg-surface/60 p-6 transition-colors hover:border-signal/40">
+                  <div key={title} className="rounded-none border border-line bg-surface/60 p-6 transition-colors hover:border-signal/40">
                     <span className="font-mono text-xs text-signal">{String(i + 1).padStart(2, "0")}</span>
                     <h3 className="mt-2 font-semibold text-ink">{title}</h3>
                     <p className="mt-2 text-sm leading-7 text-ink-2">{text}</p>
@@ -271,7 +271,7 @@ function HrisCaseStudy() {
               <H2>{t.summary.heading}</H2>
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 {t.summary.points.map(({ title, text }) => (
-                  <div key={title} className="rounded-2xl border border-line bg-surface/60 p-5">
+                  <div key={title} className="rounded-none border border-line bg-surface/60 p-5">
                     <h3 className="flex items-center gap-2.5 font-semibold text-ink">
                       <span aria-hidden className="size-1.5 shrink-0 rounded-full bg-signal" />
                       {title}
@@ -294,7 +294,7 @@ function HrisCaseStudy() {
             </section>
 
             <section className="pt-10">
-              <div className="flex max-w-3xl gap-3 rounded-2xl border-s-4 border-warning bg-warning/5 p-5">
+              <div className="flex max-w-3xl gap-3 rounded-none border-s-4 border-warning bg-warning/5 p-5">
                 <InfoIcon className="mt-1 size-4 shrink-0 text-warning" />
                 <p className="text-sm leading-7 text-ink-2">{t.info.privacy}</p>
               </div>

@@ -37,7 +37,7 @@ export function StatusPill({ status, tone }: { status: string; tone: "ok" | "pil
   } as const;
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${styles[tone]}`}
+      className={`inline-flex items-center gap-1.5 rounded-none border px-2.5 py-0.5 text-[11px] font-semibold ${styles[tone]}`}
     >
       <span className="relative flex size-1.5">
         {tone === "ok" && (
@@ -53,7 +53,7 @@ export function StatusPill({ status, tone }: { status: string; tone: "ok" | "pil
 export function KindBadge({ kind, label }: { kind: "work" | "personal"; label: string }) {
   const Icon = kind === "work" ? BriefcaseIcon : UserIcon;
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-2 px-2.5 py-0.5 text-[11px] text-ink-2">
+    <span className="inline-flex items-center gap-1.5 rounded-none border border-line bg-surface-2 px-2.5 py-0.5 text-[11px] text-ink-2">
       <Icon className="size-3 shrink-0" />
       {label}
     </span>
@@ -71,27 +71,17 @@ export function SectionLabel({
 }) {
   return (
     <div className="flex items-center gap-4">
-      {index && <span className="font-mono text-xs text-signal">{index}</span>}
+      {index && <span className="section-label-index flex size-8 shrink-0 items-center justify-center bg-signal font-mono text-xs font-bold text-signal-foreground">{index}</span>}
       <span className={`text-xs font-medium text-ink-2 ${mono}`}>{label}</span>
-      <span aria-hidden className="h-px flex-1 bg-linear-to-r from-line-strong to-transparent rtl:bg-linear-to-l" />
+      <span aria-hidden className="h-px flex-1 bg-line-strong" />
     </div>
   );
 }
 
-/** Ambient background: grid lines + drifting glow orbs. */
+/** A quiet canvas shared by all locale pages. */
 export function Backdrop() {
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      <div className="grid-lines absolute inset-0 opacity-60 mask-[radial-gradient(ellipse_80%_60%_at_50%_0%,#000_30%,transparent_80%)]" />
-      <div className="absolute -top-40 start-[10%] size-[42rem] animate-float rounded-full bg-signal/10 blur-[140px]" />
-      <div className="absolute top-[30%] -end-40 size-[36rem] animate-float rounded-full bg-glow/10 blur-[140px] [animation-delay:-4s]" />
-    </div>
+    <div aria-hidden className="app-backdrop pointer-events-none fixed inset-0 -z-10" />
   );
 }
 
-/** Mouse-follow spotlight for cards with the `spotlight` utility. */
-export function trackSpotlight(e: React.MouseEvent<HTMLElement>) {
-  const r = e.currentTarget.getBoundingClientRect();
-  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-}

@@ -7,7 +7,7 @@ const fa: Dictionary = {
     description:
       "مهندس نرم‌افزار؛ ساختن وب‌اپلیکیشن‌های سریع و قابل اعتماد با تایپ‌اسکریپت، ری‌اکت و نکست.",
   },
-  nav: { home: "خانه", projects: "نمونه‌کارها", experience: "تجربه‌ها", about: "درباره من", contact: "تماس" },
+  nav: { home: "خانه", projects: "نمونه‌کارها", experience: "تجربه‌ها", about: "درباره من", contact: "تماس", lightMode: "تغییر به حالت روشن", darkMode: "تغییر به حالت تیره" },
   footer: { rights: "© ۱۴۰۵ محمدجواد طلوع - تمامی حقوق محفوظ است.", ver: "نسخه ۱.۰.۰" },
   home: {
     name: "محمدجواد طلوع",

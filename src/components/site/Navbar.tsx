@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { getDictionary, swapLocalePath, type Locale } from "@/lib/i18n";
+import { Moon, Sun } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useTheme } from "./ThemeProvider";
 
 export function Navbar({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
+  const { theme, toggleTheme } = useTheme();
+  const themeLabel = theme === "dark" ? t.nav.lightMode : t.nav.darkMode;
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [scrolled, setScrolled] = useState(false);
 
@@ -22,19 +27,19 @@ export function Navbar({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <header className="sticky top-0 z-40 px-4 pt-4 select-none">
+    <header className="sticky top-0 z-40 border-b border-line-strong bg-canvas select-none">
       <nav
-        className={`mx-auto flex h-14 max-w-6xl items-center justify-between gap-4 rounded-full px-2 transition-all duration-500 ${
-          scrolled ? "glass shadow-card" : "border border-transparent"
+        className={`mx-auto flex h-18 max-w-6xl items-center justify-between gap-4 rounded-none px-6 transition-colors ${
+          scrolled ? "bg-canvas" : "bg-transparent"
         }`}
       >
         <Link
           to="/$locale"
           params={{ locale }}
           aria-label={t.home.name}
-          className="group flex items-center gap-3 rounded-full ps-1 pe-3"
+          className="group flex items-center gap-3 rounded-none ps-1 pe-3"
         >
-          <span className="flex size-10 items-center justify-center rounded-full bg-signal font-mono text-sm font-bold text-signal-foreground transition-transform duration-500 group-hover:rotate-[360deg]">
+          <span className="flex size-10 items-center justify-center rounded-none bg-signal font-mono text-sm font-bold text-signal-foreground">
             MT
           </span>
           <span className="hidden text-sm font-semibold text-ink sm:block">{t.home.name}</span>
@@ -44,7 +49,7 @@ export function Navbar({ locale }: { locale: Locale }) {
           <Link
             to="/$locale/projects"
             params={{ locale }}
-            className="rounded-full px-3 py-2 text-sm text-ink-2 transition-colors hover:text-ink"
+            className="rounded-none px-3 py-2 text-sm text-ink-2 transition-colors hover:text-ink"
             activeProps={{ className: "text-ink" }}
           >
             {t.nav.projects}
@@ -55,16 +60,26 @@ export function Navbar({ locale }: { locale: Locale }) {
               to="/$locale"
               params={{ locale }}
               hash={s.hash}
-              className="hidden rounded-full px-3 py-2 text-sm text-ink-2 transition-colors hover:text-ink md:block"
+              className="hidden rounded-none px-3 py-2 text-sm text-ink-2 transition-colors hover:text-ink md:block"
               activeOptions={{ includeHash: true }}
             >
               {s.label}
             </Link>
           ))}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={themeLabel}
+            title={themeLabel}
+            className="ms-1 size-10 shrink-0 rounded-none border-line-strong text-ink"
+          >
+            {theme === "dark" ? <Sun /> : <Moon />}
+          </Button>
           <a
             href={swapLocalePath(pathname, other)}
             lang={other}
-            className="ms-1 flex h-10 min-w-10 items-center justify-center rounded-full border border-line-strong px-3 font-mono text-xs font-semibold text-ink transition-colors hover:border-signal hover:text-signal"
+            className="ms-1 flex h-10 min-w-10 items-center justify-center rounded-none border border-line-strong px-3 font-mono text-xs font-semibold text-ink transition-colors hover:border-signal hover:text-signal"
           >
             {other === "en" ? "EN" : "فا"}
           </a>

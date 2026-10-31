@@ -18,6 +18,8 @@ export const Route = createFileRoute("/$locale/projects/$slug")({
         { name: "description", content: project?.tagline ?? "" },
         { property: "og:title", content: title },
         { property: "og:description", content: project?.tagline ?? "" },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
         { name: "robots", content: "noindex" },
       ],
     };
@@ -35,7 +37,7 @@ function PlaceholderProject() {
   return (
     <main className="flex min-h-[70dvh] items-center justify-center px-6 py-20 text-center">
       <div className="animate-rise flex max-w-xl flex-col items-center">
-        <span className={`rounded-full border border-dashed border-line-strong px-4 py-1.5 text-xs text-ink-3 ${monoClass(locale)}`}>
+        <span className={`rounded-none border border-dashed border-line-strong px-4 py-1.5 text-xs text-ink-3 ${monoClass(locale)}`}>
           {uc.title}
         </span>
         <h1 className="mt-8 text-4xl font-bold tracking-tight text-gradient sm:text-5xl">{project?.name}</h1>
@@ -48,14 +50,14 @@ function PlaceholderProject() {
           <Link
             to="/$locale"
             params={{ locale }}
-            className="rounded-full bg-signal px-6 py-3 text-sm font-semibold text-signal-foreground shadow-signal"
+            className="rounded-none bg-signal px-6 py-3 text-sm font-semibold text-signal-foreground shadow-signal"
           >
             {uc.go2h}
           </Link>
           <Link
             to="/$locale/projects"
             params={{ locale }}
-            className="rounded-full border border-line-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-signal hover:text-signal"
+            className="rounded-none border border-line-strong px-6 py-3 text-sm font-semibold text-ink transition-colors hover:border-signal hover:text-signal"
           >
             {uc.go2p}
           </Link>

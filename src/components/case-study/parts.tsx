@@ -5,7 +5,8 @@ type Role = { name: string; code: string; landing: string; capabilities: Capabil
 
 export function RoleTabs({ label, roles }: { label: string; roles: Role[] }) {
   const [active, setActive] = useState(0);
-  const role = roles[active] ?? roles[0]!;
+  const role = roles[active] ?? roles[0];
+  if (!role) return null;
   const styles = {
     full: "bg-success/10 text-success",
     limited: "bg-warning/10 text-warning",
@@ -18,7 +19,7 @@ export function RoleTabs({ label, roles }: { label: string; roles: Role[] }) {
       <div
         role="tablist"
         aria-label={label}
-        className="scrollbar-none flex w-fit max-w-full gap-1 overflow-x-auto rounded-full border border-line bg-surface-2/50 p-1"
+        className="scrollbar-none flex w-fit max-w-full gap-1 overflow-x-auto rounded-none border border-line bg-surface-2/50 p-1"
       >
         {roles.map((r, i) => (
           <button
@@ -27,7 +28,7 @@ export function RoleTabs({ label, roles }: { label: string; roles: Role[] }) {
             role="tab"
             aria-selected={active === i}
             onClick={() => setActive(i)}
-            className={`shrink-0 whitespace-nowrap rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+            className={`shrink-0 whitespace-nowrap rounded-none px-4 py-1.5 text-sm font-medium transition-colors ${
               active === i ? "bg-signal text-signal-foreground" : "text-ink-2 hover:text-ink"
             }`}
           >
@@ -36,10 +37,10 @@ export function RoleTabs({ label, roles }: { label: string; roles: Role[] }) {
         ))}
       </div>
 
-      <div key={role.code} role="tabpanel" className="animate-rise mt-6 rounded-2xl border border-line bg-surface/60 p-6 sm:p-8">
+      <div key={role.code} role="tabpanel" className="animate-rise mt-6 rounded-none border border-line bg-surface/60 p-6 sm:p-8">
         <div className="flex flex-wrap items-baseline gap-3">
           <h3 className="text-lg font-semibold tracking-tight text-ink">{role.name}</h3>
-          <code className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-signal">{role.code}</code>
+          <code className="rounded-none border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-signal">{role.code}</code>
         </div>
         <p className="mt-2 max-w-2xl text-sm leading-7 text-ink-2">{role.landing}</p>
         <ul className="mt-5 border-t border-line">
@@ -49,7 +50,7 @@ export function RoleTabs({ label, roles }: { label: string; roles: Role[] }) {
                 {cap.label}
                 {cap.note && <span className="mt-0.5 block text-xs text-ink-3">{cap.note}</span>}
               </span>
-              <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${styles[cap.tone]}`}>
+              <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-none px-3 py-1 text-xs font-semibold ${styles[cap.tone]}`}>
                 <span aria-hidden>{marks[cap.tone]}</span>
                 {cap.value}
               </span>
@@ -132,7 +133,7 @@ export function MergeArrows({ className }: { className?: string }) {
 
 export function DeployNode({ title, note, className = "" }: { title: string; note?: string; className?: string }) {
   return (
-    <div className={`w-full rounded-xl border border-line bg-surface-2/60 px-3 py-2.5 text-center ${className}`}>
+    <div className={`w-full rounded-none border border-line bg-surface-2/60 px-3 py-2.5 text-center ${className}`}>
       <p className="font-mono text-sm font-medium text-ink">{title}</p>
       {note && <p className="mt-0.5 text-xs leading-5 text-ink-2">{note}</p>}
     </div>
@@ -166,7 +167,7 @@ export function Callout({
     warning: "border-warning bg-warning/5 text-warning",
   } as const;
   return (
-    <div className={`mt-5 rounded-2xl border-s-4 p-5 ${styles[tone]}`}>
+    <div className={`mt-5 rounded-none border-s-4 p-5 ${styles[tone]}`}>
       {title && <p className="text-sm font-semibold">{title}</p>}
       <div className="mt-2 leading-8 text-ink-2">{children}</div>
     </div>
