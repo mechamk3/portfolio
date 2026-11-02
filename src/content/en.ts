@@ -7,7 +7,12 @@ const en = {
       "Software engineer building fast, reliable web applications with TypeScript, React and Next.js.",
   },
   nav: { home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact", lightMode: "Switch to light mode", darkMode: "Switch to dark mode" },
-  footer: { rights: "© 2026 MohammadJavad Tolou · All rights reserved", ver: "v. 2.0.0" },
+  footer: {
+    rights: "© 2026 MohammadJavad Tolou · All rights reserved",
+    ver: "v. 2.0.0",
+    color: "Color",
+    colors: { orchid: "Orchid", violet: "Violet", blue: "Blue", teal: "Teal", amber: "Amber", vermilion: "Vermilion", mono: "Monochrome" },
+  },
   home: {
     name: "MohammadJavad Tolou",
     role: "Software Engineer",

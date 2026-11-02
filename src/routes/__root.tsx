@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+﻿import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
@@ -9,10 +9,9 @@ import {
   Scripts,
   type ErrorComponentProps,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/components/site/ThemeProvider";
 
 function NotFoundComponent() {
@@ -40,9 +39,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -80,10 +76,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "MohammadJavad Tolou — Software Engineer" },
+      { title: "MohammadJavad Tolou â€” Software Engineer" },
       { name: "description", content: "Portfolio of MohammadJavad Tolou, software engineer." },
       { name: "author", content: "MohammadJavad Tolou" },
-      { property: "og:title", content: "MohammadJavad Tolou — Software Engineer" },
+      { property: "og:title", content: "MohammadJavad Tolou â€” Software Engineer" },
       { property: "og:description", content: "Portfolio of MohammadJavad Tolou, software engineer." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
