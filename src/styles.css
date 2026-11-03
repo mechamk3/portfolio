@@ -255,9 +255,9 @@
   position: relative;
 }
 .band-inner {
-  max-width: 72rem;
+  max-width: 86rem;
   margin-inline: auto;
-  padding: 4.5rem 1.5rem;
+  padding: 4rem 2rem;
 }
 .band-projects { background: var(--wash-projects); }
 :root.dark .band-projects { --card: var(--card-on-band-b); }
@@ -296,20 +296,8 @@
   min-height: 15rem;
   background: var(--artwork);
 }
-.project-screen {
-  transform: perspective(900px) rotateY(5deg) rotateX(3deg) rotateZ(-3deg);
-  box-shadow: var(--shadow-card);
-  transition: transform 0.4s;
-}
-.project-card:hover .project-screen {
-  transform: perspective(900px) rotateY(0deg) rotateX(0deg) rotateZ(0deg) translateY(-4px);
-}
 .project-record {
   background: repeating-radial-gradient(circle at center, var(--artwork) 0 5px, var(--line-strong) 6px, var(--artwork) 7px 9px);
-}
-@media (min-width: 768px) {
-  .project-visual[data-project="hris"] { min-height: 24rem; }
-  .project-visual[data-project="hris"] .project-screen { top: 4rem; inset-inline: 2rem; }
 }
 
 @utility scrollbar-none {

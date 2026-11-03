@@ -10,12 +10,10 @@ export function ProjectCard({
   project,
   locale,
   index,
-  featured = false,
 }: {
   project: ProjectItem;
   locale: Locale;
   index: number;
-  featured?: boolean;
 }) {
   const t = getDictionary(locale);
   const linkProps =
@@ -24,11 +22,8 @@ export function ProjectCard({
       : ({ to: "/$locale/projects/$slug", params: { locale, slug: project.slug } } as const);
 
   return (
-    <div
-      className={`project-card group relative grid overflow-hidden rounded-none border border-line-strong bg-surface shadow-card transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-signal/60 ${featured ? "md:col-span-2 md:grid-cols-2" : "grid-cols-1"
-        }`}
-    >
-      <ProjectVisual slug={project.slug} featured={featured} />
+    <div className="project-card group relative grid grid-cols-1 overflow-hidden rounded-none border-2 border-ink bg-surface shadow-card transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-signal md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+      <ProjectVisual slug={project.slug} />
       <div className="flex min-w-0 flex-col p-6 sm:p-8">
         <div className="flex items-center justify-between gap-4">
           <span className="font-mono text-xs text-ink-3">
@@ -42,17 +37,11 @@ export function ProjectCard({
           <StatusPill status={project.status} tone={project.tone} />
         </div>
 
-        <h3
-          className={`mt-5 font-semibold leading-snug text-ink ${featured ? "text-2xl sm:text-3xl" : "text-2xl"
-            }`}
-        >
+        <h3 className="mt-5 text-2xl font-semibold leading-snug text-ink sm:text-3xl">
           {project.name}
         </h3>
 
-        <p
-          className={`mt-3 text-sm leading-7 text-ink-2 ${featured ? "max-w-2xl sm:text-base sm:leading-8" : ""
-            }`}
-        >
+        <p className="max-w-2xl text-sm leading-7 text-ink-2 sm:text-base sm:leading-8">
           {project.tagline}
         </p>
 
@@ -63,9 +52,9 @@ export function ProjectCard({
               <li
                 key={tech}
                 title={tech}
-                className="flex size-10 items-center justify-center rounded-none border border-line bg-surface-2/60"
+                className="flex size-11 items-center justify-center rounded-none border border-line bg-surface-2/60"
               >
-                <TechIcon name={tech} className="size-7 text-ink-2" />
+                <TechIcon name={tech} className="size-8 text-ink-2" />
               </li>
             ))}
           </ul>

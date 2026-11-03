@@ -55,7 +55,7 @@ function HrisCaseStudy() {
   ];
   const d = t.myRole.deploy as { node: string; note: string }[];
   const node = (i: number) => d[i] ?? { node: "", note: "" };
-  const section = "scroll-mt-28 py-14";
+  const section = "scroll-mt-28 py-5";
 
   return (
     <main className="mx-auto max-w-6xl px-6 pb-24">
@@ -116,7 +116,7 @@ function HrisCaseStudy() {
             <Toc label={t.tocLabel} items={toc} />
           </aside>
 
-          <div className="min-w-0 divide-y divide-line">
+          <div className="min-w-0">
             {/* 01 */}
             <section id="problem-1" className={section}>
               <SectionLabel index="01" label={t.problem1.tag} mono={mono} />
@@ -162,7 +162,7 @@ function HrisCaseStudy() {
                   const last = i === t.problem2.steps.length - 1;
                   return (
                     <li key={step.title} className={`relative flex gap-5 ${last ? "" : "pb-8"}`}>
-                      {!last && <span aria-hidden className="absolute start-4 top-9 bottom-0 border-s border-dashed border-line-strong" />}
+                      {!last && <span aria-hidden className="absolute inset-s-4 top-9 bottom-0 border-s border-dashed border-line-strong" />}
                       <span className="flex size-8 shrink-0 items-center justify-center rounded-none bg-signal font-mono text-sm font-bold text-signal-foreground">
                         {i + 1}
                       </span>

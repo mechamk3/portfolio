@@ -27,34 +27,34 @@ function ProjectsPage() {
   return (
     <main className="band-projects">
       <div className="mx-auto max-w-6xl px-6 pt-14 pb-28">
-      <nav aria-label="Breadcrumb" className={`text-xs ${monoClass(locale)}`}>
-        <ol className="flex items-center gap-2 text-ink-3">
-          <li>
-            <Link to="/$locale" params={{ locale }} className="transition-colors hover:text-ink">
-              {t.nav.home}
-            </Link>
-          </li>
-          <li aria-hidden>
-            <ChevronIcon />
-          </li>
-          <li aria-current="page" className="text-ink-2">
-            {t.nav.projects}
-          </li>
-        </ol>
-      </nav>
+        <nav aria-label="Breadcrumb" className={`text-xs ${monoClass(locale)}`}>
+          <ol className="flex items-center gap-2 text-ink-3">
+            <li>
+              <Link to="/$locale" params={{ locale }} className="transition-colors hover:text-ink">
+                {t.nav.home}
+              </Link>
+            </li>
+            <li aria-hidden>
+              <ChevronIcon />
+            </li>
+            <li aria-current="page" className="text-ink-2">
+              {t.nav.projects}
+            </li>
+          </ol>
+        </nav>
 
-      <h1 className="animate-rise mt-10 text-5xl font-bold tracking-tighter text-ink sm:text-7xl rtl:tracking-normal rtl:leading-tight">
-        {t.projects.heading}
-      </h1>
-      <p className="animate-rise mt-6 max-w-2xl text-lg leading-8 text-ink-2 [animation-delay:80ms]">
-        {t.projects.intro}
-      </p>
+        <h1 className="animate-rise mt-10 text-5xl font-bold tracking-tighter text-ink sm:text-7xl rtl:tracking-normal rtl:leading-tight">
+          {t.projects.heading}
+        </h1>
+        <p className="animate-rise mt-6 max-w-2xl text-lg leading-8 text-ink-2 [animation-delay:80ms]">
+          {t.projects.intro}
+        </p>
 
-      <div className="animate-rise mt-14 grid gap-5 md:grid-cols-2 [animation-delay:160ms]">
-        {t.projects.items.map((p, i) => (
-          <ProjectCard key={p.slug} project={p} locale={locale} index={i} featured={i === 0} />
-        ))}
-      </div>
+        <div className="animate-rise mt-14 grid grid-cols-1 gap-6 [animation-delay:160ms]">
+          {t.projects.items.map((p, i) => (
+            <ProjectCard key={p.slug} project={p} locale={locale} index={i} />
+          ))}
+        </div>
       </div>
     </main>
   );
