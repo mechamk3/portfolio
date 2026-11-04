@@ -53,14 +53,15 @@ export function LightboxRoot({ shots, children }: { shots: Shot[]; children: Rea
         onClose={() => setIndex(null)}
         onClick={(e) => e.target === dialogRef.current && dialogRef.current?.close()}
         aria-label={shot?.title}
-        className="fixed inset-0 m-0 h-full max-h-full w-full max-w-full bg-transparent p-0 backdrop:bg-scrim backdrop:backdrop-blur-md"
+        className="force-dark fixed inset-0 m-0 h-full max-h-full w-full max-w-full bg-transparent p-0 backdrop:bg-[oklch(0.14_0_0/0.92)] backdrop:backdrop-blur-md"
       >
         <div className="flex h-full flex-col text-ink">
-          <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-line px-4 sm:px-6">
-            <span className="font-mono text-sm tabular-nums text-ink-3">
+          {/* the top bar is fixed: counter always top-left reading "n / m", close always top-right */}
+          <header dir="ltr" className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-line px-4 sm:px-6">
+            <span dir="ltr" className="font-mono text-sm tabular-nums text-ink-3">
               {index === null ? "" : `${index + 1} / ${shots.length}`}
             </span>
-            <span className="truncate font-mono text-xs text-ink-2">{shot?.title}</span>
+            <span dir="auto" className="truncate font-mono text-xs text-ink-2">{shot?.title}</span>
             <button
               type="button"
               onClick={() => dialogRef.current?.close()}
@@ -100,7 +101,7 @@ export function LightboxRoot({ shots, children }: { shots: Shot[]; children: Rea
             ))}
           </div>
           <footer className="shrink-0 border-t border-line px-4 py-3 sm:px-6">
-            <p className="mx-auto line-clamp-2 max-w-4xl text-center text-sm leading-6 text-ink-2">{shot?.caption}</p>
+            <p dir="auto" className="mx-auto line-clamp-2 max-w-4xl text-center text-sm leading-6 text-ink-2">{shot?.caption}</p>
           </footer>
         </div>
       </dialog>

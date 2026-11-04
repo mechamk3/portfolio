@@ -18,8 +18,6 @@ const en = {
     role: "Software Engineer",
     tagline:
       "I turn ideas into software, from designing the systems behind it to building the interface and shaping the experience of using it.",
-    stackLabel: "What I work with",
-    stack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "MongoDB"],
   },
   projects: {
     meta: {
@@ -80,6 +78,8 @@ const en = {
     heading: "Where I've worked.",
     previouslyLabel: "Previously",
     selectedWorkLabel: "Featured Projects",
+    showDetails: "Show details",
+    hideDetails: "Hide details",
     items: [
       {
         company: "Padisar Informatics",
@@ -137,10 +137,11 @@ const en = {
   contact: {
     label: "Contact",
     heading: "Feel free to reach out.",
+    copy: "Copy",
+    copied: "Copied",
     channels: {
       email: { label: "Email", value: "mohammadjavadtolou@gmail.com" },
       github: { label: "GitHub", value: "@mechamk3" },
-      linkedin: { label: "LinkedIn", value: "in/yourname" },
     },
   },
   notFound: {

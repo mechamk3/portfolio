@@ -67,29 +67,30 @@
 }
 
 /*
- * Palette: surfaces, text and accent all derive from three hues plus a chroma
- * multiplier, so the visitor-selectable accents below re-theme the whole site.
- *   --h  surface hue   --hs  signal hue   --hg  glow hue   --k  chroma scale (0 = monochrome)
- * Dark = deep tinted ink (never black); light = cool tinted mist (never white).
+ * Palette: surfaces are near-neutral (a barely-there tint of --h), so changing the
+ * accent never repaints the page. Only the signal colors follow the accent.
+ *   --h  faint surface tint   --hs  signal hue   --hg  glow hue   --k  chroma scale (0 = monochrome)
+ * Dark = soft charcoal (never black); light = soft paper (never white).
  * Status colors (success/warning/danger) are fixed and never follow the accent.
- * Section depth comes from staggered solid bands plus tinted washes, not patterns.
+ * Sections share one canvas and are separated by hairlines, not bands or patterns.
  */
 :root {
   --radius: 0rem;
-  /* default accent: orchid */
-  --h: 315;
-  --hs: 340;
-  --hg: 300;
+  /* default accent: blue */
+  --h: 258;
+  --hs: 258;
+  --hg: 215;
   --k: 1;
-  --h-up: calc(var(--h) + 15);
-  --h-mid: calc(var(--h) + 8);
-  --h-down: calc(var(--h) - 10);
-  --h-low: calc(var(--h) - 15);
+}
 
-  --palette-ink: oklch(0.19 calc(0.03 * var(--k)) var(--h));
-  --palette-panel: oklch(0.225 calc(0.035 * var(--k)) var(--h));
-  --palette-raised: oklch(0.265 calc(0.04 * var(--k)) var(--h));
-  --palette-paper: oklch(0.94 calc(0.012 * var(--k)) var(--h-up));
+/* The dark palette is the base; `.force-dark` re-applies it to a subtree (e.g. the lightbox) whatever the page theme. */
+:root,
+.force-dark {
+  color-scheme: dark;
+  --palette-ink: oklch(0.17 calc(0.006 * var(--k)) var(--h));
+  --palette-panel: oklch(0.205 calc(0.007 * var(--k)) var(--h));
+  --palette-raised: oklch(0.245 calc(0.008 * var(--k)) var(--h));
+  --palette-paper: oklch(0.95 calc(0.005 * var(--k)) var(--h));
   --palette-signal: oklch(0.74 calc(0.17 * var(--k)) var(--hs));
 
   --background: var(--palette-ink);
@@ -100,84 +101,75 @@
   --popover-foreground: var(--foreground);
   --surface-2: var(--palette-raised);
   --primary: var(--palette-signal);
-  --primary-foreground: oklch(0.2 calc(0.05 * var(--k)) var(--h-up));
+  --primary-foreground: oklch(0.2 calc(0.05 * var(--k)) var(--hs));
   --secondary: var(--surface-2);
   --secondary-foreground: var(--foreground);
   --muted: var(--surface-2);
-  --muted-foreground: oklch(0.72 calc(0.025 * var(--k)) var(--h-mid));
+  --muted-foreground: oklch(0.7 calc(0.01 * var(--k)) var(--h));
   --accent: var(--palette-raised);
   --accent-foreground: var(--foreground);
   --signal: var(--palette-signal);
-  --signal-foreground: oklch(0.2 calc(0.05 * var(--k)) var(--h-up));
+  --signal-foreground: oklch(0.2 calc(0.05 * var(--k)) var(--hs));
   --glow: oklch(0.78 calc(0.12 * var(--k)) var(--hg));
-  --ink-2: oklch(0.83 calc(0.018 * var(--k)) var(--h-mid));
+  --ink-2: oklch(0.82 calc(0.008 * var(--k)) var(--h));
   --ink-3: var(--muted-foreground);
-  --border: oklch(0.34 calc(0.04 * var(--k)) var(--h));
-  --line-strong: oklch(0.46 calc(0.05 * var(--k)) var(--h));
+  --border: oklch(0.3 calc(0.008 * var(--k)) var(--h));
+  --line-strong: oklch(0.42 calc(0.01 * var(--k)) var(--h));
   --input: var(--line-strong);
   --ring: var(--palette-signal);
   --destructive: oklch(0.72 0.16 25);
-  --destructive-foreground: oklch(0.2 0.04 var(--h-up));
+  --destructive-foreground: oklch(0.2 0.04 var(--hs));
   --success: oklch(0.78 0.14 152);
   --warning: oklch(0.84 0.14 88);
   --danger: var(--destructive);
   --scrim: color-mix(in oklab, var(--palette-ink) 92%, transparent);
-  --artwork: oklch(0.165 calc(0.03 * var(--k)) var(--h));
+  --artwork: oklch(0.145 calc(0.006 * var(--k)) var(--h));
   --editorial: var(--foreground);
-
-  /* staggered solid bands: A (ink) and B (tinted) alternate down the page */
-  --band-a: var(--palette-ink);
-  --band-b: oklch(0.245 calc(0.06 * var(--k)) var(--h-low));
-  --card-on-band-b: oklch(0.285 calc(0.06 * var(--k)) var(--h-low));
-  --wash-hero: var(--band-a);
-  --wash-projects: var(--band-b);
-  --wash-experience: var(--band-a);
-  --wash-about: var(--band-b);
-  --wash-contact: var(--band-a);
-  --wash-footer: var(--palette-ink);
-  --background-wash: var(--background);
 
   --gradient-signal: linear-gradient(var(--signal), var(--signal));
   --gradient-text: linear-gradient(var(--foreground), var(--foreground));
-  --shadow-card: 4px 4px 0 oklch(0.14 calc(0.03 * var(--k)) var(--h));
+  --shadow-card: 4px 4px 0 oklch(0.12 calc(0.006 * var(--k)) var(--h));
   --shadow-signal: 0 0 0 1px color-mix(in oklab, var(--signal) 40%, transparent);
 }
 
 :root:not(.dark) {
-  --palette-ink: oklch(0.95 calc(0.012 * var(--k)) var(--h-down));
-  --palette-panel: oklch(0.925 calc(0.018 * var(--k)) var(--h-down));
-  --palette-raised: oklch(0.9 calc(0.024 * var(--k)) var(--h-down));
-  --palette-paper: oklch(0.21 calc(0.035 * var(--k)) var(--h));
-  --palette-signal: oklch(0.48 calc(0.22 * var(--k)) var(--hs));
-  --primary-foreground: oklch(0.97 calc(0.01 * var(--k)) var(--h-up));
-  --signal-foreground: oklch(0.97 calc(0.01 * var(--k)) var(--h-up));
-  --card: oklch(0.975 calc(0.008 * var(--k)) var(--h-down));
-  --popover: oklch(0.975 calc(0.008 * var(--k)) var(--h-down));
+  --palette-ink: oklch(0.965 calc(0.004 * var(--k)) var(--h));
+  --palette-panel: oklch(0.985 calc(0.003 * var(--k)) var(--h));
+  --palette-raised: oklch(0.94 calc(0.005 * var(--k)) var(--h));
+  --palette-paper: oklch(0.2 calc(0.01 * var(--k)) var(--h));
+  --palette-signal: oklch(0.5 calc(0.21 * var(--k)) var(--hs));
+  --primary-foreground: oklch(0.98 calc(0.01 * var(--k)) var(--hs));
+  --signal-foreground: oklch(0.98 calc(0.01 * var(--k)) var(--hs));
   --accent-foreground: var(--foreground);
-  --muted-foreground: oklch(0.46 calc(0.035 * var(--k)) var(--h));
+  --muted-foreground: oklch(0.46 calc(0.01 * var(--k)) var(--h));
   --glow: oklch(0.52 calc(0.17 * var(--k)) var(--hg));
-  --ink-2: oklch(0.35 calc(0.035 * var(--k)) var(--h));
-  --border: oklch(0.84 calc(0.025 * var(--k)) var(--h-down));
-  --line-strong: oklch(0.7 calc(0.04 * var(--k)) var(--h-down));
+  --ink-2: oklch(0.34 calc(0.01 * var(--k)) var(--h));
+  --border: oklch(0.88 calc(0.005 * var(--k)) var(--h));
+  --line-strong: oklch(0.76 calc(0.008 * var(--k)) var(--h));
   --success: oklch(0.47 0.12 152);
   --warning: oklch(0.5 0.11 75);
   --destructive: oklch(0.5 0.18 25);
-  --destructive-foreground: oklch(0.97 0.01 var(--h-up));
-  --scrim: oklch(0.2 calc(0.035 * var(--k)) var(--h) / 86%);
-  --artwork: oklch(0.89 calc(0.03 * var(--k)) var(--h-down));
-  --shadow-card: 4px 4px 0 oklch(0.78 calc(0.035 * var(--k)) var(--h-down));
-  --band-a: oklch(0.955 calc(0.012 * var(--k)) var(--h-down));
-  --band-b: oklch(0.905 calc(0.04 * var(--k)) var(--h-low));
+  --destructive-foreground: oklch(0.98 0.01 var(--hs));
+  --scrim: oklch(0.2 calc(0.01 * var(--k)) var(--h) / 86%);
+  --artwork: oklch(0.925 calc(0.005 * var(--k)) var(--h));
+  --shadow-card: 4px 4px 0 oklch(0.82 calc(0.006 * var(--k)) var(--h));
   color-scheme: light;
 }
 
-/* visitor-selectable accents (see ThemeProvider); orchid is the default above */
+/* visitor-selectable accents (see ThemeProvider); blue is the default above */
+:root[data-accent="orchid"] { --h: 315; --hs: 340; --hg: 300; }
 :root[data-accent="violet"] { --h: 292; --hs: 292; --hg: 330; }
-:root[data-accent="blue"] { --h: 258; --hs: 258; --hg: 215; }
 :root[data-accent="teal"] { --h: 195; --hs: 188; --hg: 150; }
 :root[data-accent="amber"] { --h: 78; --hs: 68; --hg: 40; }
 :root[data-accent="vermilion"] { --h: 25; --hs: 30; --hg: 60; }
 :root[data-accent="mono"] { --k: 0; }
+
+/* While the theme or accent changes, nothing animates, so every surface switches in the same frame. */
+:root[data-switching] *,
+:root[data-switching] *::before,
+:root[data-switching] *::after {
+  transition: none !important;
+}
 
 @layer base {
   * {
@@ -185,6 +177,9 @@
   }
   html {
     scroll-behavior: smooth;
+    color-scheme: light;
+  }
+  html.dark {
     color-scheme: dark;
   }
   body {
@@ -234,13 +229,6 @@
   box-shadow: var(--shadow-signal);
 }
 
-@utility grid-lines {
-  background-image:
-    linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
 @utility glass {
   background: color-mix(in oklab, var(--card) 70%, transparent);
   backdrop-filter: blur(14px) saturate(140%);
@@ -248,56 +236,10 @@
 }
 
 .app-backdrop {
-  background-color: var(--background-wash);
-}
-.portfolio-band {
-  border-top: 1px solid var(--line-strong);
-  position: relative;
-}
-.band-inner {
-  max-width: 86rem;
-  margin-inline: auto;
-  padding: 4rem 2rem;
-}
-.band-projects { background: var(--wash-projects); }
-:root.dark .band-projects { --card: var(--card-on-band-b); }
-.band-experience { background: var(--wash-experience); }
-.band-about {
-  background: var(--wash-about);
-}
-.band-contact {
-  background: var(--wash-contact);
-  --section-accent: var(--signal);
+  background-color: var(--background);
 }
 .site-footer {
-  border-top: 1px solid var(--line-strong);
-  background: var(--wash-footer);
-}
-.portfolio-hero {
-  position: relative;
-  isolation: isolate;
-  background: var(--wash-hero);
-}
-.portfolio-band .section-label-index {
-  background: var(--section-accent, var(--signal));
-  color: var(--signal-foreground);
-}
-.band-experience { --section-accent: var(--signal); }
-.band-about { --section-accent: var(--signal); }
-.editorial-action {
-  background: var(--signal);
-  border-color: var(--signal);
-  color: var(--signal-foreground);
-  box-shadow: 4px 4px 0 var(--line-strong);
-}
-.editorial-action:hover { transform: translate(-2px, -2px); }
-.project-card { box-shadow: 4px 4px 0 var(--border); }
-.project-visual {
-  min-height: 15rem;
-  background: var(--artwork);
-}
-.project-record {
-  background: repeating-radial-gradient(circle at center, var(--artwork) 0 5px, var(--line-strong) 6px, var(--artwork) 7px 9px);
+  background: var(--background);
 }
 
 @utility scrollbar-none {

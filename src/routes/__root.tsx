@@ -12,7 +12,7 @@ import {
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { ThemeProvider } from "@/components/site/ThemeProvider";
+import { ThemeProvider, themeInitScript } from "@/components/site/ThemeProvider";
 
 function NotFoundComponent() {
   return (
@@ -108,8 +108,9 @@ function RootShell({ children }: { children: ReactNode }) {
   const { locale } = useParams({ strict: false }) as { locale?: string };
   const isEn = locale === "en";
   return (
-    <html lang={isEn ? "en" : "fa"} dir={isEn ? "ltr" : "rtl"} className="dark">
+    <html lang={isEn ? "en" : "fa"} dir={isEn ? "ltr" : "rtl"} suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <HeadContent />
       </head>
       <body>

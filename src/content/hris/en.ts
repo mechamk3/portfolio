@@ -29,13 +29,7 @@ const en = {
     tag: "Problem 1",
     heading: "Personnel information lived in several disconnected sources",
     lead: "Recording or editing one person's information wasn't the hard part. The trouble started at the end of every quarter, when management asked for the usual HR reports — or other combined reports on the state of the personnel. When data has no single source, building such a report out of scattered files is genuinely difficult.",
-    sources: [
-      { name: "Physical files", note: "Paper and folders" },
-      { name: "Excel files", note: "Multiple copies, multiple owners" },
-      { name: "Access", note: "A separate database" },
-    ],
-    dbLabel: "One unified database",
-    dbNote: "Single source of data",
+    diagramAlt: "A diagram of three scattered sources — Access files, multiple sheets and physical documents — flowing into one unified source.",
     consequenceLabel: "The result",
     consequence:
       "Each source holds one piece of the picture. A quarterly report combining several fields of active personnel — education, department, seniority and contract status in one table — has to be extracted from each source by hand and matched together. The more fields management asks for, the slower and more error-prone it gets.",
@@ -115,13 +109,7 @@ const en = {
       { label: "Frontend", value: "React (CRA), JavaScript, Tailwind CSS" },
       { label: "Deployment", value: "Nginx, systemd" },
     ],
-    deploy: [
-      { node: "User's browser", note: "" },
-      { node: "Nginx", note: "reverse proxy on ports 80 & 443" },
-      { node: "React frontend", note: "separate systemd service" },
-      { node: "FastAPI backend", note: "separate systemd service" },
-      { node: "PostgreSQL", note: "database" },
-    ],
+    diagramAlt: "A deployment diagram: the user's browser reaches Nginx, a reverse proxy on ports 80 and 443, which routes /api to the FastAPI backend and / to the React frontend, both systemd services on Linux; the backend reads from and writes to PostgreSQL.",
   },
   roles: {
     nav: "User roles",

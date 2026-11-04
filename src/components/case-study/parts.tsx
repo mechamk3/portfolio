@@ -113,41 +113,17 @@ export function ScrollProgress() {
     return () => window.removeEventListener("scroll", on);
   }, []);
   return (
-    <div aria-hidden className="fixed inset-x-0 top-0 z-50 h-0.5">
+    <div aria-hidden className="fixed inset-x-0 top-[calc(4.5rem+1px)] z-30 h-0.5">
       <div className="h-full origin-left bg-signal-gradient rtl:origin-right" style={{ transform: `scaleX(${p})` }} />
     </div>
   );
 }
 
-export function MergeArrows({ className }: { className?: string }) {
+/** Hand-drawn diagrams ship on opaque white, so the tile is the same white: a thin margin that blends in, no border. */
+export function Diagram({ src, alt, width, height, className = "" }: { src: string; alt: string; width: number; height: number; className?: string }) {
   return (
-    <svg aria-hidden viewBox="0 0 300 56" preserveAspectRatio="none" fill="none" className={className}>
-      <g stroke="currentColor" strokeWidth={1} strokeDasharray="4 5" strokeLinecap="round">
-        <path vectorEffect="non-scaling-stroke" d="M50 0 C 50 28 148 24 150 52" />
-        <path vectorEffect="non-scaling-stroke" d="M150 0 V 52" />
-        <path vectorEffect="non-scaling-stroke" d="M250 0 C 250 28 152 24 150 52" />
-      </g>
-    </svg>
-  );
-}
-
-export function DeployNode({ title, note, className = "" }: { title: string; note?: string; className?: string }) {
-  return (
-    <div className={`w-full rounded-none border border-line bg-surface-2/60 px-3 py-2.5 text-center ${className}`}>
-      <p className="font-mono text-sm font-medium text-ink">{title}</p>
-      {note && <p className="mt-0.5 text-xs leading-5 text-ink-2">{note}</p>}
-    </div>
-  );
-}
-
-export function DeployConnector({ label }: { label?: string }) {
-  return (
-    <div className="relative flex flex-col items-center text-signal/70">
-      <span aria-hidden className="h-5 border-s border-dashed border-current" />
-      <span aria-hidden className="text-[10px] leading-none">▼</span>
-      {label && (
-        <span className="absolute start-1/2 top-1 ms-3 whitespace-nowrap font-mono text-[10px] text-ink-3">{label}</span>
-      )}
+    <div className={`bg-white p-3 sm:p-4 ${className}`}>
+      <img src={src} alt={alt} width={width} height={height} loading="lazy" className="block h-auto w-full" />
     </div>
   );
 }

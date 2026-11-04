@@ -19,8 +19,6 @@ const fa: Dictionary = {
     role: "مهندس نرم‌افزار",
     tagline:
       "ایده‌ها رو به نرم‌افزار تبدیل می‌کنم؛ از طراحی سیستم و ساختار اون گرفته تا ساخت رابط کاربری و شکل دادن به تجربه‌ی کاربر.",
-    stackLabel: "تکنولوژی‌ هایی که استفاده می‌کنم",
-    stack: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Python", "FastAPI", "PostgreSQL", "MongoDB"],
   },
   projects: {
     meta: {
@@ -80,6 +78,8 @@ const fa: Dictionary = {
     heading: "سابقه‌ی کاری من.",
     previouslyLabel: "قبل تر",
     selectedWorkLabel: "پروژه‌های شاخص:",
+    showDetails: "نمایش جزئیات",
+    hideDetails: "پنهان کردن جزئیات",
     items: [
       {
         company: "پدیسار انفورماتیک",
@@ -137,10 +137,11 @@ const fa: Dictionary = {
   contact: {
     label: "تماس",
     heading: "راه های ارتباط",
+    copy: "کپی",
+    copied: "کپی شد",
     channels: {
       email: { label: "ایمیل", value: "mohammadjavadtolou@gmail.com" },
       github: { label: "گیت‌هاب", value: "mechamk3@" },
-      linkedin: { label: "لینکدین", value: "in/yourname" },
     },
   },
   notFound: {

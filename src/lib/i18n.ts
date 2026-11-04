@@ -30,11 +30,3 @@ export function getHrisContent(locale: Locale) {
 export function monoClass(locale: Locale) {
   return locale === "en" ? "font-mono uppercase tracking-[0.2em]" : "";
 }
-
-/** Swap the locale segment of a path: /en/projects -> /fa/projects */
-export function swapLocalePath(pathname: string, next: Locale) {
-  const parts = pathname.split("/");
-  if (isLocale(parts[1])) parts[1] = next;
-  else parts.splice(1, 0, next);
-  return parts.join("/") || `/${next}`;
-}

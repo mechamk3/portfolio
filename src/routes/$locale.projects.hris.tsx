@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { getDictionary, getHrisContent, monoClass, toLocale } from "@/lib/i18n";
 import { SectionLabel, TechIcon } from "@/components/site/bits";
-import { ChevronIcon, DatabaseIcon, InfoIcon } from "@/components/icons/misc";
+import { ChevronIcon, InfoIcon } from "@/components/icons/misc";
 import { LightboxRoot, Screenshot } from "@/components/case-study/Lightbox";
 import {
   Callout,
-  DeployConnector,
-  DeployNode,
-  MergeArrows,
+  Diagram,
   RoleTabs,
   ScrollProgress,
   Toc,
@@ -53,8 +51,6 @@ function HrisCaseStudy() {
     { id: "summary", label: t.summary.nav },
     { id: "gallery", label: t.gallery.nav },
   ];
-  const d = t.myRole.deploy as { node: string; note: string }[];
-  const node = (i: number) => d[i] ?? { node: "", note: "" };
   const section = "scroll-mt-28 py-5";
 
   return (
@@ -125,24 +121,13 @@ function HrisCaseStudy() {
               <Callout tone="danger" title={t.problem1.consequenceLabel}>{t.problem1.consequence}</Callout>
               <Callout tone="success" title={t.problem1.solutionTitle}>{t.problem1.solutionText}</Callout>
 
-              <div className="mx-auto mt-10 w-full max-w-xl">
-                <ul className="grid grid-cols-3 gap-3">
-                  {t.problem1.sources.map(({ name, note }) => (
-                    <li key={name} className="rounded-none border border-dashed border-line-strong bg-surface-2/40 p-3 text-center sm:p-4">
-                      <span className="block text-xs font-medium text-ink">{name}</span>
-                      <span className="mt-1 block text-[11px] leading-4 text-ink-3">{note}</span>
-                    </li>
-                  ))}
-                </ul>
-                <MergeArrows className="h-12 w-full text-signal/60" />
-                <div className="flex items-center justify-center gap-4 rounded-none border border-signal/40 bg-signal/10 p-5 shadow-signal">
-                  <DatabaseIcon className="size-9 shrink-0 text-signal" />
-                  <span className="text-start">
-                    <span className="block font-semibold text-ink">{t.problem1.dbLabel}</span>
-                    <span className="block text-sm text-ink-2">{t.problem1.dbNote}</span>
-                  </span>
-                </div>
-              </div>
+              <Diagram
+                src="/projects/hris/scattered_sources_to_single_source.webp"
+                alt={t.problem1.diagramAlt}
+                width={1879}
+                height={999}
+                className="mx-auto mt-10 max-w-3xl"
+              />
 
               <p className="mt-12 text-xs text-ink-3">{t.hint}</p>
               <div className="mt-4 space-y-10">
@@ -201,23 +186,13 @@ function HrisCaseStudy() {
                   ))}
                 </dl>
 
-                <div className="mx-auto w-full max-w-sm" dir="ltr">
-                  <DeployNode title={node(0).node} note={node(0).note} />
-                  <DeployConnector label="https · :443" />
-                  <DeployNode title={node(1).node} note={node(1).note} />
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="flex flex-col items-center">
-                      <DeployConnector label="/" />
-                      <DeployNode title={node(2).node} note={node(2).note} />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <DeployConnector label="/api" />
-                      <DeployNode title={node(3).node} note={node(3).note} />
-                      <DeployConnector label="read · write" />
-                      <DeployNode title={node(4).node} note={node(4).note} />
-                    </div>
-                  </div>
-                </div>
+                <Diagram
+                  src="/projects/hris/deployment.webp"
+                  alt={t.myRole.diagramAlt}
+                  width={1878}
+                  height={1685}
+                  className="mx-auto w-full max-w-md"
+                />
               </div>
             </section>
 

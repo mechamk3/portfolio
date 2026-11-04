@@ -1,4 +1,4 @@
-import type { ComponentType, SVGProps } from "react";
+import type { ComponentType, ReactNode, SVGProps } from "react";
 import {
   TypeScriptIcon, JavaScriptIcon, TailwindIcon, ViteIcon, AntDesignIcon,
   PostgreSQLIcon, MongoDBIcon, PythonIcon, FastAPIIcon,
@@ -70,11 +70,46 @@ export function SectionLabel({
   mono: string;
 }) {
   return (
-    <div className="flex items-center gap-4">
-      {index && <span className="section-label-index flex size-8 shrink-0 items-center justify-center bg-signal font-mono text-xs font-bold text-signal-foreground">{index}</span>}
-      <span className={`text-xs font-medium text-ink-2 ${mono}`}>{label}</span>
-      <span aria-hidden className="h-px flex-1 bg-line-strong" />
+    <div className="flex items-center gap-3 text-xs">
+      {index && <span className="font-mono font-semibold text-signal">{index}</span>}
+      {index && <span aria-hidden className="h-px w-5 bg-line-strong" />}
+      <span className={`font-medium text-ink-2 ${mono}`}>{label}</span>
     </div>
+  );
+}
+
+/** Every section shares one structure: a sticky label column and a content column. */
+export function Section({
+  id,
+  index,
+  label,
+  mono,
+  wide = false,
+  children,
+}: {
+  id: string;
+  index: string;
+  label: string;
+  mono: string;
+  /** Put the label above the content instead of beside it, so content spans the full width. */
+  wide?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <section id={id} className="scroll-mt-18 border-t border-line">
+      <div
+        className={`mx-auto grid max-w-6xl gap-8 px-6 py-16 lg:py-24 ${
+          wide ? "" : "lg:grid-cols-[11rem_minmax(0,1fr)] lg:gap-14"
+        }`}
+      >
+        <div>
+          <div className={wide ? "" : "lg:sticky lg:top-28"}>
+            <SectionLabel index={index} label={label} mono={mono} />
+          </div>
+        </div>
+        <div className="min-w-0">{children}</div>
+      </div>
+    </section>
   );
 }
 
