@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { withBasePath } from "@/lib/assetPath";
+
 import {
   createContext,
   useCallback,
@@ -99,7 +101,7 @@ export default function LightboxRoot({
     for (const d of [1, -1] as const) {
       const neighbor = shots[(index + d + shots.length) % shots.length];
       const img = new window.Image();
-      img.src = neighbor.src;
+      img.src = withBasePath(neighbor.src);
     }
   }, [index, shots]);
 
@@ -168,7 +170,7 @@ export default function LightboxRoot({
             {shot && (
               <Image
                 key={shot.src}
-                src={shot.src}
+                src={withBasePath(shot.src)}
                 alt={shot.caption ?? shot.title}
                 width={SHOT_WIDTH}
                 height={SHOT_HEIGHT}

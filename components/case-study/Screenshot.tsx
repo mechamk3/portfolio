@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { withBasePath } from "@/lib/assetPath";
 
 import { SHOT_WIDTH, SHOT_HEIGHT, useLightbox } from "./Lightbox";
 
@@ -16,6 +17,7 @@ export default function Screenshot({
   priority?: boolean;
 }) {
   const lightbox = useLightbox();
+  const imageSrc = withBasePath(src);
 
   return (
     <figure>
@@ -31,12 +33,14 @@ export default function Screenshot({
         {/* ---------- screenshot ---------- */}
         <button
           type="button"
-          onClick={() => (lightbox ? lightbox.openBySrc(src) : window.open(src, "_blank"))}
+          onClick={() =>
+            lightbox ? lightbox.openBySrc(src) : window.open(withBasePath(src), "_blank")
+          }
           aria-label={`View full size: ${title}`}
           className="group/btn relative block w-full cursor-zoom-in"
         >
           <Image
-            src={src}
+            src={imageSrc}
             alt={caption ?? title}
             width={SHOT_WIDTH}
             height={SHOT_HEIGHT}

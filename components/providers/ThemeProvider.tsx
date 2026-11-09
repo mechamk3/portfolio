@@ -41,13 +41,13 @@ function applyTheme(setting: Setting): Theme {
       : setting;
 
   const root = document.documentElement;
-  root.classList.remove("light", "dark");
-  root.classList.add(resolved);
-  root.style.colorScheme = resolved; // native scrollbars/inputs follow too
+  root.dataset.theme = resolved;
+  root.classList.toggle("dark", resolved === "dark");
+  root.style.colorScheme = resolved;
   return resolved;
 }
 
-const themeScript = `(function(){try{var s=localStorage.getItem("theme");var d=s==="dark"||(s!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.classList.add(d?"dark":"light");r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
+const themeScript = `(function(){try{var s=localStorage.getItem("theme");var d=s==="dark"||(s!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.dataset.theme=d?"dark":"light";r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
 
 export default function ThemeProvider({
   children,
@@ -80,6 +80,32 @@ export default function ThemeProvider({
     };
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    const observer = new MutationObserver(() => {
+      const hasDark = root.classList.contains("dark");
+      const hasLight = root.classList.contains("light");
+
+      if (!hasDark && !hasLight) {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        const setting: Setting =
+          stored === "light" || stored === "dark" || stored === "system"
+            ? stored
+            : "system";
+
+        applyTheme(setting);
+      }
+    });
+
+    observer.observe(root, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const setTheme = useCallback((setting: Setting) => {

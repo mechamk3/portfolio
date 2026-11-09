@@ -48,7 +48,7 @@
 }
 
 /* ---------- navy world ---------- */
-.dark {
+:root[data-theme="dark"] {
   color-scheme: dark;
   --canvas: #0d1321;
   --surface: #1d2d44;

@@ -1,0 +1,68 @@
+# Builds the Next.js static export and deploys it to GitHub Pages.
+#
+# Repo setup (one-time):
+#   Settings → Pages → Build and deployment → Source: GitHub Actions
+#
+# This workflow triggers on pushes to `v1.0` (the deployment branch).
+# The site will be live at:
+#   https://<username>.github.io/<repo-name>/
+#
+# If your repo name is NOT "portfolio", set NEXT_PUBLIC_BASE_PATH below to
+# match `/your-repo-name`. For a user/org root site (`user.github.io`),
+# set it to "" (empty).
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [v1.0]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment, skip queued ones; don't cancel running ones.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        env:
+          # CHANGE THIS if your repo name is not "portfolio".
+          # For a root user/org site (user.github.io), use "".
+          NEXT_PUBLIC_BASE_PATH: /portfolio
+        run: npm run build
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
