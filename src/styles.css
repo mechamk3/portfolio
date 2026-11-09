@@ -2,6 +2,21 @@
 @source "../src";
 @import "tw-animate-css";
 
+/*
+ * Persian font (bundled, works offline). To try another one, change the import below and the
+ * variable in --font-persian to match: next-persian-fonts/css/<name>.css -> --font-<name>.
+ */
+@import "next-persian-fonts/css/vazirmatn-variable.css";
+
+/* Latin fonts, also bundled so the site runs fully offline. */
+@import "@fontsource-variable/space-grotesk/wght.css";
+@import "@fontsource-variable/manrope/wght.css";
+@import "@fontsource-variable/jetbrains-mono/wght.css";
+
+:root {
+  --font-persian: var(--font-vazirmatn-variable);
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -9,10 +24,10 @@
  */
 
 @theme inline {
-  --font-display: "Space Grotesk", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Manrope", "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
-  --font-fa: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-display: "Space Grotesk Variable", var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope Variable", var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-fa: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
 
   --radius-sm: var(--radius);
   --radius-md: var(--radius);
