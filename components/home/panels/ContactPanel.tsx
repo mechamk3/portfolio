@@ -5,7 +5,7 @@ import { ArrowUpRightIcon, DownloadIcon, FileTextIcon } from "@/components/icons
 import type { PanelProps } from "./types";
 
 const GITHUB_URL = "https://github.com/mechamk3";
-const LINKEDIN_URL = "https://linkedin.com/in/you";
+const LINKEDIN_URL = "https://linkedin.com/in/mohammmadjavadtolou";
 
 export default function ContactPanel({ t, locale, mono }: PanelProps) {
   const email = t.contact.channels.email.value;
