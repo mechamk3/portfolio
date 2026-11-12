@@ -156,7 +156,7 @@ const fa: Dictionary = {
     channels: {
       email: { label: "ایمیل", value: "mohammadjavadtolou@gmail.com", note: "" },
       github: { label: "گیت‌هاب", value: "mechamk3@", note: "" },
-      linkedin: { label: "لینکدین", value: "in/yourname", note: "" },
+      linkedin: { label: "لینکدین", value: "in/mohammadjavadtolou", note: "" },
     },
     detailsLabel: "جزئیات",
     details: {

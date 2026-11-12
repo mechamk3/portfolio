@@ -157,7 +157,7 @@ const en = {
     channels: {
       email: { label: "Email", value: "mohammadjavadtolou@gmail.com", note: "" },
       github: { label: "GitHub", value: "@mechamk3", note: "" },
-      linkedin: { label: "LinkedIn", value: "in/yourname", note: "" },
+      linkedin: { label: "LinkedIn", value: "in/mohammadjavadtolou", note: "" },
     },
     detailsLabel: "Details",
     details: {
