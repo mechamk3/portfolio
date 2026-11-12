@@ -46,8 +46,7 @@ jobs:
 
       - name: Build static export
         env:
-          # CHANGE THIS if your repo name is not "portfolio".
-          # For a root user/org site (user.github.io), use "".
+          # for a root site (user.github.io), use "".
           NEXT_PUBLIC_BASE_PATH: /portfolio
         run: npm run build
 

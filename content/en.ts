@@ -3,12 +3,12 @@ import type { ExperienceItem, ProjectItem } from "./types";
 
 const en = {
   meta: {
-    title: "Your Name — Software Engineer",
+    title: "MohammadJavad Tolou — Software Engineer",
     description:
       "Software engineer building fast, reliable web applications with TypeScript, React and Next.js.",
   },
   nav: { home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
-  footer: { rights: "© 2026 MohammadJavad Tolou - All rights reserved.", ver: "v. 1.0.0" },
+  footer: { rights: "© 2026 MohammadJavad Tolou - All rights reserved.", ver: "1.0.0" },
   home: {
     status: "Open to new opportunities",
     name: "MohammadJavad Tolou",
@@ -23,7 +23,7 @@ const en = {
   },
   projects: {
     meta: {
-      title: "Projects — Your Name",
+      title: "Projects — MohammadJavad Tolou",
       description: "Selected work — applications and tools I've designed and built.",
     },
     label: "Projects",
@@ -146,7 +146,7 @@ const en = {
   },
   contact: {
     meta: {
-      title: "Contact — Your Name",
+      title: "Contact — MohammadJavad Tolou",
       description: "Get in touch — I'm open to opportunities and interesting projects.",
     },
     label: "Contact",
