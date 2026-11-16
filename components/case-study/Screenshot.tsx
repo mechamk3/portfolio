@@ -21,7 +21,7 @@ export default function Screenshot({
 
   return (
     <figure>
-      <div className="overflow-hidden rounded-2xl border border-line bg-surface shadow-[0_1px_2px_rgba(13,19,33,0.06),0_16px_40px_-16px_rgba(13,19,33,0.2)] transition-shadow duration-300 hover:shadow-[0_1px_2px_rgba(13,19,33,0.06),0_24px_56px_-16px_rgba(13,19,33,0.28)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_20px_48px_-16px_rgba(0,0,0,0.65)]">
+      <div className="overflow-hidden rounded-lg border border-line bg-surface shadow-[0_1px_2px_rgba(13,19,33,0.06),0_16px_40px_-16px_rgba(13,19,33,0.2)] transition-shadow duration-300 hover:shadow-[0_1px_2px_rgba(13,19,33,0.06),0_24px_56px_-16px_rgba(13,19,33,0.28)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.4),0_20px_48px_-16px_rgba(0,0,0,0.65)]">
         {/* ---------- browser chrome ---------- */}
         <div className="flex h-11 items-center justify-center border-b border-line bg-linear-to-b from-surface-2/70 to-surface-2/40 px-4">
           <span className="inline-flex max-w-[80%] items-center gap-2 rounded-lg border border-line bg-surface px-3 py-1 shadow-sm">

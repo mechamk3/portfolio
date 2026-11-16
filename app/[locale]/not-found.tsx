@@ -22,28 +22,18 @@ export default async function NotFound() {
   const t = getDictionary(locale);
 
   return (
-    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center select-none">
-      {/* ambient backdrop — matches home */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-dvh mask-[linear-gradient(to_bottom,#000_55%,transparent_100%)]"
-      >
-      <div className="dot-grid absolute inset-0" />
-        <div className="absolute left-1/2 -top-45 h-100 w-[min(640px,100vw)] -translate-x-1/2 rounded-full bg-accent/15 blur-[110px] dark:bg-accent/10" />
-        <div className="grain absolute inset-0 opacity-[0.05] dark:opacity-[0.08]" />
-      </div>
-
+    <main className="relative flex min-h-dvh flex-col items-center justify-center overflow-hidden px-6 text-center">
       <div className="animate-rise relative flex flex-col items-center">
 
-        <p className="text-8xl font-bold tracking-tighter text-ink sm:text-9xl">
+        <p className="font-display text-8xl font-medium tracking-tight text-ink sm:text-9xl">
           {t.notFound.code}
         </p>
 
-        <p className="mt-2 max-w-sm text-balance text-ink-2">{t.notFound.text}</p>
+        <p className="mt-5 max-w-sm text-balance text-lg leading-8 text-ink-2">{t.notFound.text}</p>
 
         <Link
           href={`/${locale}`}
-          className="mt-10 rounded-full bg-accent px-7 py-3 text-sm font-medium text-canvas transition-colors hover:bg-accent-strong"
+          className="btn btn-primary mt-10"
         >
           {t.notFound.home}
         </Link>

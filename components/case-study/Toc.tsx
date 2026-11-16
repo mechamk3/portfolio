@@ -26,7 +26,7 @@ export default function Toc({
 
   return (
     <nav aria-label={label} className="sticky top-24 hidden lg:block">
-      <p className="text-xs text-ink-3">{label}</p>
+      <p className="eyebrow">{label}</p>
       <ul className="mt-3 border-s border-line">
         {items.map(({ id, label: itemLabel }) => (
           <li key={id}>

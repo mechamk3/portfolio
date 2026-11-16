@@ -8,6 +8,8 @@ export type ProjectItem = {
   description?: string;
   stack: string[];
   slug?: string;
+  /** true once the project has a real details page (otherwise the card does not link) */
+  detailsReady?: boolean;
   cover?: string;
   badge?: string;
   live?: string;

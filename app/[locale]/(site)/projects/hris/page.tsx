@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
+import { getDictionary, isLocale } from "@/lib/i18n";
 import { MergeArrows, DeployNode, DeployConnector } from "@/components/case-study/Diagrams"
-import { DatabaseIcon, ChevronIcon, InfoIcon } from "@/components/icons/misc";
+import { DatabaseIcon, InfoIcon } from "@/components/icons/misc";
+import Breadcrumb from "@/components/Breadcrumb";
 import TechIcon from "@/components/TechIcon";
 import SectionHeader from "@/components/SectionHeader";
 import ScrollProgress from "@/components/case-study/ScrollProgress";
@@ -32,7 +32,6 @@ export default async function HrisCaseStudy({
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const t = getHrisContent(locale);
-  const mono = monoClass(locale);
   const dict = getDictionary(locale);
 
   const tocItems = [
@@ -47,83 +46,65 @@ export default async function HrisCaseStudy({
   ];
 
   return (
-    <main className="relative overflow-x-clip select-none">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-16 -z-10 h-241 mask-[linear-gradient(to_bottom,#000_55%,transparent_100%)]"
-      >
-        <div className="dot-grid absolute inset-0 mask-[radial-gradient(ellipse_70%_65%_at_50%_0%,#000_55%,transparent_100%)]" />
-        <div className="absolute left-1/2 -top-45 h-100 w-[min(640px,100vw)] -translate-x-1/2 rounded-full bg-accent/15 blur-[110px] dark:bg-accent/10" />
-        <div className="grain absolute inset-0 opacity-[0.05] dark:opacity-[0.08]" />
-      </div>
-
+    <main>
       <ScrollProgress />
 
-      <div className="mx-auto w-full max-w-6xl px-6">
-        {/* ---------- Hero ---------- */}
+      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
         <LightboxRoot shots={t.gallery.shots}>
-          <section className="pb-10 pt-1">
+          {/* ---------- Hero ---------- */}
+          <section className="pb-14 pt-10 sm:pb-20 sm:pt-14">
+            <Breadcrumb
+              items={[
+                { label: dict.nav.home, href: `/${locale}` },
+                { label: dict.nav.projects, href: `/${locale}/projects` },
+                { label: t.name },
+              ]}
+            />
 
-            <nav aria-label="Breadcrumb" className={`mt-10 text-xs ${mono}`}>
-              <ol className="flex items-center gap-2 text-ink-3">
-                <li className="shrink-0">
-                  <Link href={`/${locale}`} className="transition-colors hover:text-ink">
-                    {dict.nav.home}
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="shrink-0 text-ink-3/60">
-                  <ChevronIcon />
-                </li>
-                <li className="shrink-0">
-                  <Link href={`/${locale}/projects`} className="transition-colors hover:text-ink">
-                    {dict.nav.projects}
-                  </Link>
-                </li>
-                <li aria-hidden="true" className="shrink-0 text-ink-3/60">
-                  <ChevronIcon />
-                </li>
-                <li aria-current="page" className="min-w-0 truncate text-ink-2">
-                  {t.name}
-                </li>
-              </ol>
-            </nav>
-
-            <p className="mt-10 inline-flex items-center gap-2.5 rounded-full border border-success/30 bg-success/10 px-3.5 py-1.5 text-xs font-medium text-success">
+            <p className="mt-10 inline-flex items-center gap-2.5 text-sm font-medium text-success">
               <span className="relative flex size-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-60" />
+                <span className="absolute inline-flex h-full w-full rounded-full bg-success opacity-60 motion-safe:animate-ping" />
                 <span className="relative inline-flex size-2 rounded-full bg-success" />
               </span>
               {t.badge}
             </p>
 
-            <h1 className="mt-6 max-w-3xl text-3xl font-bold leading-tight tracking-tight sm:text-5xl sm:leading-tight">
+            <h1 className="mt-5 max-w-4xl font-display text-4xl font-medium leading-[1.12] tracking-tight text-ink sm:text-6xl sm:leading-[1.08]">
               {t.title}
             </h1>
 
-            <p className="mt-4 text-sm font-medium text-accent">
-              {t.name} · {t.roleLabel}: {t.role}
-            </p>
+            <p className="mt-7 max-w-3xl font-display text-xl leading-9 text-ink-2 sm:text-[1.4rem] sm:leading-10">{t.lead}</p>
 
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-ink-2">{t.lead}</p>
+            {/* facts strip */}
+            <dl className="mt-12 grid gap-x-12 border-y border-line sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+              <div className="py-6">
+                <dt className="eyebrow">{t.roleLabel}</dt>
+                <dd className="mt-2 font-medium leading-6 text-ink">{t.role}</dd>
+                <dd className="mt-1 text-sm text-ink-2">{t.name}</dd>
+              </div>
+              <div className="py-6">
+                <dt className="eyebrow">{t.stackLabel.replace(/[:：]s*$/, "")}</dt>
+                <dd className="mt-2.5">
+                  <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                    {t.stack.map((tech) => (
+                      <li
+                        key={tech}
+                        className="inline-flex items-center gap-1.5 font-sans text-sm text-ink-2"
+                      >
+                        <TechIcon name={tech} className="size-4 shrink-0 text-ink-3" />
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                </dd>
+              </div>
+            </dl>
 
-            <p className={`mt-6 text-xs text-ink-2 ${mono}`}>{t.stackLabel}</p>
-            <ul className="mt-2 flex flex-wrap gap-2">
-              {t.stack.map((tech) => (
-                <li
-                  key={tech}
-                  className="inline-flex items-center gap-1.5 rounded-md border border-line bg-surface-2 px-2.5 py-1 text-xs text-ink-2"
-                >
-                  <TechIcon name={tech} className="size-3.5 shrink-0" />
-                  <span className={mono}>{tech}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 grid gap-5 grid-cols-1">
+            <div className="mt-10 grid grid-cols-1 gap-8">
               {t.audience.map(({ title, text }) => (
-                <div key={title} className="rounded-2xl border border-line p-6">
+                <div key={title} className="max-w-3xl border-s-2 border-accent ps-5">
                   <h2 className="font-semibold text-ink">{title}</h2>
-                  <p className="mt-2 text-sm leading-7 text-ink-2">{text}</p>
+                  <p className="mt-2 text-base leading-7 text-ink-2">{text}</p>
                 </div>
               ))}
             </div>
@@ -137,17 +118,17 @@ export default async function HrisCaseStudy({
 
             <div className="min-w-0">
               {/* 01 · Problem 1 */}
-              <section id="problem-1" className="scroll-mt-16 border-line pb-6 pt-3">
+              <section id="problem-1" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="01" label={t.problem1.tag} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.problem1.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.problem1.heading}</h2>
                 <p className="mt-3 max-w-4xl leading-8 text-ink-2">{t.problem1.lead}</p>
 
-                <div className="mt-5 rounded-xl border-s-4 border-danger bg-danger/5 p-5">
+                <div className="mt-5 border-s-2 border-danger bg-danger/5 px-5 py-4 sm:px-6 sm:py-5">
                   <p className="text-sm font-semibold text-danger">{t.problem1.consequenceLabel}</p>
                   <p className="mt-2 max-w-4xl leading-8 text-ink-2">{t.problem1.consequence}</p>
                 </div>
 
-                <div className="mt-5 rounded-xl border-s-4 border-success bg-success/5 p-5">
+                <div className="mt-5 border-s-2 border-success bg-success/5 px-5 py-4 sm:px-6 sm:py-5">
                   <p className="text-sm font-semibold text-success">{t.problem1.solutionTitle}</p>
                   <p className="mt-2 max-w-4xl leading-8 text-ink-2">{t.problem1.solutionText}</p>
                 </div>
@@ -158,7 +139,7 @@ export default async function HrisCaseStudy({
                     {t.problem1.sources.map(({ name, note }) => (
                       <li
                         key={name}
-                        className="flex items-center justify-center gap-3 rounded-2xl border border-dashed border-line-strong bg-surface-2/40 p-3 text-start sm:p-4"
+                        className="flex items-center justify-center gap-3 rounded-lg border border-dashed border-line-strong bg-surface-2/40 p-3 text-start sm:p-4"
                       >
                         <SourceIcon name={name} />
                         <span className="min-w-0">
@@ -175,7 +156,7 @@ export default async function HrisCaseStudy({
 
                   <MergeArrows className="h-10 w-full text-ink-3 sm:h-14" />
 
-                  <div className="flex items-center justify-center gap-3 rounded-2xl border border-accent/30 bg-accent/10 p-4 sm:gap-4 sm:p-5">
+                  <div className="flex items-center justify-center gap-3 rounded-lg border border-accent/30 bg-accent/10 p-4 sm:gap-4 sm:p-5">
                     <DatabaseIcon className="size-8 shrink-0 text-accent sm:size-10" />
                     <span className="text-start">
                       <span className="block text-sm font-semibold text-ink sm:text-base">
@@ -186,7 +167,7 @@ export default async function HrisCaseStudy({
                   </div>
                 </div>
 
-                <p className={`mt-10 text-xs text-ink-3 ${mono}`}>{t.hint}</p>
+                <p className="mt-10 text-sm text-ink-3">{t.hint}</p>
                 <div className="mt-3 space-y-10">
                   {t.problem1.shots.map((shot) => (
                     <Screenshot key={shot.src} src={shot.src} title={shot.title} caption={shot.caption} priority />
@@ -195,12 +176,12 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 02 · Problem 2 */}
-              <section id="problem-2" className="scroll-mt-16 border-line py-6">
+              <section id="problem-2" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="02" label={t.problem2.tag} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.problem2.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.problem2.heading}</h2>
                 <p className="mt-4 max-w-4xl leading-8 text-ink-2">{t.problem2.lead}</p>
 
-                <div className="mt-8 rounded-xl border-s-4 border-warning bg-warning/5 p-5">
+                <div className="mt-8 border-s-2 border-warning bg-warning/5 px-5 py-4 sm:px-6 sm:py-5">
                   <p className="text-sm font-semibold text-warning">{t.problem2.orderNoteTitle}</p>
                   <p className="mt-2 max-w-4xl leading-8 text-ink-2">{t.problem2.orderNote}</p>
                 </div>
@@ -233,12 +214,12 @@ export default async function HrisCaseStudy({
                   })}
                 </ol>
 
-                <div className="mt-6 rounded-xl border-s-4 border-success bg-success/5 p-5">
+                <div className="mt-6 border-s-2 border-success bg-success/5 px-5 py-4 sm:px-6 sm:py-5">
                   <p className="text-sm font-semibold text-success">{t.problem2.resultTitle}</p>
                   <p className="mt-2 max-w-3xl leading-8 text-ink-2">{t.problem2.resultText}</p>
                 </div>
 
-                <p className={`mt-10 text-xs text-ink-3 ${mono}`}>{t.hint}</p>
+                <p className="mt-10 text-sm text-ink-3">{t.hint}</p>
                 <div className="mt-3 space-y-8">
                   {t.problem2.shots.map((shot) => (
                     <Screenshot key={shot.src} src={shot.src} title={shot.title} caption={shot.caption} />
@@ -247,15 +228,15 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 03 · My role & stack */}
-              <section id="role" className="scroll-mt-16 border-line py-6">
+              <section id="role" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="03" label={t.myRole.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.myRole.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.myRole.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.myRole.text}</p>
 
-                <dl className="mt-8 grid gap-x-10 gap-y-5 border-line sm:grid-cols-2">
+                <dl className="mt-8 grid gap-x-12 sm:grid-cols-2">
                   {t.myRole.stack.map(({ label, value }) => (
-                    <div key={label}>
-                      <dt className={`text-xs text-ink-3 ${mono}`}>{label}</dt>
+                    <div key={label} className="border-t border-line py-4">
+                      <dt className="eyebrow">{label}</dt>
                       <dd className="mt-1 font-medium text-ink">{value}</dd>
                     </div>
                   ))}
@@ -306,9 +287,9 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 04 · Roles & permissions */}
-              <section id="roles" className="scroll-mt-16 border-line py-6">
+              <section id="roles" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="04" label={t.roles.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.roles.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.roles.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.roles.lead}</p>
 
                 <div className="mt-8">
@@ -317,14 +298,14 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 05 · Employee experience */}
-              <section id="employee" className="scroll-mt-16 border-line py-6">
+              <section id="employee" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="05" label={t.employee.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.employee.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.employee.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.employee.lead}</p>
 
                 <div className="mt-8 grid gap-5 sm:grid-cols-2">
                   {t.employee.pages.map(({ title, text }) => (
-                    <div key={title} className="rounded-2xl border border-line p-6">
+                    <div key={title} className="border-t border-line pt-5">
                       <h3 className="font-semibold text-ink">{title}</h3>
                       <p className="mt-2 text-sm leading-7 text-ink-2">{text}</p>
                     </div>
@@ -333,15 +314,15 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 06 · Additional modules */}
-              <section id="modules" className="scroll-mt-16 border-line py-6">
+              <section id="modules" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="06" label={t.modules.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.modules.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.modules.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.modules.lead}</p>
 
                 <div className="mt-10 space-y-12">
                   {t.modules.groups.map((group) => (
                     <div key={group.name}>
-                      <h3 className="text-lg font-semibold tracking-tight">{group.name}</h3>
+                      <h3 className="font-display text-2xl font-medium tracking-tight text-ink">{group.name}</h3>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-ink-2">{group.text}</p>
                       <div className={`mt-5 grid gap-8 ${group.shots.length > 1 ? "sm:grid-cols-2" : ""}`}>
                         {group.shots.map((shot) => (
@@ -354,9 +335,9 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 07 · Summary */}
-              <section id="summary" className="scroll-mt-16 border-line py-6">
+              <section id="summary" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="07" label={t.summary.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.summary.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.summary.heading}</h2>
 
                 <div className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2">
                   {t.summary.points.map(({ title, text }) => (
@@ -372,11 +353,11 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* 08 · Gallery */}
-              <section id="gallery" className="scroll-mt-16 border-line py-6">
+              <section id="gallery" className="scroll-mt-24 border-t border-line py-12 sm:py-16">
                 <SectionHeader index="08" label={t.gallery.nav} mono={locale === "en"} />
-                <h2 className="mt-8 text-2xl font-bold tracking-tight sm:text-3xl">{t.gallery.heading}</h2>
+                <h2 className="mt-4 max-w-3xl font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl sm:leading-tight">{t.gallery.heading}</h2>
                 <p className="mt-4 max-w-2xl leading-8 text-ink-2">{t.gallery.lead}</p>
-                <p className={`mt-2 text-xs text-ink-3 ${mono}`}>{t.hint}</p>
+                <p className="mt-2 text-sm text-ink-3">{t.hint}</p>
 
                 <div className="mt-8 grid gap-8 sm:grid-cols-2">
                   {t.gallery.shots.map((shot) => (
@@ -386,8 +367,8 @@ export default async function HrisCaseStudy({
               </section>
 
               {/* Disclaimer */}
-              <section className="border-line pt-6 pb-14">
-                <div className="flex max-w-3xl gap-3 rounded-xl border-s-4 border-warning bg-warning/5 p-5">
+              <section className="border-t border-line pb-20 pt-12">
+                <div className="flex max-w-3xl gap-3 border-s-2 border-warning bg-warning/5 px-5 py-4 sm:px-6 sm:py-5">
                   <InfoIcon className="mt-1 size-4 shrink-0 text-warning" />
                   <p className="text-sm leading-7 text-ink-2">{t.info.privacy}</p>
                 </div>
@@ -401,24 +382,6 @@ export default async function HrisCaseStudy({
 }
 
 /* ---- local helpers ---- */
-
-function CapabilityPill({ value, tone }: { value: string; tone: "full" | "limited" | "none" }) {
-  const styles = {
-    full: "bg-accent/10 text-accent",
-    limited: "bg-ink/5 text-ink-2",
-    none: "bg-surface-2 text-ink-3",
-  } as const;
-  const marks = { full: "✓", limited: "◐", none: "✕" } as const;
-
-  return (
-    <span
-      className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${styles[tone]}`}
-    >
-      <span aria-hidden>{marks[tone]}</span>
-      {value}
-    </span>
-  );
-}
 
 function SourceIcon({ name }: { name: string }) {
   const cls = "size-8 shrink-0 text-ink-3";

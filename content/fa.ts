@@ -7,7 +7,7 @@ const fa: Dictionary = {
     description:
       "مهندس نرم‌افزار؛ ساختن وب‌اپلیکیشن‌های سریع و قابل اعتماد با تایپ‌اسکریپت، ری‌اکت و نکست.",
   },
-  nav: { home: "خانه", projects: "نمونه‌کارها", experience: "تجربه‌ها", about: "درباره من", contact: "تماس" },
+  nav: { menu: "منو", home: "خانه", projects: "نمونه‌کارها", experience: "تجربه‌ها", about: "درباره من", contact: "تماس" },
   footer: { rights: "© ۱۴۰۵ محمدجواد طلوع - تمامی حقوق محفوظ است.", ver: "۱.۰.۰" },
   home: {
     status: "آماده‌ی فرصت‌های جدید",
@@ -31,6 +31,7 @@ const fa: Dictionary = {
     heading: "پروژه‌هایی که ساختم.",
     intro: "نگاهی به پروژه‌هایی که روشون کار کردم، فناوری‌هایی که به کار گرفتم و ایده‌هایی که به واقعیت تبدیل کردم.",
     caseStudy: "جزئیات پروژه",
+    comingSoon: "جزئیات پروژه به‌زودی",
     kindLabel: {
       work: "کاری",
       personal: "شخصی",
@@ -39,6 +40,8 @@ const fa: Dictionary = {
       {
         name: "سیستم اطلاعات منابع انسانی — HRIS",
         slug: "hris",
+        detailsReady: true,
+        cover: "/projects/hris/admin-home.webp",
         badge: "در حال استفاده‌ی عملیاتی — ۱۰۰ تا ۱۵۰ کارمند",
         status: "در حال استفاده‌ی عملیاتی",
         tone: "ok",

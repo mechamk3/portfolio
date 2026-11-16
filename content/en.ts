@@ -1,4 +1,3 @@
-import { title } from "process";
 import type { ExperienceItem, ProjectItem } from "./types";
 
 const en = {
@@ -7,7 +6,7 @@ const en = {
     description:
       "Software engineer building fast, reliable web applications with TypeScript, React and Next.js.",
   },
-  nav: { home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
+  nav: { menu: "Menu", home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
   footer: { rights: "© 2026 MohammadJavad Tolou - All rights reserved.", ver: "1.0.0" },
   home: {
     status: "Open to new opportunities",
@@ -30,7 +29,8 @@ const en = {
     featured: "Featured project",
     heading: "Things I've built.",
     intro: "A look at the projects I've worked on, the technologies I've used, and the ideas I've brought to life.",
-    caseStudy: "Read more",
+    caseStudy: "Read the case study",
+    comingSoon: "Case study coming soon",
     kindLabel: {
       work: "Work",
       personal: "Personal",
@@ -39,6 +39,8 @@ const en = {
       {
         name: "HRIS — Human Resources Information System",
         slug: "hris",
+        detailsReady: true,
+        cover: "/projects/hris/admin-home.webp",
         badge: "In production — 100–150 employees",
         status: "In production",
         tone: "ok",

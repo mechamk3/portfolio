@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { inter, vazirmatn } from "@/lib/fonts";
+import { fontVariables } from "@/lib/fonts";
 
 import { getDictionary, isLocale } from "@/lib/i18n";
 import ThemeProvider from "@/components/providers/ThemeProvider";
@@ -45,7 +45,7 @@ export default async function LocaleLayout({
       dir={isFa ? "rtl" : "ltr"}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      className={`${inter.variable} ${vazirmatn.variable}`}
+      className={fontVariables}
     >
       <body
         className={`flex min-h-dvh flex-col bg-canvas text-ink antialiased ${isFa ? "font-fa" : "font-sans"

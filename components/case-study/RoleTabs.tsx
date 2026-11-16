@@ -16,7 +16,7 @@ export default function RoleTabs({ label, roles }: { label: string; roles: Role[
       <div
         role="tablist"
         aria-label={label}
-        className="scrollbar-none flex w-fit max-w-full gap-1 overflow-x-auto rounded-xl border border-line bg-surface-2/50 p-1"
+        className="scrollbar-none flex w-fit max-w-full gap-1 overflow-x-auto rounded-lg border border-line bg-surface-2/50 p-1"
       >
         {roles.map((r, i) => (
           <button
@@ -25,7 +25,7 @@ export default function RoleTabs({ label, roles }: { label: string; roles: Role[
             role="tab"
             aria-selected={active === i}
             onClick={() => setActive(i)}
-            className={`shrink-0 whitespace-nowrap rounded-lg px-3.5 py-1.5 text-sm font-medium transition-colors ${active === i
+            className={`shrink-0 whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm font-medium transition-colors ${active === i
               ? "bg-ink text-canvas shadow-sm"
               : "text-ink-2 hover:bg-surface-2 hover:text-ink"
               }`}
@@ -39,10 +39,10 @@ export default function RoleTabs({ label, roles }: { label: string; roles: Role[
       <div
         key={role.code}
         role="tabpanel"
-        className="mt-6 rounded-2xl border border-line p-6 motion-safe:animate-[lb-fade_.25s_ease-out] sm:p-8"
+        className="mt-6 border-t border-line pt-6 motion-safe:animate-[lb-fade_.25s_ease-out]"
       >
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h3 className="text-lg font-semibold tracking-tight">{role.name}</h3>
+          <h3 className="font-display text-2xl font-medium tracking-tight text-ink">{role.name}</h3>
           <span className="rounded-md border border-line bg-surface-2 px-2 py-0.5 font-mono text-xs text-ink-2">
             {role.code}
           </span>

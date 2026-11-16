@@ -21,7 +21,7 @@ export default function RootPage() {
 
       <a
         href="fa/"
-        className="mt-6 rounded-full bg-accent px-6 py-3 text-sm font-medium text-canvas transition-colors hover:bg-accent-strong"
+        className="btn btn-primary mt-6"
       >
         ورود به سایت
       </a>
