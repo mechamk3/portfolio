@@ -3,9 +3,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-fa: var(--font-vazirmatn), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-newsreader), var(--font-vazirmatn), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-fa: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), var(--font-persian), Georgia, "Times New Roman", serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 
   --color-canvas: var(--canvas);
@@ -236,7 +236,7 @@ body {
 /* ---------- Persian: headings stay in Vazirmatn (the serif has no Arabic script),
    set bolder instead, and never letter-spaced (it breaks the joins) ---------- */
 [dir="rtl"] .font-display {
-  font-family: var(--font-vazirmatn), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
 }
 

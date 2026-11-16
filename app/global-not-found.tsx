@@ -1,5 +1,5 @@
 import "./globals.css";
-import { fontVariables } from "@/lib/fonts";
+import { fontClassName, fontStyle } from "@/lib/fonts";
 import GlobalNotFoundContent from "@/components/GlobalNotFoundContent";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 
@@ -8,7 +8,8 @@ export default function GlobalNotFound() {
     <html
       lang="fa"
       dir="rtl"
-      className={`${fontVariables} font-fa`}
+      className={`${fontClassName} font-fa`}
+      style={fontStyle}
     >
       <body className="min-h-dvh bg-canvas text-ink antialiased">
         <ThemeProvider>

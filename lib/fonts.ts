@@ -1,16 +1,15 @@
-import { Inter, JetBrains_Mono, Newsreader, Vazirmatn } from "next/font/google";
+import { JetBrains_Mono, Newsreader } from "next/font/google";
+// Pick any font from https://github.com/amiryxe/next-persian-fonts
+// (e.g. estedad, sahel, shabnam, samim, vazirmatnVariable ...)
+import { vazirmatnVariable } from "next-persian-fonts/vazirmatn-variable";
 
-export const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
+/* ------------------------------------------------------------------ *
+ *  ✏️  CHANGE THE PERSIAN FONT HERE — edit only this one line
+ *  (plus the import above to match).
+ * ------------------------------------------------------------------ */
+const persian = vazirmatnVariable;
 
-export const vazirmatn = Vazirmatn({
-  subsets: ["arabic", "latin"],
-  variable: "--font-vazirmatn",
-});
-
-/** Serif for headlines and margin notes (Latin only — Persian falls back to Vazirmatn). */
+/** Serif for headlines and margin notes (Latin only — Persian falls back to the Persian font). */
 export const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["normal", "italic"],
@@ -22,5 +21,8 @@ export const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains",
 });
 
-/** All font CSS variables — put this on <html>. */
-export const fontVariables = `${inter.variable} ${vazirmatn.variable} ${newsreader.variable} ${jetbrainsMono.variable}`;
+/** Put on <html>: loads every font and exposes the stable `--font-persian` alias used in globals.css. */
+export const fontClassName = `${persian.variable} ${newsreader.variable} ${jetbrainsMono.variable}`;
+export const fontStyle = {
+  "--font-persian": persian.style.fontFamily,
+} as React.CSSProperties;
