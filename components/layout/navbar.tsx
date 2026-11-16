@@ -1,40 +1,43 @@
 import Link from "next/link";
 
 import { getDictionary, type Locale } from "@/lib/i18n";
+import { SECTION_IDS } from "@/lib/site";
 import ThemeToggle from "@/components/layout/ThemeToggle";
 import LanguageSwitcher from "@/components/layout/LanguageSwitcher";
-import FloatingControls from "@/components/layout/FloatingControls";
+import NavLinks from "@/components/layout/NavLinks";
 
 export default function Navbar({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
 
+  const labels = {
+    work: t.nav.projects,
+    experience: t.nav.experience,
+    about: t.nav.about,
+    contact: t.nav.contact,
+  };
+  const items = SECTION_IDS.map((id) => ({ id, label: labels[id] }));
+
   return (
-    <>
-      {/* transparent header — scrolls away with the page */}
-      <header className="relative z-30 select-none">
-        <div className="flex h-16 w-full items-center justify-between px-4 sm:px-6">
-          <Link href={`/${locale}`} aria-label={t.home.name} className="shrink-0">
-            {/* ---- logo placeholder — swap this span for your Image pair ---- */}
-            <span className="flex size-11 items-center justify-center rounded-xl border border-dashed border-line-strong text-[10px] font-semibold text-ink-3">
-              LOGO
-            </span>
-            {/* <Image src="/logo-light.png" alt="" width={44} height={44} priority className="block dark:hidden" />
-                <Image src="/logo-dark.png" alt="" width={44} height={44} priority className="hidden dark:block" /> */}
+    <header className="glass sticky top-0 z-40 border-b border-line">
+      <div className="mx-auto flex h-16 w-full max-w-6xl items-center gap-2 px-4 sm:gap-5 sm:px-8">
+        {/* the name itself is the logo */}
+        {/* equal-width side columns keep the links centred on the page */}
+        <div className="me-auto md:me-0 md:flex-1">
+          <Link
+            href={`/${locale}`}
+            className="whitespace-nowrap font-display text-base font-medium tracking-tight text-ink transition-colors hover:text-accent sm:text-xl rtl:text-lg rtl:font-bold"
+          >
+            {t.home.name}
           </Link>
-
-          {/* two separate glass circles — pinned to the top so the language
-              capsule can grow DOWNWARD without being re-centered by the row */}
-          <div className="flex items-start gap-2 self-start pt-2.5">
-            <div className="glass flex size-11 items-center justify-center rounded-full">
-              <ThemeToggle variant="swap" />
-            </div>
-            <LanguageSwitcher variant="navbar" />
-          </div>
         </div>
-      </header>
 
-      {/* controls return on scroll in floating form */}
-      <FloatingControls />
-    </>
+        <NavLinks locale={locale} items={items} menuLabel={t.nav.menu} />
+
+        <div className="flex items-center justify-end gap-2 md:flex-1">
+          <LanguageSwitcher />
+          <ThemeToggle variant="swap" />
+        </div>
+      </div>
+    </header>
   );
 }

@@ -46,11 +46,11 @@ function SwapToggle({ onToggle }: { onToggle: () => void }) {
       type="button"
       aria-label="Toggle theme"
       onClick={onToggle}
-      className="group/th flex size-9 items-center justify-center rounded-full text-ink-2 transition-colors hover:text-ink"
+      className="group/th flex size-9 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-ink-2 transition-colors hover:border-line-strong hover:text-ink"
     >
-      <span className="relative block size-5">
-        <SunIcon className="absolute inset-0 size-5 rotate-0 scale-100 opacity-100 transition-all duration-300 group-hover/th:rotate-90 group-hover/th:scale-0 group-hover/th:opacity-0 dark:rotate-90 dark:scale-0 dark:opacity-0 dark:group-hover/th:rotate-0 dark:group-hover/th:scale-100 dark:group-hover/th:opacity-100" />
-        <MoonIcon className="absolute inset-0 size-5 -rotate-90 scale-0 opacity-0 transition-all duration-300 group-hover/th:rotate-0 group-hover/th:scale-100 group-hover/th:opacity-100 dark:rotate-0 dark:scale-100 dark:opacity-100 dark:group-hover/th:-rotate-90 dark:group-hover/th:scale-0 dark:group-hover/th:opacity-0" />
+      <span className="relative block size-4.5">
+        <SunIcon className="absolute inset-0 size-4.5 rotate-0 scale-100 opacity-100 transition-all duration-300 group-hover/th:rotate-90 group-hover/th:scale-0 group-hover/th:opacity-0 dark:rotate-90 dark:scale-0 dark:opacity-0 dark:group-hover/th:rotate-0 dark:group-hover/th:scale-100 dark:group-hover/th:opacity-100" />
+        <MoonIcon className="absolute inset-0 size-4.5 -rotate-90 scale-0 opacity-0 transition-all duration-300 group-hover/th:rotate-0 group-hover/th:scale-100 group-hover/th:opacity-100 dark:rotate-0 dark:scale-100 dark:opacity-100 dark:group-hover/th:-rotate-90 dark:group-hover/th:scale-0 dark:group-hover/th:opacity-0" />
       </span>
     </button>
   );
