@@ -11,7 +11,6 @@ export default function Navbar({ locale }: { locale: Locale }) {
 
   const labels = {
     work: t.nav.projects,
-    experience: t.nav.experience,
     about: t.nav.about,
     contact: t.nav.contact,
   };

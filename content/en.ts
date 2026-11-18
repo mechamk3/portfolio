@@ -1,4 +1,4 @@
-import type { ExperienceItem, ProjectItem } from "./types";
+import type { ProjectItem } from "./types";
 
 const en = {
   meta: {
@@ -6,7 +6,7 @@ const en = {
     description:
       "Software engineer building fast, reliable web applications with TypeScript, React and Next.js.",
   },
-  nav: { menu: "Menu", home: "Home", projects: "Projects", experience: "Experience", about: "About", contact: "Contact" },
+  nav: { menu: "Menu", home: "Home", projects: "Projects", about: "About", contact: "Contact" },
   footer: { rights: "© 2026 MohammadJavad Tolou - All rights reserved.", ver: "1.0.0" },
   home: {
     status: "Open to new opportunities",
@@ -86,56 +86,6 @@ const en = {
       go2p: "Projects",
       go2h: "Homepage",
     },
-  },
-  experience: {
-    label: "Experience",
-    heading: "Where I've worked.",
-    previouslyLabel: "Previously",
-    selectedWorkLabel: "Featured Projects",
-    items: [
-      {
-        company: "Padisar Informatics",
-        location: "Tehran, Iran",
-        current: true,
-        roles: [
-          { role: "Software Development Specialist", period: "Feb 2025 – Present", current: true },
-          { role: "Software Development Intern", period: "Dec 2024 – Feb 2025", current: false },
-        ],
-        summary: [
-          "Started my professional career in software development here, progressing from small development and maintenance tasks to independently building, deploying, and maintaining internal systems.",
-          "I've gained experience across all stages of the software development lifecycle, from requirements analysis and system design to implementation, testing, deployment, support, and documentation. I've independently developed two internal tools from scratch that are now in use across the company. I also contribute to the design and development of the company's ITSM platform.",
-        ],
-        projects: [
-          {
-            name: "HR Information System",
-            status: "In production",
-            tone: "ok",
-            description: [
-              "Independently designed and developed the company's HR information system from scratch, replacing paper-based processes and scattered Excel files. The system is actively used by the HR team and has undergone multiple iterations based on real business needs and user feedback.",
-            ],
-          },
-          {
-            name: "SMS Gateway",
-            status: "In production",
-            tone: "ok",
-            description: [
-              "Independently designed and developed a shared messaging platform for production use, consisting of an SMS gateway and a management panel. Integrated the platform with multiple internal systems for one-time login codes (OTPs), contract-expiration notifications, employee messaging, and Zabbix monitoring alerts. The platform also maintains message history and delivery-status records.",
-            ],
-          },
-          {
-            name: "ITSM SaaS Platform",
-            status: "Pilot production · 2 tenants",
-            tone: "pilot",
-            description: [
-              "Contribute to the design and development of a multi-tenant ITSM platform focused on customer support, ticketing, and service-delivery workflows.",
-              "Designed and implemented the multi-tenant architecture, tenant-level authentication and access control with dynamic roles and permissions, and hierarchical structures for employees and customers. Also developed the core ticketing system and a service-request workflow for an infrastructure-services tenant, supporting ticket categorization and routing, multi-step review and approval, and process reporting. My work also spans frontend and backend development, database design, overall system architecture, and deployment.",
-            ],
-          },
-        ],
-        footnote:
-          "Across these systems, I have also handled Linux-based deployments and maintained technical documentation for the systems I build.",
-      },
-    ] as ExperienceItem[],
   },
   about: {
     label: "About",

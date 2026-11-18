@@ -5,8 +5,8 @@
 @theme inline {
   --font-sans: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
   --font-fa: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-newsreader), var(--font-persian), Georgia, "Times New Roman", serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-display: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
@@ -123,17 +123,11 @@ body {
   backdrop-filter: blur(12px);
 }
 
-/* ---------- margin note: small italic serif label (upright in Persian) ---------- */
+/* ---------- margin note ---------- */
 .eyebrow {
   font-size: 0.875rem;
   line-height: 1.25rem;
   color: var(--ink-3);
-}
-
-:lang(en) .eyebrow {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1rem;
 }
 
 /* ---------- text links: a plain underline that takes the accent on hover ---------- */
@@ -233,8 +227,7 @@ body {
   background: var(--accent);
 }
 
-/* ---------- Persian: headings stay in Vazirmatn (the serif has no Arabic script),
-   set bolder instead, and never letter-spaced (it breaks the joins) ---------- */
+/* ---------- Persian: headings set bolder, and never letter-spaced (it breaks the joins) ---------- */
 [dir="rtl"] .font-display {
   font-family: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;

@@ -49,8 +49,7 @@ export default async function LocaleLayout({
       style={fontStyle}
     >
       <body
-        className={`flex min-h-dvh flex-col bg-canvas text-ink antialiased ${isFa ? "font-fa" : "font-sans"
-          }`}
+        className={`flex min-h-dvh flex-col bg-canvas text-ink antialiased ${isFa ? "font-fa" : "font-sans"}`}
       >
         <ThemeProvider>{children}</ThemeProvider>
       </body>

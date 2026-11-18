@@ -1,49 +1,32 @@
 import { GITHUB_URL, LINKEDIN_URL } from "@/lib/site";
+import { GitHubIcon, LinkedInIcon, MailIcon } from "@/components/icons/socials";
 
 import type { PanelProps } from "./types";
 
 export default function ContactPanel({ t }: PanelProps) {
   const { email, github, linkedin } = t.contact.channels;
-  const others = [
-    { href: GITHUB_URL, ...github },
-    { href: LINKEDIN_URL, ...linkedin },
+  const channels = [
+    { href: `mailto:${email.value}`, title: email.label, link: email.value, icon: MailIcon },
+    { href: GITHUB_URL, title: github.label, link: github.value, icon: GitHubIcon, external: true },
+    { href: LINKEDIN_URL, title: linkedin.label, link: linkedin.value, icon: LinkedInIcon, external: true },
   ];
 
   return (
-    <div>
-      <p className="font-display text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl">
-        {t.contact.heading}
-      </p>
-
-      {/* the address itself is the call to action */}
-      <p className="mt-8">
-        <a
-          href={`mailto:${email.value}`}
-          dir="ltr"
-          className="link break-all font-display text-2xl decoration-accent decoration-2 underline-offset-[0.25em] sm:text-4xl"
-        >
-          {email.value}
-        </a>
-      </p>
-
-      <dl className="mt-10 grid max-w-xl gap-x-10 gap-y-6 sm:grid-cols-2">
-        {others.map(({ href, label, value }) => (
-          <div key={label} className="border-t border-line pt-4">
-            <dt className="eyebrow">{label}</dt>
-            <dd className="mt-1.5">
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                dir="ltr"
-                className="link font-sans text-[17px]"
-              >
-                {value}
-              </a>
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+    <ul className="flex flex-col gap-5">
+      {channels.map(({ href, title, link, icon: Icon, external }) => (
+        <li key={title} className="flex items-center gap-3">
+          <Icon className="size-5 shrink-0 text-ink-3" />
+          <span className="text-ink">{title}</span>
+          <a
+            href={href}
+            {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+            dir="ltr"
+            className="link text-ink-2"
+          >
+            {link}
+          </a>
+        </li>
+      ))}
+    </ul>
   );
 }

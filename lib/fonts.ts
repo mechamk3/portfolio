@@ -1,28 +1,15 @@
-import { JetBrains_Mono, Newsreader } from "next/font/google";
 // Pick any font from https://github.com/amiryxe/next-persian-fonts
 // (e.g. estedad, sahel, shabnam, samim, vazirmatnVariable ...)
-import { vazirmatnVariable } from "next-persian-fonts/vazirmatn-variable";
+import { rooyinFD } from "next-persian-fonts/rooyin-fd";
 
 /* ------------------------------------------------------------------ *
- *  ✏️  CHANGE THE PERSIAN FONT HERE — edit only this one line
- *  (plus the import above to match).
+ *  Site font — edit only this line (and the import above to match).
+ *  Used for both Persian and English.
  * ------------------------------------------------------------------ */
-const persian = vazirmatnVariable;
+const persian = rooyinFD;
 
-/** Serif for headlines and margin notes (Latin only — Persian falls back to the Persian font). */
-export const newsreader = Newsreader({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
-});
-
-export const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-});
-
-/** Put on <html>: loads every font and exposes the stable `--font-persian` alias used in globals.css. */
-export const fontClassName = `${persian.variable} ${newsreader.variable} ${jetbrainsMono.variable}`;
+/** Put on <html>: loads the font and exposes `--font-persian` for globals.css. */
+export const fontClassName = persian.variable;
 export const fontStyle = {
   "--font-persian": persian.style.fontFamily,
 } as React.CSSProperties;
