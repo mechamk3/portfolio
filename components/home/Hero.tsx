@@ -14,9 +14,9 @@ export default function Hero({ t }: { t: Dictionary }) {
   const { first, last } = splitName(t.home.name);
 
   return (
-    <section id="top" className="relative @container px-[5cqi] pb-[4cqi] pt-[3.5cqi]">
+    <section id="top" className="relative">
       <HeroAtmosphere />
-      <div className="relative z-[1]">
+      <div className="@container relative z-1 mx-auto w-full max-w-[112rem] px-[clamp(1.75rem,5vw,6rem)] pb-[4cqi] pt-[3.5cqi]">
         <p className="hero-rise text-[2.1cqi] leading-none text-ink-3">{t.home.role}</p>
 
         <h1 className="hero-name hero-rise hero-rise-late mt-[1.6cqi] font-display text-ink">

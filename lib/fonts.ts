@@ -1,9 +1,18 @@
-// Persian: https://github.com/amiryxe/next-persian-fonts
+// Persian: Gofteh, self-hosted (fonts/gofteh).
 // English: Clash Display, self-hosted from Fontshare (fonts/clash-display).
 import localFont from "next/font/local";
-import { arad } from "next-persian-fonts/arad";
 
-const persian = arad;
+const persian = localFont({
+  src: [
+    { path: "../fonts/gofteh/Gofteh-extralight.woff2", weight: "200", style: "normal" },
+    { path: "../fonts/gofteh/Gofteh-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/gofteh/Gofteh-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/gofteh/Gofteh-Bold.woff2", weight: "700", style: "normal" },
+    { path: "../fonts/gofteh/Gofteh-Heavy.woff2", weight: "900", style: "normal" },
+  ],
+  variable: "--font-gofteh",
+  display: "swap",
+});
 
 const clash = localFont({
   src: [

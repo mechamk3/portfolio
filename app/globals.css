@@ -212,12 +212,16 @@ body {
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 0.86;
-  font-size: clamp(1.7rem, 10.2cqi, 11rem);
+  font-size: calc(clamp(2rem, 11.4cqi, 12.5rem) + 3px);
 }
 
 .hero-name span {
   display: block;
   white-space: nowrap;
+}
+
+[dir="ltr"] .hero-name {
+  font-size: calc(clamp(2rem, 9.85cqi, 12.5rem) + 3px);
 }
 
 .hero-ground {
@@ -239,75 +243,17 @@ body {
     linear-gradient(180deg, #f7f6f3 0%, #f2f2f0 55%, #e8e7e3 100%);
 }
 
-.hero-squares {
-  position: absolute;
-  inset: 0;
-}
-
-.sq {
-  position: absolute;
-  aspect-ratio: 1;
-}
-
-.sq-red {
-  top: 14cqi;
-  right: -11cqi;
-  width: 32cqi;
-  background: #e23b24;
-}
-
-.sq-blue {
-  bottom: -11cqi;
-  left: -10cqi;
-  width: 32cqi;
-  background: #2450d4;
-}
-
-.sq-ochre {
-  top: -16cqi;
-  left: 36cqi;
-  width: 22cqi;
-  background: #e09a2b;
-}
-
-.sq-green {
-  right: 18cqi;
-  bottom: -10cqi;
-  width: 16cqi;
-  background: #1c8c4a;
-}
-
-[dir="rtl"] .sq-red {
-  right: auto;
-  left: -11cqi;
-}
-
-[dir="rtl"] .sq-blue {
-  left: auto;
-  right: -10cqi;
-}
-
-[dir="rtl"] .sq-ochre {
-  left: auto;
-  right: 36cqi;
-}
-
-[dir="rtl"] .sq-green {
-  right: auto;
-  left: 18cqi;
-}
-
 .hero-ground-grain {
   position: absolute;
   inset: -20%;
-  opacity: 0.4;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.16;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 160px 160px;
-  mix-blend-mode: overlay;
+  mix-blend-mode: screen;
 }
 
 :root[data-theme="light"] .hero-ground-grain {
-  opacity: 0.35;
+  opacity: 0.28;
   mix-blend-mode: multiply;
 }
 
@@ -364,9 +310,9 @@ body {
 [dir="rtl"] .hero-name {
   font-family: var(--font-persian), ui-sans-serif, system-ui, sans-serif;
   letter-spacing: 0;
-  font-weight: 720;
-  line-height: 1.2;
-  font-size: clamp(2rem, 7.4cqi, 5.25rem);
+  font-weight: 900;
+  line-height: 0.95;
+  font-size: calc(clamp(2rem, 11.4cqi, 12.5rem) + 3px);
 }
 
 [dir="rtl"] p.font-display {
