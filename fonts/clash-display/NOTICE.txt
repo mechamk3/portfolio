@@ -1,0 +1,6 @@
+Clash Display
+Copyright Indian Type Foundry
+https://www.fontshare.com/fonts/clash-display
+
+Self-hosted from the official Fontshare files so the site does not call the Fontshare CDN.
+Free for personal and commercial use. Do not resell the font files on their own.

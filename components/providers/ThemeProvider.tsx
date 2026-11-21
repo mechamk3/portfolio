@@ -47,7 +47,7 @@ function applyTheme(setting: Setting): Theme {
   return resolved;
 }
 
-const themeScript = `(function(){try{var s=localStorage.getItem("theme");var d=s==="dark"||(s!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches);var r=document.documentElement;r.dataset.theme=d?"dark":"light";r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
+const themeScript = `(function(){try{var s=localStorage.getItem("theme");var d=s==="light"?false:s==="system"?matchMedia("(prefers-color-scheme: dark)").matches:true;var r=document.documentElement;r.dataset.theme=d?"dark":"light";r.classList.toggle("dark",d);r.style.colorScheme=d?"dark":"light"}catch(e){}})()`;
 
 export default function ThemeProvider({
   children,
@@ -58,15 +58,15 @@ export default function ThemeProvider({
     <script dangerouslySetInnerHTML={{ __html: themeScript }} />
   ));
 
-  const [theme, setThemeState] = useState<Setting>("system");
-  const [resolvedTheme, setResolvedTheme] = useState<Theme>("light");
+  const [theme, setThemeState] = useState<Setting>("dark");
+  const [resolvedTheme, setResolvedTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
     const initial: Setting =
       stored === "light" || stored === "dark" || stored === "system"
         ? stored
-        : "system";
+        : "dark";
 
     setThemeState(initial);
     setResolvedTheme(applyTheme(initial));

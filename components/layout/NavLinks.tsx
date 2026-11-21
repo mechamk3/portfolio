@@ -72,16 +72,14 @@ export default function NavLinks({
     <>
       {/* ---------- desktop ---------- */}
       <nav aria-label={menuLabel} className="hidden md:block">
-        <ul className="flex items-center gap-7">
+        <ul className="flex items-center gap-7 lg:gap-9">
           {items.map(({ id, label }) => (
             <li key={id}>
               <Link
                 href={hrefFor(id)}
                 aria-current={active === id ? "true" : undefined}
-                className={`text-[15px] underline decoration-2 underline-offset-8 transition-colors ${
-                  active === id
-                    ? "text-ink decoration-accent"
-                    : "text-ink-2 decoration-transparent hover:text-ink"
+                className={`text-[15px] text-ink transition-opacity hover:opacity-55 ${
+                  active === id ? "opacity-100" : "opacity-90"
                 }`}
               >
                 {label}
@@ -98,7 +96,7 @@ export default function NavLinks({
         aria-expanded={open}
         aria-controls="mobile-nav"
         onClick={() => setOpen((o) => !o)}
-        className="order-last flex size-9 shrink-0 items-center justify-center rounded-full border border-line bg-surface text-ink-2 transition-colors hover:border-line-strong hover:text-ink md:hidden"
+        className="order-last flex size-9 shrink-0 items-center justify-center text-ink transition-opacity hover:opacity-55 md:hidden"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" className="size-5" aria-hidden>
           {open ? <path d="M6 6l12 12M18 6 6 18" /> : <path d="M4 8h16M4 16h16" />}
@@ -109,16 +107,16 @@ export default function NavLinks({
         <nav
           id="mobile-nav"
           aria-label={menuLabel}
-          className="absolute inset-x-0 top-full border-b border-line bg-canvas motion-safe:animate-[lb-fade_0.18s_ease-out] md:hidden"
+          className="absolute inset-x-0 top-full bg-canvas motion-safe:animate-[lb-fade_0.18s_ease-out] md:hidden"
         >
-          <ul className="mx-auto w-full max-w-6xl divide-y divide-line px-5 py-1 sm:px-8">
+          <ul className="mx-auto w-full px-5 py-2 sm:px-8">
             {items.map(({ id, label }) => (
               <li key={id}>
                 <Link
                   href={hrefFor(id)}
                   onClick={() => setOpen(false)}
                   aria-current={active === id ? "true" : undefined}
-                  className={`block py-3.5 font-display text-xl ${active === id ? "text-accent" : "text-ink"}`}
+                  className={`block py-3 font-display text-2xl text-ink ${active === id ? "opacity-100" : "opacity-80"}`}
                 >
                   {label}
                 </Link>

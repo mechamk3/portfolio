@@ -12,8 +12,11 @@ const en = {
     status: "Open to new opportunities",
     name: "MohammadJavad Tolou",
     role: "Software Engineer",
-    tagline:
-      "I turn ideas into software, from designing the systems behind it to building the interface and shaping the experience of using it.",
+    tagline: [
+      "I turn ideas into software,",
+      "from designing the systems behind it",
+      "to building the interface and shaping the experience of using it.",
+    ],
     viewWork: "View my work",
     contactMe: "Get in touch",
     stackLabel: "What I work with",

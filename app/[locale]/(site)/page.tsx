@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { getDictionary, isLocale, monoClass } from "@/lib/i18n";
+import Hero from "@/components/home/Hero";
 import HomeSection from "@/components/home/HomeSection";
 import WorkPanel from "@/components/home/panels/WorkPanel";
 import AboutPanel from "@/components/home/panels/AboutPanel";
@@ -18,21 +19,9 @@ export default async function Home({
 
   return (
     <main>
+      <Hero t={t} />
+
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
-        {/* ============ hero ============ */}
-        <section id="top" className="animate-rise pb-16 pt-14 sm:pb-24 sm:pt-24">
-          <p className="eyebrow">{t.home.role}</p>
-
-          <h1 className="mt-3 font-display text-[2.6rem] font-medium leading-[1.08] tracking-tight text-ink sm:text-8xl">
-            {t.home.name}
-            <span aria-hidden className="ms-[0.12em] inline-block size-[0.22em] translate-y-[-0.06em] bg-accent" />
-          </h1>
-
-          <p className="mt-10 max-w-2xl font-display text-[1.35rem] leading-9 text-ink-2 sm:text-[1.6rem] sm:leading-10">
-            {t.home.tagline}
-          </p>
-        </section>
-
         <HomeSection id="work" label={t.projects.label}>
           <WorkPanel {...panel} />
         </HomeSection>

@@ -1,15 +1,23 @@
-// Pick any font from https://github.com/amiryxe/next-persian-fonts
-// (e.g. estedad, sahel, shabnam, samim, vazirmatnVariable ...)
+// Persian: https://github.com/amiryxe/next-persian-fonts
+// English: Clash Display, self-hosted from Fontshare (fonts/clash-display).
+import localFont from "next/font/local";
 import { arad } from "next-persian-fonts/arad";
 
-/* ------------------------------------------------------------------ *
- *  Site font — edit only this line (and the import above to match).
- *  Used for both Persian and English.
- * ------------------------------------------------------------------ */
 const persian = arad;
 
-/** Put on <html>: loads the font and exposes `--font-persian` for globals.css. */
-export const fontClassName = persian.variable;
+const clash = localFont({
+  src: [
+    { path: "../fonts/clash-display/ClashDisplay-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../fonts/clash-display/ClashDisplay-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../fonts/clash-display/ClashDisplay-Semibold.woff2", weight: "600", style: "normal" },
+    { path: "../fonts/clash-display/ClashDisplay-Bold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-clash",
+  display: "swap",
+});
+
+/** Put on <html>: loads both families and exposes their CSS variables. */
+export const fontClassName = `${persian.variable} ${clash.variable}`;
 export const fontStyle = {
   "--font-persian": persian.style.fontFamily,
 } as React.CSSProperties;

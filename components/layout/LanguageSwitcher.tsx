@@ -58,12 +58,9 @@ export default function LanguageSwitcher() {
         aria-expanded={open}
         aria-controls="language-menu"
         onClick={() => setOpen((o) => !o)}
-        className={`flex h-9 items-center gap-1.5 rounded-full border bg-surface ps-2.5 pe-2 text-sm text-ink-2 transition-colors hover:border-line-strong hover:text-ink ${
-          open ? "border-line-strong text-ink" : "border-line"
-        }`}
+        className="flex h-9 items-center gap-1 px-2 text-sm text-ink transition-opacity hover:opacity-55"
       >
-        <GlobeIcon className="size-4.5 shrink-0" />
-        <span className={`font-medium leading-none ${label.font}`}>{label.short}</span>
+        <span className={`leading-none ${label.font}`}>{label.short}</span>
         <svg
           viewBox="0 0 16 16"
           fill="none"
@@ -112,21 +109,3 @@ export default function LanguageSwitcher() {
   );
 }
 
-function GlobeIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.7}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      {...props}
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M3 12h18" />
-      <path d="M12 3a14.5 14.5 0 0 0 0 18 14.5 14.5 0 0 0 0-18" />
-    </svg>
-  );
-}
